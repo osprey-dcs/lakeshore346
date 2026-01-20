@@ -172,14 +172,7 @@ getTUNESTSUCCESS {
     in "%*d,%*d,%d,%*d;1";
 }
 
-# /// Read the ZONE parameters (this is read into a waveform)
-getZONE {
-    out "ZONE? \$1,\$2";
-   separator=",";
-    in "%f";
-}
-
-# /// Read the input sensor name
+# Read the input sensor name
 getINNAME {
     out "INNAME? \$1;*OPC?";
     in "\"%[^\"]\";1";
@@ -320,13 +313,6 @@ setATUNE {
     out "ATUNE \$1,%(\$2.VAL)d;*OPC?";
     in "1";
 }
-
-# /// Set the ZONE parameters
-setZONE {
-    out "ZONE \$1,\$2,%(A)f,%(B)f,%(C)f,%(D)f,%(E)f,%(F)d,%(G)d,%(H)f;*OPC?";
-    in "1";
-}
-
 # /// Set the input sensor name
 setINNAME {
     out "INNAME \$1,\"%s\";*OPC?";
@@ -585,3 +571,22 @@ setSRE { out "*SRE %d;*OPC?"; in "1";    @init { getSRE; } }
 getSTB { out "*STB?;*OPC?";   in "%d;1"; }
 
 cmdCLS { out "*CLS;*OPC?";    in "1";    }
+
+# Zone
+getZONE {
+    out "ZONE? \$1,\$2;*OPC?";
+    in "%f,%(\$3:P_RBV)f,%(\$3:I_RBV)f,%(\$3:D_RBV)f,%(\$3:MOUT_RBV)f,%(\$3:RANGE_RBV)d,%(\$3:INPUT_RBV)[^,],%(\$3:RATE_RBV)f;1";
+    @init {
+        out "ZONE? \$1,\$2;*OPC?";
+        in "%(\$3:UB)f,%(\$3:P)f,%(\$3:I)f,%(\$3:D)f,%(\$3:MOUT)f,%(\$3:RANGE)d,%(\$3:INPUT)[^,],%(\$3:RATE)f;1";
+    }
+}
+
+setZONEUB    { out "%f,%(\$3:P_RBV)f,%(\$3:I_RBV)f,%(\$3:D_RBV)f,%(\$3:MOUT_RBV)f,%(\$3:RANGE_RBV.RVAL)d,%(\$3:INPUT_RBV)s,%(\$3:RATE_RBV)f;*OPC?"; in "1"; }
+setZONEP     { out "%(\$3:UB_RBV)f,%f,%(\$3:I_RBV)f,%(\$3:D_RBV)f,%(\$3:MOUT_RBV)f,%(\$3:RANGE_RBV.RVAL)d,%(\$3:INPUT_RBV)s,%(\$3:RATE_RBV)f;*OPC?"; in "1"; }
+setZONEI     { out "%(\$3:UB_RBV)f,%(\$3:P_RBV)f,%f,%(\$3:D_RBV)f,%(\$3:MOUT_RBV)f,%(\$3:RANGE_RBV.RVAL)d,%(\$3:INPUT_RBV)s,%(\$3:RATE_RBV)f;*OPC?"; in "1"; }
+setZONED     { out "%(\$3:UB_RBV)f,%(\$3:P_RBV)f,%(\$3:I_RBV)f,%f,%(\$3:MOUT_RBV)f,%(\$3:RANGE_RBV.RVAL)d,%(\$3:INPUT_RBV)s,%(\$3:RATE_RBV)f;*OPC?"; in "1"; }
+setZONEMOUT  { out "%(\$3:UB_RBV)f,%(\$3:P_RBV)f,%(\$3:I_RBV)f,%(\$3:D_RBV)f,%f,%(\$3:RANGE_RBV.RVAL)d,%(\$3:INPUT_RBV)s,%(\$3:RATE_RBV)f;*OPC?"; in "1"; }
+setZONERANGE { out "%(\$3:UB_RBV)f,%(\$3:P_RBV)f,%(\$3:I_RBV)f,%(\$3:D_RBV)f,%(\$3:MOUT_RBV)f,%d,%(\$3:INPUT_RBV)s,%(\$3:RATE_RBV)f;*OPC?"; in "1"; }
+setZONEINPUT { out "%(\$3:UB_RBV)f,%(\$3:P_RBV)f,%(\$3:I_RBV)f,%(\$3:D_RBV)f,%(\$3:MOUT_RBV)f,%(\$3:RANGE_RBV.RVAL)d,%s,%(\$3:RATE_RBV)f;*OPC?"; in "1"; }
+setZONERATE  { out "%(\$3:UB_RBV)f,%(\$3:P_RBV)f,%(\$3:I_RBV)f,%(\$3:D_RBV)f,%(\$3:MOUT_RBV)f,%(\$3:RANGE_RBV.RVAL)d,%(\$3:INPUT_RBV)s,%f;*OPC?"; in "1"; }

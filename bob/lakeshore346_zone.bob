@@ -29,7 +29,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_13</name>
-    <pv_name>$(P)$(R)OUT$(OUTNUM):OUTPUT</pv_name>
+    <pv_name>$(P)$(R)OUT$(OUTNUM):OUTPUT_RBV</pv_name>
     <x>90</x>
     <y>55</y>
     <width>80</width>
@@ -42,26 +42,6 @@
       <color red="0" green="128" blue="255">
       </color>
     </border_color>
-  </widget>
-  <widget type="action_button" version="3.0.0">
-    <name>Action Button</name>
-    <actions>
-      <action type="write_pv">
-        <description>Read Latest ZONE Settings</description>
-        <pv_name>$(S):Z:READ$(OUT).PROC</pv_name>
-        <value>1</value>
-      </action>
-    </actions>
-    <x>190</x>
-    <y>55</y>
-    <width>225</width>
-    <height>25</height>
-    <background_color>
-      <color red="240" green="240" blue="240">
-      </color>
-    </background_color>
-    <tooltip>$(actions)</tooltip>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="group" version="3.0.0">
     <name>Header</name>

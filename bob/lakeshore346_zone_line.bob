@@ -9,7 +9,7 @@
   <grid_step_y>5</grid_step_y>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update</name>
-    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):UB</pv_name>
+    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):UB_RBV</pv_name>
     <x>35</x>
     <y>30</y>
     <height>25</height>
@@ -25,7 +25,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input</name>
-    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):UB_S</pv_name>
+    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):UB</pv_name>
     <x>35</x>
     <height>25</height>
     <background_color>
@@ -41,7 +41,7 @@
   </widget>
   <widget type="combo" version="2.0.0">
     <name>Menu Button_5</name>
-    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):RANGE_S</pv_name>
+    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):RANGE</pv_name>
     <x>560</x>
     <height>25</height>
     <background_color>
@@ -52,7 +52,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_8</name>
-    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):P_S</pv_name>
+    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):P</pv_name>
     <x>140</x>
     <height>25</height>
     <background_color>
@@ -68,7 +68,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_23</name>
-    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):P</pv_name>
+    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):P_RBV</pv_name>
     <x>140</x>
     <y>30</y>
     <height>25</height>
@@ -83,7 +83,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_24</name>
-    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):I</pv_name>
+    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):I_RBV</pv_name>
     <x>245</x>
     <y>30</y>
     <height>25</height>
@@ -98,7 +98,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_25</name>
-    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):D</pv_name>
+    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):D_RBV</pv_name>
     <x>350</x>
     <y>30</y>
     <height>25</height>
@@ -113,7 +113,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_9</name>
-    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):I_S</pv_name>
+    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):I</pv_name>
     <x>245</x>
     <height>25</height>
     <background_color>
@@ -129,7 +129,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_10</name>
-    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):D_S</pv_name>
+    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):D</pv_name>
     <x>350</x>
     <height>25</height>
     <background_color>
@@ -145,7 +145,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_11</name>
-    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):MOUT_S</pv_name>
+    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):MOUT</pv_name>
     <x>455</x>
     <height>25</height>
     <background_color>
@@ -161,7 +161,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_26</name>
-    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):MOUT</pv_name>
+    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):MOUT_RBV</pv_name>
     <x>455</x>
     <y>30</y>
     <height>25</height>
@@ -176,7 +176,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_27</name>
-    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):RANGE</pv_name>
+    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):RANGE_RBV</pv_name>
     <x>560</x>
     <y>30</y>
     <height>25</height>
@@ -191,7 +191,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_28</name>
-    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):INPUT</pv_name>
+    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):INPUT_RBV</pv_name>
     <x>665</x>
     <y>30</y>
     <height>25</height>
@@ -206,7 +206,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_29</name>
-    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):RATE</pv_name>
+    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):RATE_RBV</pv_name>
     <x>770</x>
     <y>30</y>
     <height>25</height>
@@ -239,7 +239,7 @@
   </widget>
   <widget type="combo" version="2.0.0">
     <name>Menu Button_1</name>
-    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):INPUT_S</pv_name>
+    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):INPUT</pv_name>
     <x>665</x>
     <height>25</height>
     <background_color>
@@ -247,10 +247,38 @@
       </color>
     </background_color>
     <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item>A</item>
+      <item>B</item>
+      <item>C1</item>
+      <item>C2</item>
+      <item>C3</item>
+      <item>C4</item>
+      <item>D1</item>
+      <item>D2</item>
+      <item>D3</item>
+      <item>D4</item>
+      <item>E1</item>
+      <item>E2</item>
+      <item>E3</item>
+      <item>E4</item>
+      <item>F1</item>
+      <item>F2</item>
+      <item>F3</item>
+      <item>F4</item>
+      <item>G1</item>
+      <item>G2</item>
+      <item>G3</item>
+      <item>G4</item>
+      <item>H1</item>
+      <item>H2</item>
+      <item>H3</item>
+      <item>H4</item>
+    </items>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_12</name>
-    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):RATE_S</pv_name>
+    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):RATE</pv_name>
     <x>770</x>
     <height>25</height>
     <background_color>
@@ -263,24 +291,5 @@
       <color red="0" green="128" blue="255">
       </color>
     </border_color>
-  </widget>
-  <widget type="action_button" version="3.0.0">
-    <name>Action Button_1</name>
-    <actions>
-      <action type="write_pv">
-        <description>SET</description>
-        <pv_name>$(P)$(R)OUT$(OUT):Z$(ZONE):SET.PROC</pv_name>
-        <value>1</value>
-      </action>
-    </actions>
-    <x>875</x>
-    <width>60</width>
-    <height>55</height>
-    <background_color>
-      <color red="240" green="240" blue="240">
-      </color>
-    </background_color>
-    <tooltip>$(actions)</tooltip>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
 </display>

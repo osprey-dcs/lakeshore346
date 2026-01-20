@@ -18,8 +18,8 @@ asynOctetSetOutputEos("$(PORT)", 0, "\r\n")
 #asynSetTraceIOMask("L0", -1, 0x2)
 #asynSetTraceMask("L0", -1, 0x9)
 
-#lakeshore346_autoload_db("$(TOP)/db","$(PORT)",$(ADDR=0),"P=LS346:,R=,PORT=$(PORT),ADDR=0,SCAN=$(SCAN),TEMPSCAN=$(TEMPSCAN)")
-dbLoadRecords("$(TOP)/db/lakeshore346_core.db", "P=LS346:,R=,PORT=$(PORT),ADDR=0,SCAN=$(SCAN),TEMPSCAN=$(TEMPSCAN)")
+lakeshore346_autoload_db("$(TOP)/db","$(PORT)",$(ADDR=0),"P=LS346:,R=,PORT=$(PORT),ADDR=0,SCAN=$(SCAN),TEMPSCAN=$(TEMPSCAN)")
+#dbLoadRecords("$(TOP)/db/lakeshore346_core.db", "P=LS346:,R=,PORT=$(PORT),ADDR=0,SCAN=$(SCAN),TEMPSCAN=$(TEMPSCAN)")
 
 
 iocInit()
