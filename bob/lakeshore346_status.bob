@@ -1,0 +1,1049 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Lake Shore 346 Status Registers</name>
+  <width>670</width>
+  <height>400</height>
+  <actions>
+  </actions>
+  <grid_step_x>5</grid_step_x>
+  <grid_step_y>5</grid_step_y>
+  <widget type="group" version="3.0.0">
+    <name>Header</name>
+    <width>670</width>
+    <height>80</height>
+    <style>3</style>
+    <foreground_color>
+      <color name="Header_Background" red="77" green="77" blue="77">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Header_Background" red="77" green="77" blue="77">
+      </color>
+    </background_color>
+    <widget type="label" version="2.0.0">
+      <name>Label</name>
+      <text>Lake Shore 346 Status Registers</text>
+      <x>5</x>
+      <y>5</y>
+      <width>380</width>
+      <height>35</height>
+      <font>
+        <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="Header_ForeGround" red="255" green="255" blue="255">
+        </color>
+      </foreground_color>
+      <vertical_alignment>1</vertical_alignment>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Button_19</name>
+      <actions>
+        <action type="write_pv">
+          <description>Clear Status</description>
+          <pv_name>$(pv_name)</pv_name>
+          <value>1</value>
+        </action>
+      </actions>
+      <pv_name>$(P)$(R)STATUS:CLS</pv_name>
+      <x>10</x>
+      <y>45</y>
+      <width>110</width>
+      <height>25</height>
+      <tooltip>Note: ensure Phoebus has the setting below so that unit change is reflected immediately without a refresh
+org.phoebus.pv.ca/dbe_property_supported=true</tooltip>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+  </widget>
+  <widget type="group" version="3.0.0">
+    <name>Events</name>
+    <macros>
+      <REG1>ESE</REG1>
+      <REG2>ESR</REG2>
+    </macros>
+    <x>5</x>
+    <y>90</y>
+    <width>325</width>
+    <height>300</height>
+    <style>1</style>
+    <font>
+      <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Header_ForeGround" red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <line_color>
+      <color name="Header_Background" red="77" green="77" blue="77">
+      </color>
+    </line_color>
+    <transparent>true</transparent>
+    <widget type="group" version="3.0.0">
+      <name>Group</name>
+      <x>5</x>
+      <y>5</y>
+      <width>315</width>
+      <height>265</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="textupdate" version="2.0.0">
+        <name>Text Update_4</name>
+        <pv_name>LS346:STATUS:$(REG2)_RBV</pv_name>
+        <x>70</x>
+        <y>40</y>
+        <width>65</width>
+        <format>4</format>
+        <show_units>false</show_units>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_8</name>
+        <text>Enabled?
+($(REG1))</text>
+        <width>65</width>
+        <height>35</height>
+        <font>
+          <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+          </font>
+        </font>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+        <actions>
+        </actions>
+        <border_color>
+          <color red="0" green="128" blue="255">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_9</name>
+        <text>Status?
+($(REG2))</text>
+        <x>70</x>
+        <width>245</width>
+        <height>35</height>
+        <font>
+          <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+          </font>
+        </font>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+        <actions>
+        </actions>
+        <border_color>
+          <color red="0" green="128" blue="255">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>Text Update_7</name>
+        <pv_name>LS346:STATUS:$(REG1)_RBV</pv_name>
+        <y>40</y>
+        <width>65</width>
+        <format>4</format>
+        <show_units>false</show_units>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Group_2</name>
+        <macros>
+          <BIT>PON</BIT>
+        </macros>
+        <y>65</y>
+        <width>315</width>
+        <height>25</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="checkbox" version="2.0.0">
+          <name>Check Box</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)</pv_name>
+          <label></label>
+          <width>20</width>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_40</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)_RBV</pv_name>
+          <x>25</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_2</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV</pv_name>
+          <x>70</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Text Update_6</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV.DESC</pv_name>
+          <x>115</x>
+          <width>200</width>
+        </widget>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Group_35</name>
+        <macros>
+          <BIT>EXE</BIT>
+        </macros>
+        <y>140</y>
+        <width>315</width>
+        <height>25</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="checkbox" version="2.0.0">
+          <name>Check Box_2</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)</pv_name>
+          <label></label>
+          <width>20</width>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_43</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)_RBV</pv_name>
+          <x>25</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_44</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV</pv_name>
+          <x>70</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Text Update_8</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV.DESC</pv_name>
+          <x>115</x>
+          <width>200</width>
+        </widget>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Group_36</name>
+        <macros>
+          <BIT>CME</BIT>
+        </macros>
+        <y>115</y>
+        <width>315</width>
+        <height>25</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="checkbox" version="2.0.0">
+          <name>Check Box_3</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)</pv_name>
+          <label></label>
+          <width>20</width>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_45</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)_RBV</pv_name>
+          <x>25</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_46</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV</pv_name>
+          <x>70</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Text Update_9</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV.DESC</pv_name>
+          <x>115</x>
+          <width>200</width>
+        </widget>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Group_37</name>
+        <macros>
+          <BIT>OPC</BIT>
+        </macros>
+        <y>240</y>
+        <width>315</width>
+        <height>25</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="checkbox" version="2.0.0">
+          <name>Check Box_4</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)</pv_name>
+          <label></label>
+          <width>20</width>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_47</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)_RBV</pv_name>
+          <x>25</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_48</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV</pv_name>
+          <x>70</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Text Update_10</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV.DESC</pv_name>
+          <x>115</x>
+          <width>200</width>
+        </widget>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Group_38</name>
+        <macros>
+          <BIT>PON</BIT>
+        </macros>
+        <y>215</y>
+        <width>315</width>
+        <height>25</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="led" version="2.0.0">
+          <name>LED_49</name>
+          <x>25</x>
+          <width>40</width>
+          <square>true</square>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_50</name>
+          <x>70</x>
+          <width>40</width>
+          <square>true</square>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Label_1</name>
+          <text>NOT USED</text>
+          <x>115</x>
+          <width>200</width>
+        </widget>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Group_39</name>
+        <macros>
+          <BIT>QYE</BIT>
+        </macros>
+        <y>190</y>
+        <width>315</width>
+        <height>25</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="checkbox" version="2.0.0">
+          <name>Check Box_6</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)</pv_name>
+          <label></label>
+          <width>20</width>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_51</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)_RBV</pv_name>
+          <x>25</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_52</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV</pv_name>
+          <x>70</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Text Update_12</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV.DESC</pv_name>
+          <x>115</x>
+          <width>200</width>
+        </widget>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Group_40</name>
+        <macros>
+          <BIT>DSE</BIT>
+        </macros>
+        <y>165</y>
+        <width>315</width>
+        <height>25</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="checkbox" version="2.0.0">
+          <name>Check Box_7</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)</pv_name>
+          <label></label>
+          <width>20</width>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_53</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)_RBV</pv_name>
+          <x>25</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_54</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV</pv_name>
+          <x>70</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Text Update_13</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV.DESC</pv_name>
+          <x>115</x>
+          <width>200</width>
+        </widget>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Group_41</name>
+        <macros>
+          <BIT>PON</BIT>
+        </macros>
+        <y>90</y>
+        <width>315</width>
+        <height>25</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="led" version="2.0.0">
+          <name>LED_55</name>
+          <x>25</x>
+          <width>40</width>
+          <square>true</square>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_56</name>
+          <x>70</x>
+          <width>40</width>
+          <square>true</square>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Label_2</name>
+          <text>NOT USED</text>
+          <x>115</x>
+          <width>200</width>
+        </widget>
+      </widget>
+    </widget>
+  </widget>
+  <widget type="group" version="3.0.0">
+    <name>Status</name>
+    <macros>
+      <REG1>SRE</REG1>
+      <REG2>STB</REG2>
+    </macros>
+    <x>335</x>
+    <y>90</y>
+    <width>325</width>
+    <height>300</height>
+    <style>1</style>
+    <font>
+      <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Header_ForeGround" red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <line_color>
+      <color name="Header_Background" red="77" green="77" blue="77">
+      </color>
+    </line_color>
+    <transparent>true</transparent>
+    <widget type="group" version="3.0.0">
+      <name>Group_1</name>
+      <x>5</x>
+      <y>5</y>
+      <width>315</width>
+      <height>265</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="textupdate" version="2.0.0">
+        <name>Text Update_11</name>
+        <pv_name>LS346:STATUS:$(REG2)_RBV</pv_name>
+        <x>70</x>
+        <y>40</y>
+        <width>65</width>
+        <format>4</format>
+        <show_units>false</show_units>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_10</name>
+        <text>Enabled?
+($(REG1))</text>
+        <width>65</width>
+        <height>35</height>
+        <font>
+          <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+          </font>
+        </font>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+        <actions>
+        </actions>
+        <border_color>
+          <color red="0" green="128" blue="255">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_13</name>
+        <text>Status?
+($(REG2))</text>
+        <x>70</x>
+        <width>245</width>
+        <height>35</height>
+        <font>
+          <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+          </font>
+        </font>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+        <actions>
+        </actions>
+        <border_color>
+          <color red="0" green="128" blue="255">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>Text Update_20</name>
+        <pv_name>LS346:STATUS:$(REG1)_RBV</pv_name>
+        <y>40</y>
+        <width>65</width>
+        <format>4</format>
+        <show_units>false</show_units>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Group_5</name>
+        <macros>
+          <BIT>OSB</BIT>
+        </macros>
+        <y>65</y>
+        <width>315</width>
+        <height>25</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="checkbox" version="2.0.0">
+          <name>Check Box_1</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)</pv_name>
+          <label></label>
+          <width>20</width>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_41</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)_RBV</pv_name>
+          <x>25</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_42</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV</pv_name>
+          <x>70</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Text Update_14</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV.DESC</pv_name>
+          <x>115</x>
+          <width>200</width>
+        </widget>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Group_42</name>
+        <macros>
+          <BIT>MAV</BIT>
+        </macros>
+        <y>140</y>
+        <width>315</width>
+        <height>25</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="checkbox" version="2.0.0">
+          <name>Check Box_5</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)</pv_name>
+          <label></label>
+          <width>20</width>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_57</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)_RBV</pv_name>
+          <x>25</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_58</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV</pv_name>
+          <x>70</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Text Update_15</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV.DESC</pv_name>
+          <x>115</x>
+          <width>200</width>
+        </widget>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Group_43</name>
+        <macros>
+          <BIT>ESB</BIT>
+        </macros>
+        <y>115</y>
+        <width>315</width>
+        <height>25</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="checkbox" version="2.0.0">
+          <name>Check Box_8</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)</pv_name>
+          <label></label>
+          <width>20</width>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_59</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)_RBV</pv_name>
+          <x>25</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_60</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV</pv_name>
+          <x>70</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Text Update_16</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV.DESC</pv_name>
+          <x>115</x>
+          <width>200</width>
+        </widget>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Group_45</name>
+        <macros>
+          <BIT>PON</BIT>
+        </macros>
+        <y>215</y>
+        <width>315</width>
+        <height>25</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="led" version="2.0.0">
+          <name>LED_63</name>
+          <x>25</x>
+          <width>40</width>
+          <square>true</square>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_64</name>
+          <x>70</x>
+          <width>40</width>
+          <square>true</square>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Label_11</name>
+          <text>NOT USED</text>
+          <x>115</x>
+          <width>200</width>
+        </widget>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Group_46</name>
+        <macros>
+          <BIT>EAV</BIT>
+        </macros>
+        <y>190</y>
+        <width>315</width>
+        <height>25</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="checkbox" version="2.0.0">
+          <name>Check Box_10</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)</pv_name>
+          <label></label>
+          <width>20</width>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_65</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)_RBV</pv_name>
+          <x>25</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_66</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV</pv_name>
+          <x>70</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Text Update_18</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV.DESC</pv_name>
+          <x>115</x>
+          <width>200</width>
+        </widget>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Group_47</name>
+        <macros>
+          <BIT>QSB</BIT>
+        </macros>
+        <y>165</y>
+        <width>315</width>
+        <height>25</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="checkbox" version="2.0.0">
+          <name>Check Box_11</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)</pv_name>
+          <label></label>
+          <width>20</width>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_67</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)_RBV</pv_name>
+          <x>25</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_68</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV</pv_name>
+          <x>70</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Text Update_19</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV.DESC</pv_name>
+          <x>115</x>
+          <width>200</width>
+        </widget>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Group_48</name>
+        <macros>
+          <BIT>PON</BIT>
+        </macros>
+        <y>240</y>
+        <width>315</width>
+        <height>25</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="led" version="2.0.0">
+          <name>LED_69</name>
+          <x>25</x>
+          <width>40</width>
+          <square>true</square>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_70</name>
+          <x>70</x>
+          <width>40</width>
+          <square>true</square>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>Label_12</name>
+          <text>NOT USED</text>
+          <x>115</x>
+          <width>200</width>
+        </widget>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Group_44</name>
+        <macros>
+          <BIT>MSS</BIT>
+        </macros>
+        <y>90</y>
+        <width>315</width>
+        <height>25</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="checkbox" version="2.0.0">
+          <name>Check Box_9</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)</pv_name>
+          <label></label>
+          <width>20</width>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_61</name>
+          <pv_name>LS346:STATUS:$(REG1):$(BIT)_RBV</pv_name>
+          <x>25</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="led" version="2.0.0">
+          <name>LED_62</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV</pv_name>
+          <x>70</x>
+          <width>40</width>
+          <off_label>$(BIT)</off_label>
+          <on_label>$(BIT)</on_label>
+          <square>true</square>
+          <rules>
+            <rule name="Tooltip" prop_id="tooltip" out_exp="true">
+              <exp bool_exp="true">
+                <expression>pvStr0</expression>
+              </exp>
+              <pv_name>$(pv_name).DESC</pv_name>
+            </rule>
+          </rules>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>Text Update_17</name>
+          <pv_name>LS346:STATUS:$(REG2):$(BIT)_RBV.DESC</pv_name>
+          <x>115</x>
+          <width>200</width>
+        </widget>
+      </widget>
+    </widget>
+  </widget>
+</display>
