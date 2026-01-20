@@ -16,7 +16,7 @@
     <x>5</x>
     <y>270</y>
     <width>605</width>
-    <height>880</height>
+    <height>1080</height>
     <style>1</style>
     <font>
       <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
@@ -490,6 +490,7 @@ org.phoebus.pv.ca/dbe_property_supported=true</tooltip>
         <vertical_alignment>1</vertical_alignment>
         <actions>
         </actions>
+        <tooltip>Alarm Low</tooltip>
         <border_color>
           <color red="0" green="128" blue="255">
           </color>
@@ -509,6 +510,7 @@ org.phoebus.pv.ca/dbe_property_supported=true</tooltip>
         <vertical_alignment>1</vertical_alignment>
         <actions>
         </actions>
+        <tooltip>Alarm High</tooltip>
         <border_color>
           <color red="0" green="128" blue="255">
           </color>
