@@ -1,6 +1,6 @@
 record(waveform, "$(P)$(R)INPALL:KRDG_RBV") {
-    field(DTYP, "stream")
     field(DESC, "Read all temperatures")
+    field(DTYP, "stream")
     field(INP,  "@ls346.proto getKRDGALL() $(PORT) $(ADDR)")
     field(PREC, "3")
     field(SCAN, "$(TEMPSCAN) second")
@@ -41,8 +41,8 @@ record(aSub, "$(P)$(R)INPALL:KRDG_FOUT") {
 }
 
 record(waveform, "$(P)$(R)INPALL:SRDG_RBV") {
-    field(DTYP, "stream")
     field(DESC, "Read all voltages")
+    field(DTYP, "stream")
     field(INP,  "@ls346.proto getSRDGALL() $(PORT) $(ADDR)")
     field(PREC, "3")
     field(SCAN, "$(TEMPSCAN) second")

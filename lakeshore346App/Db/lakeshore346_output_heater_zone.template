@@ -1,5 +1,3 @@
-#######################################
-#
 # Template to support reading and setting
 # controller ZONE parameters. It reads the ZONE
 # parameters into an array, then uses subArrays to
@@ -9,8 +7,6 @@
 #
 # ZONE: zone number
 # OUTNUM: output number
-#
-#######################################
 
 record(ai, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):UB_RBV") {
     field(DESC, "Upper Bound")
@@ -63,69 +59,62 @@ record(ai, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):RATE_RBV") {
 # Set the ZONE upper boundary setting.
 record(ao, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):UB") {
     field(DESC, "Upper Bound")
-    field(SCAN, "Passive")
-    field(PREC, "1")
     field(DTYP, "stream")
     field(OUT,  "@ls346.proto setZONEUB($(OUTNUM),$(ZONE),$(P)$(R)OUT$(OUTNUM):Z$(ZONE)) $(PORT) $(ADDR)")
-    field(SDIS, "$(P)$(R)DISABLE")
+    field(PREC, "1")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):UB_RBV PP")
 }
 
 # Set the ZONE P setting.
 record(ao, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):P") {
     field(DESC, "P")
-    field(PREC, "1")
     field(DTYP, "stream")
     field(OUT,  "@ls346.proto setZONEP($(OUTNUM),$(ZONE),$(P)$(R)OUT$(OUTNUM):Z$(ZONE)) $(PORT) $(ADDR)")
-    field(SDIS, "$(P)$(R)DISABLE")
+    field(PREC, "1")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):UB_RBV PP")
 }
 
 # Set the ZONE I setting.
 record(ao, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):I") {
     field(DESC, "I")
-    field(PREC, "1")
     field(DTYP, "stream")
     field(OUT,  "@ls346.proto setZONEI($(OUTNUM),$(ZONE),$(P)$(R)OUT$(OUTNUM):Z$(ZONE)) $(PORT) $(ADDR)")
-    field(SDIS, "$(P)$(R)DISABLE")
+    field(PREC, "1")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):UB_RBV PP")
 }
 
 # Set the ZONE D setting.
 record(ao, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):D") {
     field(DESC, "D")
-    field(PREC, "1")
     field(DTYP, "stream")
     field(OUT,  "@ls346.proto setZONED($(OUTNUM),$(ZONE),$(P)$(R)OUT$(OUTNUM):Z$(ZONE)) $(PORT) $(ADDR)")
-    field(SDIS, "$(P)$(R)DISABLE")
+    field(PREC, "1")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):UB_RBV PP")
 }
 
 # Set the ZONE MOUT setting.
 record(ao, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):MOUT") {
     field(DESC, "Manual Output")
+    field(DTYP, "stream")
+    field(OUT,  "@ls346.proto setZONEMOUT($(OUTNUM),$(ZONE),$(P)$(R)OUT$(OUTNUM):Z$(ZONE)) $(PORT) $(ADDR)")
     field(EGU,  "%")
     field(DRVL, "0")
     field(DRVH, "100")
     field(PREC, "1")
-    field(DTYP, "stream")
-    field(OUT,  "@ls346.proto setZONEMOUT($(OUTNUM),$(ZONE),$(P)$(R)OUT$(OUTNUM):Z$(ZONE)) $(PORT) $(ADDR)")
-    field(SDIS, "$(P)$(R)DISABLE")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):UB_RBV PP")
 }
 
 # Set the ZONE RANGE setting.
 record(mbbo, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):RANGE") {
     field(DESC, "Range")
+    field(DTYP, "stream")
+    field(OUT,  "@ls346.proto setZONERANGE($(OUTNUM),$(ZONE),$(P)$(R)OUT$(OUTNUM):Z$(ZONE)) $(PORT) $(ADDR)")
     field(ZRST, "Off")
     field(ZRVL, "0")
     field(ONST, "Low")
     field(ONVL, "1")
     field(TWST, "High")
     field(TWVL, "2")
-    field(DTYP, "stream")
-    field(OUT,  "@ls346.proto setZONERANGE($(OUTNUM),$(ZONE),$(P)$(R)OUT$(OUTNUM):Z$(ZONE)) $(PORT) $(ADDR)")
-    field(SDIS, "$(P)$(R)DISABLE")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):UB_RBV PP")
 }
 
@@ -134,19 +123,17 @@ record(stringout, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):INPUT") {
     field(DESC, "Input")
     field(DTYP, "stream")
     field(OUT,  "@ls346.proto setZONEINPUT($(OUTNUM),$(ZONE),$(P)$(R)OUT$(OUTNUM):Z$(ZONE)) $(PORT) $(ADDR)")
-    field(SDIS, "$(P)$(R)DISABLE")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):UB_RBV PP")
 }
 
 # Set the ZONE RATE setting.
 record(ao, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):RATE") {
     field(DESC, "Ramp Rate")
+    field(DTYP, "stream")
+    field(OUT,  "@ls346.proto setZONERATE($(OUTNUM),$(ZONE),$(P)$(R)OUT$(OUTNUM):Z$(ZONE)) $(PORT) $(ADDR)")
     field(EGU,  "K/min")
     field(DRVL, "0")
     field(DRVH, "100")
     field(PREC, "1")
-    field(DTYP, "stream")
-    field(OUT,  "@ls346.proto setZONERATE($(OUTNUM),$(ZONE),$(P)$(R)OUT$(OUTNUM):Z$(ZONE)) $(PORT) $(ADDR)")
-    field(SDIS, "$(P)$(R)DISABLE")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):UB_RBV PP")
 }

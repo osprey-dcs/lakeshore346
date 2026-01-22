@@ -6,31 +6,9 @@
 #
 # Macros:
 # INPUT - One of A, B, C1, C2, C3, C4, D1, D2, D3, D4, E1, E2, E3, E4, F1, F2, F3, F4, G1, G2, G3, G4, H1, H2, H3, H4
-# DISABLED - Initial value for SDIS (0=Enabled, 1=Disabled)
 
-record(bo, "$(P)$(R)INP$(INPUT):DISABLE") {
-    field(DESC, "Disable $(INPUT) polling")
-    field(PINI, "YES")
-    field(VAL,  "$(DISABLED=0)")
-    field(OMSL, "supervisory")
-    field(ZNAM, "Enabled")  field(ZSV,  "NO_ALARM")
-    field(ONAM, "Disabled") field(OSV,  "MINOR")
-    info(autosaveFields, "VAL")
-}
-
-record(calc, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID") {
-    field(INPA, "$(P)$(R)INP$(INPUT):DISABLE CP")
-    field(INPB, "$(P)$(R)CARD$(CARD):INP$(CARDINP):VALID CP")
-    field(CALC, "(A=1)||(B=0)")
-    field(PINI, "YES")
-}
-
-##
-## Read the extracted temperature input and determine if it is valid
-##
+# Read the extracted temperature input and determine if it is valid
 record(calcout, "$(P)$(R)INP$(INPUT):KRDG_") {
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLE")
-
     # Whether the input is valid
     field(INPA, "$(P)$(R)CARD$(CARD):INP$(CARDINP):VALID_RBV")
 
@@ -61,7 +39,6 @@ record(calcout, "$(P)$(R)INP$(INPUT):KRDG_") {
 
 # Read the temperature on input $(INPUT) in Kelvin.
 record(ai, "$(P)$(R)INP$(INPUT):KRDG_RBV") {
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLE")
     field(DESC, "Input $(INPUT) Temperature")
     field(PREC, "3")
     field(EGU,  "K")
@@ -82,8 +59,6 @@ record(ai, "$(P)$(R)INP$(INPUT):KRDG_RBV") {
 
 # Read the extracted voltage input and determine if it is valid
 record(calcout, "$(P)$(R)INP$(INPUT):SRDG_") {
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLE")
-
     # Whether the input is valid
     field(INPA, "$(P)$(R)CARD$(CARD):INP$(CARDINP):VALID_RBV")
 
@@ -114,7 +89,6 @@ record(calcout, "$(P)$(R)INP$(INPUT):SRDG_") {
 
 # Read the raw voltage on input $(INPUT).
 record(ai, "$(P)$(R)INP$(INPUT):SRDG_RBV") {
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLE")
     field(SCAN, "$(TEMPSCAN) second")
     field(PREC, "3")
     field(EGU,  "V")
@@ -126,40 +100,29 @@ record(ai, "$(P)$(R)INP$(INPUT):SRDG_RBV") {
 record(stringout, "$(P)$(R)INP$(INPUT):INNAME") {
     field(DESC, "Input $(INPUT) Name")
     field(DTYP, "stream")
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID CP")
     field(OUT,  "@ls346.proto setINNAME($(INPUT)) $(PORT) $(ADDR)")
     field(FLNK, "$(P)$(R)INP$(INPUT):INNAME PP")
 }
 
-##
-## Read input sensor $(INPUT) name
-##
+# Read input sensor $(INPUT) name
 record(stringin, "$(P)$(R)INP$(INPUT):INNAME_RBV") {
     field(DTYP, "stream")
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID")
     field(INP,  "@ls346.proto getINNAME($(INPUT)) $(PORT) $(ADDR)")
     field(PINI, "YES")
-    field(SCAN, "Passive")
 }
 
-##
-## Read the alarm status for input $(INPUT)
-## along with other info from RDGOPR
-## (Input Reading Operation Status Query)
-##
+# Read the alarm status for input $(INPUT)
+# along with other info from RDGOPR
+# (Input Reading Operation Status Query)
 record(mbbiDirect, "$(P)$(R)INP$(INPUT):RDGOPR_RBV") {
     field(DTYP, "stream")
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID")
     field(INP,  "@ls346.proto getRDGOPR($(INPUT)) $(PORT) $(ADDR)")
     field(SCAN, "$(SCAN) second")
     field(FLNK, "$(P)$(R)INP$(INPUT):ALARM_HIGH_RBV PP")
 }
 
-##
-## Read the high alarm status for input $(INPUT).
-##
+# Read the high alarm status for input $(INPUT)
 record(bi, "$(P)$(R)INP$(INPUT):ALARM_HIGH_RBV") {
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID")
     field(INP,  "$(P)$(R)INP$(INPUT):RDGOPR_RBV.B7")
     field(ZNAM, "Off")
     field(ONAM, "On")
@@ -168,11 +131,8 @@ record(bi, "$(P)$(R)INP$(INPUT):ALARM_HIGH_RBV") {
     info(archive, "Monitor, 00:00:01, VAL")
 }
 
-##
-## Read the low alarm status for input $(INPUT)
-##
+# Read the low alarm status for input $(INPUT)
 record(bi, "$(P)$(R)INP$(INPUT):ALARM_LOW_RBV") {
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID")
     field(INP,  "$(P)$(R)INP$(INPUT):RDGOPR_RBV.B6")
     field(ZNAM, "Off")
     field(ONAM, "On")
@@ -180,13 +140,10 @@ record(bi, "$(P)$(R)INP$(INPUT):ALARM_LOW_RBV") {
     info(archive, "Monitor, 00:00:01, VAL")
 }
 
-##
-## Alarm parameters
-##
+# Alarm parameters
 record(bi, "$(P)$(R)INP$(INPUT):ALARM_ONOFF_RBV") {
     field(DESC, "Alarm Enabled")
     field(DTYP, "stream")
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID")
     field(INP,  "@ls346.proto getALARM($(INPUT),$(P)$(R)INP$(INPUT):ALARM) $(PORT) $(ADDR)")
     field(PINI, "YES")
     field(ZNAM, "Disabled")
@@ -229,7 +186,6 @@ record(bi, "$(P)$(R)INP$(INPUT):ALARM_VIS_RBV") {
 record(bo, "$(P)$(R)INP$(INPUT):ALARM_ONOFF") {
     field(DESC, "Alarm Enabled")
     field(DTYP, "stream")
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID")
     field(OUT,  "@ls346.proto setALARM_ONOFF($(INPUT),$(P)$(R)INP$(INPUT):ALARM) $(PORT) $(ADDR)")
     field(ZNAM, "Disabled")
     field(ONAM, "Enabled")
@@ -239,7 +195,6 @@ record(bo, "$(P)$(R)INP$(INPUT):ALARM_ONOFF") {
 record(ao, "$(P)$(R)INP$(INPUT):ALARM_HIGHVAL") {
     field(DESC, "Alarm High Value")
     field(DTYP, "stream")
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID")
     field(OUT,  "@ls346.proto setALARM_HIGHVAL($(INPUT),$(P)$(R)INP$(INPUT):ALARM) $(PORT) $(ADDR)")
     field(EGU,  "K")
     field(FLNK, "$(P)$(R)INP$(INPUT):ALARM_ONOFF_RBV PP")
@@ -248,7 +203,6 @@ record(ao, "$(P)$(R)INP$(INPUT):ALARM_HIGHVAL") {
 record(ao, "$(P)$(R)INP$(INPUT):ALARM_LOWVAL") {
     field(DESC, "Alarm Low Value")
     field(DTYP, "stream")
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID")
     field(OUT,  "@ls346.proto setALARM_LOWVAL($(INPUT),$(P)$(R)INP$(INPUT):ALARM) $(PORT) $(ADDR)")
     field(EGU,  "K")
     field(FLNK, "$(P)$(R)INP$(INPUT):ALARM_ONOFF_RBV PP")
@@ -257,7 +211,6 @@ record(ao, "$(P)$(R)INP$(INPUT):ALARM_LOWVAL") {
 record(ao, "$(P)$(R)INP$(INPUT):ALARM_DB") {
     field(DESC, "Alarm Deadband")
     field(DTYP, "stream")
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID")
     field(OUT,  "@ls346.proto setALARM_DB($(INPUT),$(P)$(R)INP$(INPUT):ALARM) $(PORT) $(ADDR)")
     field(EGU,  "K")
     field(FLNK, "$(P)$(R)INP$(INPUT):ALARM_ONOFF_RBV PP")
@@ -266,7 +219,6 @@ record(ao, "$(P)$(R)INP$(INPUT):ALARM_DB") {
 record(bo, "$(P)$(R)INP$(INPUT):ALARM_LE") {
     field(DESC, "Alarm Latch Enable")
     field(DTYP, "stream")
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID")
     field(OUT,  "@ls346.proto setALARM_LE($(INPUT),$(P)$(R)INP$(INPUT):ALARM) $(PORT) $(ADDR)")
     field(ZNAM, "Non Latching")
     field(ONAM, "Latching")
@@ -276,7 +228,6 @@ record(bo, "$(P)$(R)INP$(INPUT):ALARM_LE") {
 record(bo, "$(P)$(R)INP$(INPUT):ALARM_AU") {
     field(DESC, "Alarm Audible")
     field(DTYP, "stream")
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID")
     field(OUT,  "@ls346.proto setALARM_AU($(INPUT),$(P)$(R)INP$(INPUT):ALARM) $(PORT) $(ADDR)")
     field(ZNAM, "Quiet")
     field(ONAM, "Audible")
@@ -286,19 +237,15 @@ record(bo, "$(P)$(R)INP$(INPUT):ALARM_AU") {
 record(bo, "$(P)$(R)INP$(INPUT):ALARM_VIS") {
     field(DESC, "Alarm Visible")
     field(DTYP, "stream")
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID")
     field(OUT,  "@ls346.proto setALARM_VIS($(INPUT),$(P)$(R)INP$(INPUT):ALARM) $(PORT) $(ADDR)")
     field(ZNAM, "Non Visible")
     field(ONAM, "Visible")
     field(FLNK, "$(P)$(R)INP$(INPUT):ALARM_ONOFF_RBV PP")
 }
 
-##
-## Read the input reading status
-##
+# Read the input reading status
 record(mbbi, "$(P)$(R)INP$(INPUT):RDGST_RBV") {
     field(DTYP, "stream")
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID")
     field(ZRVL, "0")   field(ZRST, "Valid")
     field(ONVL, "1")   field(ONST, "Invalid")     field(ONSV, "MAJOR")
     field(TWVL, "16")  field(TWST, "Temp Under")  field(TWSV, "MAJOR")
@@ -310,41 +257,28 @@ record(mbbi, "$(P)$(R)INP$(INPUT):RDGST_RBV") {
     info(archive, "Monitor, 00:00:01, VAL")
 }
 
-##
-## Input curve number
-##
+# Input curve number
 record(longin, "$(P)$(R)INP$(INPUT):INCRV_RBV") {
     field(DTYP, "stream")
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID")
-    #field(SCAN, "$(SCAN) second")
     field(PINI, "YES")
     field(INP, "@ls346.proto getINCRV($(INPUT)) $(PORT) $(ADDR)")
 }
 
 record(longout, "$(P)$(R)INP$(INPUT):INCRV") {
     field(DTYP, "stream")
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID")
     field(OUT, "@ls346.proto setINCRV($(INPUT)) $(PORT) $(ADDR)")
     field(FLNK, "$(P)$(R)INP$(INPUT):INCRV_RBV PP")
 }
 
-##
-## Read the input type information.
-## NOTE: the last part of the record name is hard coded into protocol file.
-##
+# Read the input type information.
 record(bi, "$(P)$(R)INP$(INPUT):INTYPE_RBV") {
     field(DESC, "Read Input Type Params")
     field(DTYP, "stream")
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID")
     field(INP,  "@ls346.proto getINTYPE($(INPUT),$(P)$(R)INP$(INPUT):INTYPE) $(PORT) $(ADDR)")
-    #field(SCAN, "$(SCAN) second")
     field(PINI, "YES")
 }
 
-##
-## Read the rest of the input type params.
-## NOTE: the last part of the record names are hard coded into protocol file.
-##
+# Read the rest of the input type params.
 record(mbbi, "$(P)$(R)INP$(INPUT):INTYPE_S_RBV") {
     field(DESC, "Sensor Type")
     field(ZRST, "Disabled")
@@ -393,7 +327,6 @@ record(ai, "$(P)$(R)INP$(INPUT):TLIMIT_RBV") {
     field(DESC, "Temp Limit")
     field(DTYP, "stream")
     field(INP,  "@ls346.proto getTLIMIT($(INPUT)) $(PORT) $(ADDR)")
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID")
     field(PREC, "3")
     field(EGU,  "K")
     field(PINI, "YES")
@@ -403,20 +336,16 @@ record(ao, "$(P)$(R)INP$(INPUT):TLIMIT") {
     field(DESC, "Temp Limit")
     field(DTYP, "stream")
     field(OUT,  "@ls346.proto setTLIMIT($(INPUT)) $(PORT) $(ADDR)")
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID")
     field(PREC, "3")
     field(EGU,  "K")
     field(FLNK, "$(P)$(R)INP$(INPUT):TLIMIT_RBV PP")
 }
 
-##
-## Temperature Filter
-##
+# Temperature Filter
 record(bi, "$(P)$(R)INP$(INPUT):FILTER_EN_RBV") {
     field(DESC, "Filter Enabled")
     field(DTYP, "stream")
     field(INP,  "@ls346.proto getFILTER($(INPUT),$(P)$(R)INP$(INPUT):FILTER) $(PORT) $(ADDR)")
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID")
     field(ZNAM, "Disabled")
     field(ONAM, "Enabled")
     field(PINI, "YES")
@@ -438,7 +367,6 @@ record(bo, "$(P)$(R)INP$(INPUT):FILTER_EN") {
     field(DESC, "Filter Enabled")
     field(DTYP, "stream")
     field(OUT,  "@ls346.proto setFILTER_EN($(INPUT),$(P)$(R)INP$(INPUT):FILTER) $(PORT) $(ADDR)")
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID")
     field(ZNAM, "Disabled")
     field(ONAM, "Enabled")
     field(FLNK, "$(P)$(R)INP$(INPUT):FILTER_EN_RBV PP")
@@ -449,7 +377,6 @@ record(longout, "$(P)$(R)INP$(INPUT):FILTER_NPTS") {
     field(DESC, "Filter Num Points")
     field(DTYP, "stream")
     field(OUT,  "@ls346.proto setFILTER_NPTS($(INPUT),$(P)$(R)INP$(INPUT):FILTER) $(PORT) $(ADDR)")
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID")
     field(DRVL, "2")
     field(DRVL, "64")
     field(FLNK, "$(P)$(R)INP$(INPUT):FILTER_EN_RBV PP")
@@ -460,7 +387,6 @@ record(longout, "$(P)$(R)INP$(INPUT):FILTER_WND") {
     field(DESC, "Filter Window")
     field(DTYP, "stream")
     field(OUT,  "@ls346.proto setFILTER_WND($(INPUT),$(P)$(R)INP$(INPUT):FILTER) $(PORT) $(ADDR)")
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLED_OR_INVALID")
     field(EGU,  "%")
     field(DRVL, "1")
     field(DRVL, "10")
@@ -469,17 +395,8 @@ record(longout, "$(P)$(R)INP$(INPUT):FILTER_WND") {
 }
 
 # MDAT - Minimum/Maximum Data Query
-record(bi, "$(P)$(R)INP$(INPUT):DISABLE_MDAT_POLL") {
-    field(DESC, "Enable polling of MDAT")
-    field(ZNAM, "Disabled")
-    field(ONAM, "Enabled")
-    field(PINI, "YES")
-    info(autosaveFields, "VAL")
-}
-
 record(ai, "$(P)$(R)INP$(INPUT):MDATMIN_RBV") {
     field(DESC, "MDAT Min")
-    field(SDIS, "$(P)$(R)INP$(INPUT):DISABLE_MDAT_POLL")
     field(DTYP, "stream")
     field(INP,  "@ls346.proto getMDAT($(INPUT),$(P)$(R)INP$(INPUT)) $(PORT) $(ADDR)")
     field(PREC, "3")

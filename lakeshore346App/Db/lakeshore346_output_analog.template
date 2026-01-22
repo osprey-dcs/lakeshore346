@@ -6,22 +6,18 @@ record(mbbi, "$(P)$(R)OUT$(OUTNUM):RANGE_RBV") {
     field(ONST, "On")
 }
 
-##
-## Define the strings and values for this record.
-##
+# Define the strings and values for this record.
 record(mbbo, "$(P)$(R)OUT$(OUTNUM):RANGE") {
     field(ZRST, "Off")
     field(ONST, "On")
 }
 
-##
-## Monitor Out Parameters
-##
+# Monitor Out Parameters
 record(ai, "$(P)$(R)OUT$(OUTNUM):ANALOG_HIGH_RBV") {
     field(DESC, "Monitor Out High Val")
-    field(PREC, "3")
     field(DTYP, "stream")
     field(INP,  "@ls346.proto getANALOG($(OUTNUM),$(P)$(R)OUT$(OUTNUM):ANALOG) $(PORT) $(ADDR)")
+    field(PREC, "3")
     field(PINI, "YES")
 }
 
@@ -32,16 +28,16 @@ record(ai, "$(P)$(R)OUT$(OUTNUM):ANALOG_LOW_RBV") {
 
 record(ao, "$(P)$(R)OUT$(OUTNUM):ANALOG_HIGH") {
     field(DESC, "Monitor Out High Val")
-    field(PREC, "3")
     field(DTYP, "stream")
     field(OUT,  "@ls346.proto setANALOG_HIGH($(OUTNUM),$(P)$(R)OUT$(OUTNUM):ANALOG) $(PORT) $(ADDR)")
+    field(PREC, "3")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):ANALOG_HIGH_RBV PP")
 }
 
 record(ao, "$(P)$(R)OUT$(OUTNUM):ANALOG_LOW") {
     field(DESC, "Monitor Out Low Val")
-    field(PREC, "3")
     field(DTYP, "stream")
     field(OUT,  "@ls346.proto setANALOG_LOW($(OUTNUM),$(P)$(R)OUT$(OUTNUM):ANALOG) $(PORT) $(ADDR)")
+    field(PREC, "3")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):ANALOG_HIGH_RBV PP")
 }

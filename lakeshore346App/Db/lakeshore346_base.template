@@ -1,5 +1,3 @@
-################################################################
-#
 # Lakeshore 346 Temperature Controller template file.
 #
 # Macros:
@@ -14,55 +12,16 @@
 #
 # Bruno Martins, January 2026, heavily based on the template for Lakeshore 336 by
 # Matt Pearson, June 2013
-#
-################################################################
-
-record(bo, "$(P)$(R)DISABLE") {
-    field(DESC, "Disable set records")
-    field(PINI, "YES")
-    field(VAL, "0")
-    field(OMSL, "supervisory")
-    field(ZNAM, "Set Enabled")
-    field(ONAM, "Set Disabled")
-    field(ZSV, "NO_ALARM")
-    field(OSV, "MAJOR")
-}
-
-record(bo, "$(P)$(R)DISABLE_POLL") {
-    field(DESC, "Disable polling")
-    field(PINI, "YES")
-    field(VAL, "0")
-    field(OMSL, "supervisory")
-    field(ZNAM, "Poll Enabled")
-    field(ONAM, "Poll Disabled")
-    field(ZSV, "NO_ALARM")
-    field(OSV, "MAJOR")
-}
-
-# Device IDN
-record(waveform, "$(P)$(R)IDN_RBV") {
-    field(DTYP, "stream")
-    field(SDIS, "$(P)$(R)DISABLE")
-    field(NELM, "4")
-    field(FTVL, "STRING")
-    field(INP,  "@ls346.proto getID $(PORT) $(ADDR)")
-    field(SCAN, "Passive")
-    field(PINI, "YES")
-}
 
 record(stringin, "$(P)$(R)MODEL_RBV") {
-    field(SDIS, "$(P)$(R)DISABLE")
-    field(INP,  "$(P)$(R)IDN_RBV.VAL[1] CP")
+    field(DTYP, "stream")
+    field(INP,  "@ls346.proto getIDN($(P)$(R)) $(PORT) $(ADDR)")
 }
 
 record(stringin, "$(P)$(R)SERIAL_RBV") {
-    field(SDIS, "$(P)$(R)DISABLE")
-    field(INP,  "$(P)$(R)IDN_RBV.VAL[2] CP")
 }
 
 record(stringin, "$(P)$(R)FIRMWARE_RBV") {
-    field(SDIS, "$(P)$(R)DISABLE")
-    field(INP,  "$(P)$(R)IDN_RBV.VAL[3] CP")
 }
 
 ###
@@ -70,7 +29,6 @@ record(stringin, "$(P)$(R)FIRMWARE_RBV") {
 ###
 #record(stringin, "$(P)$(R)TUNEST") {
 #    field(DTYP, "stream")
-#    field(SDIS, "$(P)$(R)DISABLE_POLL")
 #    field(INP,  "@ls346.proto getTUNEST $(PORT) $(ADDR)")
 #    field(SCAN, "$(SCAN) second")
 #}
@@ -80,7 +38,6 @@ record(stringin, "$(P)$(R)FIRMWARE_RBV") {
 ###
 #record(bi, "$(P)$(R)TUNESTSUCCESS") {
 #    field(DTYP, "stream")
-#    field(SDIS, "$(P)$(R)DISABLE_POLL")
 #    field(INP, "@ls346.proto getTUNESTSUCCESS $(PORT) $(ADDR)")
 #    field(SCAN, "$(SCAN) second")
 #    field(ZNAM, "No Error")
@@ -104,57 +61,6 @@ record(dfanout, "$(P)$(R)OUTALL:SETP_S") {
     field(OUTI, "$(P)$(R)OUT9:SETP_S PP")
     field(OUTJ, "$(P)$(R)OUT10:SETP_S PP")
     field(VAL,  "0")
-    info(archive, "Monitor, 00:00:01, VAL")
-}
-
-# Set all the tolerances at the same time
-record(dfanout, "$(P)$(R)TOLERANCE") {
-    field(DESC, "Set all the tolerances")
-    field(OMSL, "supervisory")
-    field(OUTA, "$(P)$(R)OUT1:CALC_IN_WINDOW.A PP")
-    field(OUTB, "$(P)$(R)OUT2:CALC_IN_WINDOW.A PP")
-    field(OUTC, "$(P)$(R)OUT3:CALC_IN_WINDOW.A PP")
-    field(OUTD, "$(P)$(R)OUT4:CALC_IN_WINDOW.A PP")
-    field(OUTE, "$(P)$(R)OUT5:CALC_IN_WINDOW.A PP")
-    field(OUTF, "$(P)$(R)OUT6:CALC_IN_WINDOW.A PP")
-    field(OUTG, "$(P)$(R)OUT7:CALC_IN_WINDOW.A PP")
-    field(OUTH, "$(P)$(R)OUT8:CALC_IN_WINDOW.A PP")
-    field(OUTI, "$(P)$(R)OUT9:CALC_IN_WINDOW.A PP")
-    field(OUTJ, "$(P)$(R)OUT10:CALC_IN_WINDOW.A PP")
-    field(EGU,  "K")
-    field(PREC, "1")
-    field(VAL,  "1")
-  info(autosaveFields, "VAL")
-  info(archive, "Monitor, 00:00:01, VAL")
-}
-
-# For user feedback, calculate when all temperature
-# inputs are in tolerance windows
-record(calcout, "$(P)$(R)CALC_IN_WINDOWS_RBV") {
-    field(PINI, "YES")
-    field(INPA, "$(P)$(R)OUT1:IN_WINDOW_RBV CP MS")
-    field(INPB, "$(P)$(R)OUT2:IN_WINDOW_RBV CP MS")
-    field(INPC, "$(P)$(R)OUT3:IN_WINDOW_RBV CP MS")
-    field(INPD, "$(P)$(R)OUT4:IN_WINDOW_RBV CP MS")
-    field(INPE, "$(P)$(R)OUT5:IN_WINDOW_RBV CP MS")
-    field(INPF, "$(P)$(R)OUT6:IN_WINDOW_RBV CP MS")
-    field(INPG, "$(P)$(R)OUT7:IN_WINDOW_RBV CP MS")
-    field(INPH, "$(P)$(R)OUT8:IN_WINDOW_RBV CP MS")
-    field(INPI, "$(P)$(R)OUT9:IN_WINDOW_RBV CP MS")
-    field(INPJ, "$(P)$(R)OUT10:IN_WINDOW_RBV CP MS")
-    field(CALC, "A&&B&&C&&D&&E&&F&&G&&H&&I&&J")
-    field(OOPT, "Every Time")
-    field(DOPT, "Use CALC")
-    field(OUT, "$(P)$(R)IN_WINDOWS PP")
-}
-
-record(bo, "$(P)$(R)IN_WINDOWS_RBV") {
-    field(DESC, "Temperatures In Windows")
-    field(VAL, "0")
-    field(PINI, "YES")
-    field(OMSL, "supervisory")
-    field(ZNAM, "Not In Windows")
-    field(ONAM, "In Windows")
     info(archive, "Monitor, 00:00:01, VAL")
 }
 
@@ -193,27 +99,27 @@ record(bo, "$(P)$(R)WARM:CMD") {
 # MASK: 1      0      1      1      1      1      0      1    = 189
 record(mbboDirect, "$(P)$(R)STATUS:ESE") {
     field(DESC, "Event Status Enable")
+    field(DTYP, "stream")
+    field(OUT,  "@ls346.proto setESE() $(PORT) $(ADDR)")
     field(VAL,  "255")
     field(PINI, "YES")
-    field(DTYP, "stream")
     field(MASK, "189")
-    field(OUT,  "@ls346.proto setESE() $(PORT) $(ADDR)")
     field(FLNK, "$(P)$(R)STATUS:ESE_RBV PP")
 }
 
 record(mbbiDirect, "$(P)$(R)STATUS:ESE_RBV") {
     field(DESC, "Event Status Enable")
     field(DTYP, "stream")
-    field(MASK, "189")
     field(INP,  "@ls346.proto getESE() $(PORT) $(ADDR)")
+    field(MASK, "189")
     field(PINI, "YES")
 }
 
 record(mbbiDirect, "$(P)$(R)STATUS:ESR_RBV") {
     field(DESC, "Event Status Register")
     field(DTYP, "stream")
-    field(MASK, "189")
     field(INP,  "@ls346.proto getESR() $(PORT) $(ADDR)")
+    field(MASK, "189")
     field(PINI, "YES")
     field(SCAN, "$(SCAN) second")
 }
@@ -245,27 +151,27 @@ record(bi, "$(P)$(R)STATUS:ESR:OPC_RBV") { field(DESC, "Operation Complete")    
 # MASK: 1      1      1      1      1      1      0      0    = 252
 record(mbboDirect, "$(P)$(R)STATUS:SRE") {
     field(DESC, "Service Request Enable")
+    field(DTYP, "stream")
+    field(OUT,  "@ls346.proto setSRE() $(PORT) $(ADDR)")
     field(VAL,  "255")
     field(PINI, "YES")
-    field(DTYP, "stream")
     field(MASK, "252")
-    field(OUT,  "@ls346.proto setSRE() $(PORT) $(ADDR)")
     field(FLNK, "$(P)$(R)STATUS:SRE_RBV PP")
 }
 
 record(mbbiDirect, "$(P)$(R)STATUS:SRE_RBV") {
     field(DESC, "Service Request Enable")
     field(DTYP, "stream")
-    field(MASK, "252")
     field(INP,  "@ls346.proto getSRE() $(PORT) $(ADDR)")
+    field(MASK, "252")
     field(PINI, "YES")
 }
 
 record(mbbiDirect, "$(P)$(R)STATUS:STB_RBV") {
     field(DESC, "Event Status Register")
     field(DTYP, "stream")
-    field(MASK, "189")
     field(INP,  "@ls346.proto getSTB() $(PORT) $(ADDR)")
+    field(MASK, "189")
     field(PINI, "YES")
     field(SCAN, "$(SCAN) second")
 }
@@ -297,9 +203,7 @@ record(bo, "$(P)$(R)STATUS:CLS") {
     field(OUT,  "@ls346.proto cmdCLS() $(PORT) $(ADDR)")
 }
 
-##
-## Generic Asyn record for reading parameters.
-##
+# Generic Asyn record for reading parameters.
 record(asyn, "$(P)$(R)ASYN") {
     field(DTYP, "asynRecordDevice")
     field(PORT, "$(PORT)")

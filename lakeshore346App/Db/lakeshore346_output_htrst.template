@@ -1,9 +1,8 @@
 # Read the heater status
 record(longin, "$(P)$(R)OUT$(OUTNUM):HTRST_RBV") {
     field(DTYP, "stream")
-    field(SDIS, "$(P):DISABLE_POLL")
-    field(SCAN, "$(SCAN) second")
     field(INP,  "@ls346.proto getHTRST($(OUTNUM)) $(PORT) $(ADDR)")
+    field(SCAN, "$(SCAN) second")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):HTRST_CALC")
     info(archive, "Monitor, 00:00:01, VAL")
 }

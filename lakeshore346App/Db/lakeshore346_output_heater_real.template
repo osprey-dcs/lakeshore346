@@ -22,15 +22,12 @@ record(mbbo, "$(P)$(R)OUT$(OUTNUM):OUTGRP") {
 }
 
 
-##
-## Heater Setup
-##
-
+# Heater Setup
 record(longin, "$(P)$(R)OUT$(OUTNUM):HTRSET_RES_RBV") {
     field(DESC, "Load")
-    field(EGU,  "ohm")
     field(DTYP, "stream")
     field(INP,  "@ls346.proto getHTRSET($(OUTNUM),$(P)$(R)OUT$(OUTNUM):HTRSET) $(PORT) $(ADDR)")
+    field(EGU,  "ohm")
     field(PINI, "YES")
 }
 
@@ -47,9 +44,9 @@ record(mbbi, "$(P)$(R)OUT$(OUTNUM):HTRSET_CURPWR_RBV") {
 
 record(longout, "$(P)$(R)OUT$(OUTNUM):HTRSET_RES") {
     field(DESC, "Load")
-    field(EGU,  "ohm")
     field(DTYP, "stream")
     field(OUT,  "@ls346.proto setHTRSET_RES($(OUTNUM),$(P)$(R)OUT$(OUTNUM):HTRSET) $(PORT) $(ADDR)")
+    field(EGU,  "ohm")
     field(DRVL, "10")
     field(DRVH, "100")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):HTRSET_RES_RBV PP")
@@ -57,31 +54,28 @@ record(longout, "$(P)$(R)OUT$(OUTNUM):HTRSET_RES") {
 
 record(ao, "$(P)$(R)OUT$(OUTNUM):HTRSET_MXOUT") {
     field(DESC, "Max Output")
-    field(PREC, "3")
     field(DTYP, "stream")
     field(OUT,  "@ls346.proto setHTRSET_MXOUT($(OUTNUM),$(P)$(R)OUT$(OUTNUM):HTRSET) $(PORT) $(ADDR)")
+    field(PREC, "3")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):HTRSET_RES_RBV PP")
 }
 
 record(mbbo, "$(P)$(R)OUT$(OUTNUM):HTRSET_CURPWR") {
     field(DESC, "Max Output as Current or Power")
-    field(ZRVL, "0") field(ZRST, "Power")
-    field(ONVL, "1") field(ONST, "Current")
     field(DTYP, "stream")
     field(OUT,  "@ls346.proto setHTRSET_CURPWR($(OUTNUM),$(P)$(R)OUT$(OUTNUM):HTRSET) $(PORT) $(ADDR)")
+    field(ZRVL, "0") field(ZRST, "Power")
+    field(ONVL, "1") field(ONST, "Current")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):HTRSET_RES_RBV PP")
 }
 
-##
-## Heater Short/Open Command
-##
-
+# Heater Short/Open Command
 record(bi, "$(P)$(R)OUT$(OUTNUM):HTRLIM_EN_RBV") {
     field(DESC, "Enabled")
-    field(ZNAM, "Off")
-    field(ONAM, "On")
     field(DTYP, "stream")
     field(INP,  "@ls346.proto getHTRLIM($(OUTNUM),$(P)$(R)OUT$(OUTNUM):HTRLIM) $(PORT) $(ADDR)")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
     field(PINI, "YES")
 }
 
@@ -97,25 +91,25 @@ record(ai, "$(P)$(R)OUT$(OUTNUM):HTRLIM_OPN_RBV") {
 
 record(bo, "$(P)$(R)OUT$(OUTNUM):HTRLIM_EN") {
     field(DESC, "Enabled")
-    field(ZNAM, "Off")
-    field(ONAM, "On")
     field(DTYP, "stream")
     field(OUT,  "@ls346.proto setHTRLIM_EN($(OUTNUM),$(P)$(R)OUT$(OUTNUM):HTRLIM) $(PORT) $(ADDR)")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):HTRLIM_EN_RBV PP")
 }
 
 record(ao, "$(P)$(R)OUT$(OUTNUM):HTRLIM_SHRT") {
     field(DESC, "Short Resistance")
-    field(EGU,  "ohm")
     field(DTYP, "stream")
     field(OUT,  "@ls346.proto setHTRLIM_EN($(OUTNUM),$(P)$(R)OUT$(OUTNUM):HTRLIM) $(PORT) $(ADDR)")
+    field(EGU,  "ohm")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):HTRLIM_EN_RBV PP")
 }
 
 record(ao, "$(P)$(R)OUT$(OUTNUM):HTRLIM_OPN") {
     field(DESC, "Open Resistance")
-    field(EGU,  "ohm")
     field(DTYP, "stream")
     field(OUT,  "@ls346.proto setHTRLIM_EN($(OUTNUM),$(P)$(R)OUT$(OUTNUM):HTRLIM) $(PORT) $(ADDR)")
+    field(EGU,  "ohm")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):HTRLIM_EN_RBV PP")
 }

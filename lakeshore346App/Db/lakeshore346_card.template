@@ -1,64 +1,56 @@
 record(mbbi, "$(P)$(R)CARD$(CARD):TYPE_RBV") {
-  field(DTYP, "$(DTYP)")
-  field(SDIS, "$(P)$(R)DISABLE")
-  field(SCAN, "Passive")
-  field(PINI, "YES")
-  field(INP,  "$(INP)")
-  field(ZRVL, "0") field(ZRST, "Empty")
-  field(ONVL, "1") field(ONST, "Scanner")
-  field(TWVL, "2") field(TWST, "<unknown>")
-  field(THVL, "3") field(THST, "<unknown>")
-  field(FRVL, "4") field(FRST, "Thermocouple")
+    field(DTYP, "$(DTYP)")
+    field(INP,  "$(INP)")
+    field(PINI, "YES")
+    field(ZRVL, "0") field(ZRST, "Empty")
+    field(ONVL, "1") field(ONST, "Scanner")
+    field(TWVL, "2") field(TWST, "<unknown>")
+    field(THVL, "3") field(THST, "<unknown>")
+    field(FRVL, "4") field(FRST, "Thermocouple")
 
-  # Fake type for "cards" A and B with a single input
-  field(FVVL, "254") field(FVST, "BuiltinAB")
+    # Fake type for "cards" A and B with a single input
+    field(FVVL, "254") field(FVST, "BuiltinAB")
 
-  # Fake type for "cards" C and D with four inputs
-  field(SXVL, "255") field(SXST, "BuiltinCD")
+    # Fake type for "cards" C and D with four inputs
+    field(SXVL, "255") field(SXST, "BuiltinCD")
 
-  field(FLNK, "$(P)$(R)CARD$(CARD):NUMINP_RBV PP")
+    field(FLNK, "$(P)$(R)CARD$(CARD):NUMINP_RBV PP")
 }
 
 record(calc, "$(P)$(R)CARD$(CARD):NUMINP_RBV") {
-  field(SDIS, "$(P)$(R)DISABLE")
-  field(INPA, "$(P)$(R)CARD$(CARD):TYPE_RBV.RVAL")
-  field(CALC, "A=1?4:(A=4?2:(A=254?1:(A=255?4:0)))")
-  field(FLNK, "$(P)$(R)CARD$(CARD):INP0:VALID_RBV PP")
+    field(INPA, "$(P)$(R)CARD$(CARD):TYPE_RBV.RVAL")
+    field(CALC, "A=1?4:(A=4?2:(A=254?1:(A=255?4:0)))")
+    field(FLNK, "$(P)$(R)CARD$(CARD):INP0:VALID_RBV PP")
 }
 
 record(calc, "$(P)$(R)CARD$(CARD):INP0:VALID_RBV") {
-  field(SDIS, "$(P)$(R)DISABLE")
+    # Input index
+    field(INPA, { const: 0 })
 
-  # Input index
-  field(INPA, { const: 0 })
+    # Number of inputs for this card
+    field(INPB, "$(P)$(R)CARD$(CARD):NUMINP_RBV")
 
-  # Number of inputs for this card
-  field(INPB, "$(P)$(R)CARD$(CARD):NUMINP_RBV")
-
-  # 1 if this input is valid (within the number of inputs for this card)
-  field(CALC, "A<B")
-  field(FLNK, "$(P)$(R)CARD$(CARD):INP1:VALID_RBV PP")
+    # 1 if this input is valid (within the number of inputs for this card)
+    field(CALC, "A<B")
+    field(FLNK, "$(P)$(R)CARD$(CARD):INP1:VALID_RBV PP")
 }
 
 record(calc, "$(P)$(R)CARD$(CARD):INP1:VALID_RBV") {
-  field(SDIS, "$(P)$(R)DISABLE")
-  field(INPA, { const: 1 })
-  field(INPB, "$(P)$(R)CARD$(CARD):NUMINP_RBV")
-  field(CALC, "A<B")
-  field(FLNK, "$(P)$(R)CARD$(CARD):INP2:VALID_RBV PP")
+    field(INPA, { const: 1 })
+    field(INPB, "$(P)$(R)CARD$(CARD):NUMINP_RBV")
+    field(CALC, "A<B")
+    field(FLNK, "$(P)$(R)CARD$(CARD):INP2:VALID_RBV PP")
 }
 
 record(calc, "$(P)$(R)CARD$(CARD):INP2:VALID_RBV") {
-  field(SDIS, "$(P)$(R)DISABLE")
-  field(INPA, { const: 2 })
-  field(INPB, "$(P)$(R)CARD$(CARD):NUMINP_RBV")
-  field(CALC, "A<B")
-  field(FLNK, "$(P)$(R)CARD$(CARD):INP3:VALID_RBV PP")
+    field(INPA, { const: 2 })
+    field(INPB, "$(P)$(R)CARD$(CARD):NUMINP_RBV")
+    field(CALC, "A<B")
+    field(FLNK, "$(P)$(R)CARD$(CARD):INP3:VALID_RBV PP")
 }
 
 record(calc, "$(P)$(R)CARD$(CARD):INP3:VALID_RBV") {
-  field(SDIS, "$(P)$(R)DISABLE")
-  field(INPA, { const: 3 })
-  field(INPB, "$(P)$(R)CARD$(CARD):NUMINP_RBV")
-  field(CALC, "A<B")
+    field(INPA, { const: 3 })
+    field(INPB, "$(P)$(R)CARD$(CARD):NUMINP_RBV")
+    field(CALC, "A<B")
 }

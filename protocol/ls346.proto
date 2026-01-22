@@ -1,22 +1,15 @@
-##################################################
-#
-# Protocol File
-#
 # Protocol file for Lakeshore 346
 # Osprey DCS, January 2026
 #
 # Based on the protocol for Lakeshore 336
-#
-##################################################
 
 ReplyTimeout = 4000;
 LockTimeout = 40000;
 
 # Device ID
-getID {
-    out "*IDN?";
-    separator = ",";
-    in "%[^,]";
+getIDN {
+    out "*IDN?;*OPC?";
+    in "%*[^,],%[^,],%(\$1SERIAL_RBV)[^,],%(\$1FIRMWARE_RBV)[^,];1";
 }
 
 # Optional Cards
