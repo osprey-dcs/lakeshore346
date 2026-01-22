@@ -7,25 +7,6 @@
   </actions>
   <grid_step_x>5</grid_step_x>
   <grid_step_y>5</grid_step_y>
-  <widget type="label" version="2.0.0">
-    <name>Label_85</name>
-    <text>Input alarm summary PV looks at: Input Status, Software Limits, Alarm Status</text>
-    <x>1485</x>
-    <y>170</y>
-    <width>1465</width>
-    <height>30</height>
-    <font>
-      <font name="Comment" family="Liberation Sans" style="ITALIC" size="14.0">
-      </font>
-    </font>
-    <vertical_alignment>1</vertical_alignment>
-    <actions>
-    </actions>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
   <widget type="embedded" version="2.0.0">
     <name>Header</name>
     <macros>
@@ -103,29 +84,9 @@
           </color>
         </border_color>
       </widget>
-      <widget type="label" version="2.0.0">
-        <name>Label_87</name>
-        <text>Polling</text>
-        <x>140</x>
-        <y>25</y>
-        <width>90</width>
-        <height>25</height>
-        <font>
-          <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
-          </font>
-        </font>
-        <horizontal_alignment>1</horizontal_alignment>
-        <vertical_alignment>1</vertical_alignment>
-        <actions>
-        </actions>
-        <border_color>
-          <color red="0" green="128" blue="255">
-          </color>
-        </border_color>
-      </widget>
       <widget type="group" version="3.0.0">
         <name>Group</name>
-        <x>235</x>
+        <x>140</x>
         <width>1100</width>
         <height>50</height>
         <style>3</style>
@@ -435,7 +396,7 @@
       </macros>
       <x>5</x>
       <y>165</y>
-      <width>1460</width>
+      <width>1245</width>
       <style>3</style>
       <transparent>true</transparent>
       <widget type="template" version="2.0.0">
@@ -467,7 +428,7 @@
             </macros>
           </instance>
         </instances>
-        <width>1460</width>
+        <width>1245</width>
         <height>200</height>
         <gap>0</gap>
         <transparent>true</transparent>
@@ -480,7 +441,7 @@
       </macros>
       <x>5</x>
       <y>365</y>
-      <width>1460</width>
+      <width>1245</width>
       <style>3</style>
       <transparent>true</transparent>
       <widget type="template" version="2.0.0">
@@ -512,7 +473,7 @@
             </macros>
           </instance>
         </instances>
-        <width>1460</width>
+        <width>1245</width>
         <height>200</height>
         <gap>0</gap>
         <transparent>true</transparent>
@@ -525,7 +486,7 @@
       </macros>
       <x>5</x>
       <y>565</y>
-      <width>1460</width>
+      <width>1245</width>
       <style>3</style>
       <transparent>true</transparent>
       <widget type="template" version="2.0.0">
@@ -557,7 +518,7 @@
             </macros>
           </instance>
         </instances>
-        <width>1460</width>
+        <width>1245</width>
         <height>200</height>
         <gap>0</gap>
         <transparent>true</transparent>
@@ -570,7 +531,7 @@
       </macros>
       <x>5</x>
       <y>765</y>
-      <width>1460</width>
+      <width>1245</width>
       <style>3</style>
       <transparent>true</transparent>
       <widget type="template" version="2.0.0">
@@ -602,7 +563,7 @@
             </macros>
           </instance>
         </instances>
-        <width>1460</width>
+        <width>1245</width>
         <height>200</height>
         <gap>0</gap>
         <transparent>true</transparent>
@@ -615,7 +576,7 @@
       </macros>
       <x>5</x>
       <y>965</y>
-      <width>1460</width>
+      <width>1245</width>
       <style>3</style>
       <transparent>true</transparent>
       <widget type="template" version="2.0.0">
@@ -647,7 +608,7 @@
             </macros>
           </instance>
         </instances>
-        <width>1460</width>
+        <width>1245</width>
         <height>200</height>
         <gap>0</gap>
         <transparent>true</transparent>
@@ -660,7 +621,7 @@
       </macros>
       <x>5</x>
       <y>1165</y>
-      <width>1460</width>
+      <width>1245</width>
       <style>3</style>
       <transparent>true</transparent>
       <widget type="template" version="2.0.0">
@@ -692,7 +653,7 @@
             </macros>
           </instance>
         </instances>
-        <width>1460</width>
+        <width>1245</width>
         <height>200</height>
         <gap>0</gap>
         <transparent>true</transparent>
@@ -719,45 +680,10 @@
       </instances>
       <x>5</x>
       <y>65</y>
-      <width>1460</width>
+      <width>1245</width>
       <height>100</height>
       <gap>0</gap>
       <transparent>true</transparent>
-    </widget>
-  </widget>
-  <widget type="group" version="3.0.0">
-    <name>Group</name>
-    <x>1560</x>
-    <y>325</y>
-    <width>465</width>
-    <height>25</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="label" version="2.0.0">
-      <name>Label_88</name>
-      <text>Enable/Disable Overall Alarm</text>
-      <width>260</width>
-      <height>25</height>
-      <horizontal_alignment>2</horizontal_alignment>
-      <vertical_alignment>1</vertical_alignment>
-      <actions>
-      </actions>
-      <border_color>
-        <color red="0" green="128" blue="255">
-        </color>
-      </border_color>
-    </widget>
-    <widget type="combo" version="2.0.0">
-      <name>Menu Button_9</name>
-      <pv_name>$(P)$(R)DISABLE_ALARM</pv_name>
-      <x>265</x>
-      <width>200</width>
-      <height>25</height>
-      <background_color>
-        <color red="240" green="240" blue="240">
-        </color>
-      </background_color>
-      <border_alarm_sensitive>false</border_alarm_sensitive>
     </widget>
   </widget>
 </display>

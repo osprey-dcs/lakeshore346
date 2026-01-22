@@ -48,7 +48,7 @@
     <name>Text Update_22</name>
     <pv_name>$(P)$(R)OUT$(OUTNUM):OMI_RBV</pv_name>
     <y>60</y>
-    <width>65</width>
+    <width>95</width>
     <height>25</height>
     <vertical_alignment>1</vertical_alignment>
     <wrap_words>false</wrap_words>
@@ -73,21 +73,6 @@
       <color red="0" green="128" blue="255">
       </color>
     </border_color>
-  </widget>
-  <widget type="led" version="2.0.0">
-    <name>LED</name>
-    <pv_name>$(P)$(R)OUT$(OUTNUM):IN_WINDOW_RBV</pv_name>
-    <bit>0</bit>
-    <x>70</x>
-    <y>60</y>
-    <width>25</width>
-    <height>25</height>
-    <line_color>
-      <color red="150" green="150" blue="150">
-      </color>
-    </line_color>
-    <actions>
-    </actions>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_95</name>

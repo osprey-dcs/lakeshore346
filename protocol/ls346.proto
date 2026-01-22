@@ -9,7 +9,7 @@ LockTimeout = 40000;
 # Device ID
 getIDN {
     out "*IDN?;*OPC?";
-    in "%*[^,],%[^,],%(\$1SERIAL_RBV)[^,],%(\$1FIRMWARE_RBV)[^,];1";
+    in "%*[^,],%[^,],%(\$1SERIAL_RBV)[^,],%(\$1FIRMWARE_RBV)[^;];1";
 }
 
 # Optional Cards

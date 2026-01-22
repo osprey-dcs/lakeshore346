@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <display version="2.0.0">
   <name>Alarm Line</name>
-  <width>1460</width>
+  <width>1245</width>
   <height>50</height>
   <actions>
   </actions>
@@ -58,40 +58,6 @@
       </rule>
     </rules>
   </widget>
-  <widget type="combo" version="2.0.0">
-    <name>Menu Button_1</name>
-    <pv_name>$(P)$(R)INP$(INP):DISABLE</pv_name>
-    <x>140</x>
-    <width>90</width>
-    <height>45</height>
-    <background_color>
-      <color red="240" green="240" blue="240">
-      </color>
-    </background_color>
-    <rules>
-      <rule name="No Input-No Card (Visible)" prop_id="visible" out_exp="false">
-        <exp bool_exp="pvInt0==0">
-          <value>false</value>
-        </exp>
-        <exp bool_exp="pvInt1&lt;$(INPNUM)">
-          <value>false</value>
-        </exp>
-        <pv_name>$(P)$(R)CARD$(INPGRP):TYPE_RBV</pv_name>
-        <pv_name>$(P)$(R)CARD$(INPGRP):NUMINP_RBV</pv_name>
-      </rule>
-      <rule name="No Input-No Card (PVName)" prop_id="pv_name" out_exp="false">
-        <exp bool_exp="pvInt0==0">
-          <value></value>
-        </exp>
-        <exp bool_exp="pvInt1&lt;$(INPNUM)">
-          <value></value>
-        </exp>
-        <pv_name>$(P)$(R)CARD$(INPGRP):TYPE_RBV</pv_name>
-        <pv_name>$(P)$(R)CARD$(INPGRP):NUMINP_RBV</pv_name>
-      </rule>
-    </rules>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-  </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update</name>
     <pv_name>$(P)$(R)INP$(INP):KRDG_RBV</pv_name>
@@ -146,7 +112,7 @@
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_159</name>
     <pv_name>$(P)$(R)INP$(INP):RDGST_RBV</pv_name>
-    <x>235</x>
+    <x>140</x>
     <width>115</width>
     <height>45</height>
     <vertical_alignment>1</vertical_alignment>
@@ -183,7 +149,7 @@
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_104</name>
     <pv_name>$(P)$(R)INP$(INP):ALARM_HIGHVAL_RBV</pv_name>
-    <x>830</x>
+    <x>735</x>
     <width>55</width>
     <vertical_alignment>1</vertical_alignment>
     <wrap_words>false</wrap_words>
@@ -219,7 +185,7 @@
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_109</name>
     <pv_name>$(P)$(R)INP$(INP):ALARM_DB_RBV</pv_name>
-    <x>890</x>
+    <x>795</x>
     <width>55</width>
     <vertical_alignment>1</vertical_alignment>
     <wrap_words>false</wrap_words>
@@ -255,7 +221,7 @@
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_114</name>
     <pv_name>$(P)$(R)INP$(INP):ALARM_LE_RBV</pv_name>
-    <x>950</x>
+    <x>855</x>
     <width>125</width>
     <vertical_alignment>1</vertical_alignment>
     <wrap_words>false</wrap_words>
@@ -291,7 +257,7 @@
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_119</name>
     <pv_name>$(P)$(R)INP$(INP):ALARM_AU_RBV</pv_name>
-    <x>1080</x>
+    <x>985</x>
     <width>125</width>
     <vertical_alignment>1</vertical_alignment>
     <wrap_words>false</wrap_words>
@@ -327,7 +293,7 @@
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_124</name>
     <pv_name>$(P)$(R)INP$(INP):ALARM_VIS_RBV</pv_name>
-    <x>1210</x>
+    <x>1115</x>
     <width>125</width>
     <vertical_alignment>1</vertical_alignment>
     <wrap_words>false</wrap_words>
@@ -363,7 +329,7 @@
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_151</name>
     <pv_name>$(P)$(R)INP$(INP):ALARM_ONOFF_RBV</pv_name>
-    <x>675</x>
+    <x>580</x>
     <width>90</width>
     <vertical_alignment>1</vertical_alignment>
     <wrap_words>false</wrap_words>
@@ -399,7 +365,7 @@
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_95</name>
     <pv_name>$(P)$(R)INP$(INP):ALARM_LOWVAL_RBV</pv_name>
-    <x>770</x>
+    <x>675</x>
     <width>55</width>
     <vertical_alignment>1</vertical_alignment>
     <wrap_words>false</wrap_words>
@@ -435,7 +401,7 @@
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_287</name>
     <pv_name>$(P)$(R)INP$(INP):KRDG_RBV.LOLO</pv_name>
-    <x>365</x>
+    <x>270</x>
     <width>80</width>
     <vertical_alignment>1</vertical_alignment>
     <wrap_words>false</wrap_words>
@@ -471,7 +437,7 @@
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_288</name>
     <pv_name>$(P)$(R)INP$(INP):KRDG_RBV.HIHI</pv_name>
-    <x>450</x>
+    <x>355</x>
     <width>80</width>
     <vertical_alignment>1</vertical_alignment>
     <wrap_words>false</wrap_words>
@@ -507,7 +473,7 @@
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_4</name>
     <pv_name>$(P)$(R)INP$(INP):ALARM_LOW_RBV</pv_name>
-    <x>545</x>
+    <x>450</x>
     <width>55</width>
     <height>45</height>
     <vertical_alignment>1</vertical_alignment>
@@ -544,7 +510,7 @@
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_84</name>
     <pv_name>$(P)$(R)INP$(INP):ALARM_HIGH_RBV</pv_name>
-    <x>605</x>
+    <x>510</x>
     <width>55</width>
     <height>45</height>
     <vertical_alignment>1</vertical_alignment>
@@ -581,7 +547,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry</name>
     <pv_name>$(P)$(R)INP$(INP):KRDG_RBV.LOLO</pv_name>
-    <x>365</x>
+    <x>270</x>
     <y>25</y>
     <width>80</width>
     <rules>
@@ -610,7 +576,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_1</name>
     <pv_name>$(P)$(R)INP$(INP):KRDG_RBV.HIHI</pv_name>
-    <x>450</x>
+    <x>355</x>
     <y>25</y>
     <width>80</width>
     <rules>
@@ -639,7 +605,7 @@
   <widget type="combo" version="2.0.0">
     <name>Combo Box</name>
     <pv_name>$(P)$(R)INP$(INP):ALARM_ONOFF</pv_name>
-    <x>675</x>
+    <x>580</x>
     <y>25</y>
     <width>90</width>
     <height>20</height>
@@ -669,7 +635,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_2</name>
     <pv_name>$(P)$(R)INP$(INP):ALARM_LOWVAL</pv_name>
-    <x>770</x>
+    <x>675</x>
     <y>25</y>
     <width>55</width>
     <rules>
@@ -698,7 +664,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_3</name>
     <pv_name>$(P)$(R)INP$(INP):ALARM_HIGHVAL</pv_name>
-    <x>830</x>
+    <x>735</x>
     <y>25</y>
     <width>55</width>
     <rules>
@@ -727,7 +693,7 @@
   <widget type="combo" version="2.0.0">
     <name>Combo Box_1</name>
     <pv_name>$(P)$(R)INP$(INP):ALARM_LE</pv_name>
-    <x>950</x>
+    <x>855</x>
     <y>25</y>
     <width>125</width>
     <height>20</height>
@@ -757,7 +723,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry_4</name>
     <pv_name>$(P)$(R)INP$(INP):ALARM_DB</pv_name>
-    <x>890</x>
+    <x>795</x>
     <y>25</y>
     <width>55</width>
     <rules>
@@ -786,7 +752,7 @@
   <widget type="combo" version="2.0.0">
     <name>Combo Box_2</name>
     <pv_name>$(P)$(R)INP$(INP):ALARM_AU</pv_name>
-    <x>1080</x>
+    <x>985</x>
     <y>25</y>
     <width>125</width>
     <height>20</height>
@@ -816,7 +782,7 @@
   <widget type="combo" version="2.0.0">
     <name>Combo Box_3</name>
     <pv_name>$(P)$(R)INP$(INP):ALARM_VIS</pv_name>
-    <x>1210</x>
+    <x>1115</x>
     <y>25</y>
     <width>125</width>
     <height>20</height>

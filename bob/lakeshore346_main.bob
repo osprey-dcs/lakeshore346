@@ -336,46 +336,6 @@
       <height>35</height>
       <style>3</style>
       <transparent>true</transparent>
-      <widget type="group" version="3.0.0">
-        <name>Group</name>
-        <x>20</x>
-        <y>5</y>
-        <width>210</width>
-        <height>25</height>
-        <style>3</style>
-        <transparent>true</transparent>
-        <widget type="action_button" version="3.0.0">
-          <name>Button_13</name>
-          <actions>
-            <action type="write_pv">
-              <description>Unit=K</description>
-              <pv_name>$(pv_name)</pv_name>
-              <value>K</value>
-            </action>
-          </actions>
-          <pv_name>$(P)$(R)UNITS_RBV</pv_name>
-          <height>25</height>
-          <tooltip>Note: ensure Phoebus has the setting below so that unit change is reflected immediately without a refresh
-org.phoebus.pv.ca/dbe_property_supported=true</tooltip>
-          <border_alarm_sensitive>false</border_alarm_sensitive>
-        </widget>
-        <widget type="action_button" version="3.0.0">
-          <name>Button_14</name>
-          <actions>
-            <action type="write_pv">
-              <description>Unit=C</description>
-              <pv_name>$(pv_name)</pv_name>
-              <value>C</value>
-            </action>
-          </actions>
-          <pv_name>$(P)$(R)UNITS_RBV</pv_name>
-          <x>110</x>
-          <height>25</height>
-          <tooltip>Note: ensure Phoebus has the setting below so that unit change is reflected immediately without a refresh
-org.phoebus.pv.ca/dbe_property_supported=true</tooltip>
-          <border_alarm_sensitive>false</border_alarm_sensitive>
-        </widget>
-      </widget>
       <widget type="action_button" version="3.0.0">
         <name>Action Button_1</name>
         <actions>
@@ -1664,7 +1624,7 @@ org.phoebus.pv.ca/dbe_property_supported=true</tooltip>
       <x>1165</x>
       <y>65</y>
       <width>125</width>
-      <height>146</height>
+      <height>56</height>
       <style>3</style>
       <transparent>true</transparent>
       <widget type="label" version="2.0.0">
@@ -1691,36 +1651,6 @@ org.phoebus.pv.ca/dbe_property_supported=true</tooltip>
           <color name="WritePV_Background" red="128" green="255" blue="255">
           </color>
         </background_color>
-        <actions>
-        </actions>
-        <border_color>
-          <color red="0" green="128" blue="255">
-          </color>
-        </border_color>
-      </widget>
-      <widget type="led" version="2.0.0">
-        <name>LED_5</name>
-        <pv_name>$(P)$(R)IN_WINDOWS</pv_name>
-        <bit>0</bit>
-        <x>100</x>
-        <y>30</y>
-        <width>25</width>
-        <height>25</height>
-        <line_color>
-          <color red="150" green="150" blue="150">
-          </color>
-        </line_color>
-        <actions>
-        </actions>
-      </widget>
-      <widget type="label" version="2.0.0">
-        <name>Label_51</name>
-        <text>(blocks until all temperatures are within tolerance windows)</text>
-        <y>55</y>
-        <width>125</width>
-        <height>91</height>
-        <horizontal_alignment>1</horizontal_alignment>
-        <vertical_alignment>1</vertical_alignment>
         <actions>
         </actions>
         <border_color>

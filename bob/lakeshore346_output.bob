@@ -1923,7 +1923,7 @@
     </widget>
     <widget type="label" version="2.0.0">
       <name>Label_141</name>
-      <text>Heater Setup (HTRSET)</text>
+      <text>Heater Protection (HTRLIM)</text>
       <y>450</y>
       <width>430</width>
       <height>25</height>

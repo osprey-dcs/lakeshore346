@@ -114,22 +114,6 @@
       <border_alarm_sensitive>false</border_alarm_sensitive>
     </widget>
     <widget type="action_button" version="3.0.0">
-      <name>Button_18</name>
-      <actions>
-        <action type="open_display">
-          <description>Tolerances</description>
-          <file>lakeshore346_windows.opi</file>
-          <target>replace</target>
-        </action>
-      </actions>
-      <x>605</x>
-      <y>50</y>
-      <width>120</width>
-      <height>25</height>
-      <tooltip>$(actions)</tooltip>
-      <border_alarm_sensitive>false</border_alarm_sensitive>
-    </widget>
-    <widget type="action_button" version="3.0.0">
       <name>Button_20</name>
       <actions>
         <action type="open_display">
@@ -138,7 +122,7 @@
           <target>replace</target>
         </action>
       </actions>
-      <x>730</x>
+      <x>605</x>
       <y>50</y>
       <width>120</width>
       <height>25</height>
@@ -154,23 +138,7 @@
           <target>replace</target>
         </action>
       </actions>
-      <x>855</x>
-      <y>50</y>
-      <width>120</width>
-      <height>25</height>
-      <tooltip>$(actions)</tooltip>
-      <border_alarm_sensitive>false</border_alarm_sensitive>
-    </widget>
-    <widget type="action_button" version="3.0.0">
-      <name>Button_22</name>
-      <actions>
-        <action type="open_display">
-          <description>EPICS Config</description>
-          <file>lakeshore346_software.opi</file>
-          <target>replace</target>
-        </action>
-      </actions>
-      <x>1105</x>
+      <x>730</x>
       <y>50</y>
       <width>120</width>
       <height>25</height>
@@ -186,7 +154,7 @@
           <target>replace</target>
         </action>
       </actions>
-      <x>980</x>
+      <x>855</x>
       <y>50</y>
       <width>120</width>
       <height>25</height>

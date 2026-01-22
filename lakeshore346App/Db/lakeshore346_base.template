@@ -16,6 +16,7 @@
 record(stringin, "$(P)$(R)MODEL_RBV") {
     field(DTYP, "stream")
     field(INP,  "@ls346.proto getIDN($(P)$(R)) $(PORT) $(ADDR)")
+    field(PINI, "YES")
 }
 
 record(stringin, "$(P)$(R)SERIAL_RBV") {

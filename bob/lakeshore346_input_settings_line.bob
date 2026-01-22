@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <display version="2.0.0">
   <name>Input Settings Line</name>
-  <width>1265</width>
+  <width>1160</width>
   <height>60</height>
   <actions>
   </actions>
@@ -633,71 +633,6 @@
     <x>1075</x>
     <y>30</y>
     <width>80</width>
-    <height>25</height>
-    <rules>
-      <rule name="No Input-No Card (Visible)" prop_id="visible" out_exp="false">
-        <exp bool_exp="pvInt0==0">
-          <value>false</value>
-        </exp>
-        <exp bool_exp="pvInt1&lt;$(INPNUM)">
-          <value>false</value>
-        </exp>
-        <pv_name>$(P)$(R)CARD$(INPGRP):TYPE_RBV</pv_name>
-        <pv_name>$(P)$(R)CARD$(INPGRP):NUMINP_RBV</pv_name>
-      </rule>
-      <rule name="No Input-No Card (PVName)" prop_id="pv_name" out_exp="false">
-        <exp bool_exp="pvInt0==0">
-          <value></value>
-        </exp>
-        <exp bool_exp="pvInt1&lt;$(INPNUM)">
-          <value></value>
-        </exp>
-        <pv_name>$(P)$(R)CARD$(INPGRP):TYPE_RBV</pv_name>
-        <pv_name>$(P)$(R)CARD$(INPGRP):NUMINP_RBV</pv_name>
-      </rule>
-    </rules>
-  </widget>
-  <widget type="textupdate" version="2.0.0">
-    <name>Text Update_277</name>
-    <pv_name>$(P)$(R)INP$(INP):DISABLE</pv_name>
-    <x>1160</x>
-    <height>25</height>
-    <vertical_alignment>1</vertical_alignment>
-    <wrap_words>false</wrap_words>
-    <actions>
-    </actions>
-    <rules>
-      <rule name="No Input-No Card (Visible)" prop_id="visible" out_exp="false">
-        <exp bool_exp="pvInt0==0">
-          <value>false</value>
-        </exp>
-        <exp bool_exp="pvInt1&lt;$(INPNUM)">
-          <value>false</value>
-        </exp>
-        <pv_name>$(P)$(R)CARD$(INPGRP):TYPE_RBV</pv_name>
-        <pv_name>$(P)$(R)CARD$(INPGRP):NUMINP_RBV</pv_name>
-      </rule>
-      <rule name="No Input-No Card (PVName)" prop_id="pv_name" out_exp="false">
-        <exp bool_exp="pvInt0==0">
-          <value></value>
-        </exp>
-        <exp bool_exp="pvInt1&lt;$(INPNUM)">
-          <value></value>
-        </exp>
-        <pv_name>$(P)$(R)CARD$(INPGRP):TYPE_RBV</pv_name>
-        <pv_name>$(P)$(R)CARD$(INPGRP):NUMINP_RBV</pv_name>
-      </rule>
-    </rules>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="combo" version="2.0.0">
-    <name>Combo Box_1</name>
-    <pv_name>$(P)$(R)INP$(INP):DISABLE</pv_name>
-    <x>1160</x>
-    <y>30</y>
     <height>25</height>
     <rules>
       <rule name="No Input-No Card (Visible)" prop_id="visible" out_exp="false">

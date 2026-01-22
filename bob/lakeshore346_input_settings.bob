@@ -41,7 +41,7 @@
       <name>Labels</name>
       <x>5</x>
       <y>5</y>
-      <width>1265</width>
+      <width>1160</width>
       <height>60</height>
       <style>3</style>
       <transparent>true</transparent>
@@ -322,31 +322,12 @@
           </color>
         </border_color>
       </widget>
-      <widget type="label" version="2.0.0">
-        <name>Label_85</name>
-        <text>Polling</text>
-        <x>1160</x>
-        <y>30</y>
-        <height>25</height>
-        <font>
-          <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
-          </font>
-        </font>
-        <horizontal_alignment>1</horizontal_alignment>
-        <vertical_alignment>1</vertical_alignment>
-        <actions>
-        </actions>
-        <border_color>
-          <color red="0" green="128" blue="255">
-          </color>
-        </border_color>
-      </widget>
     </widget>
     <widget type="group" version="3.0.0">
       <name>Group</name>
       <x>5</x>
       <y>65</y>
-      <width>1270</width>
+      <width>1160</width>
       <height>1568</height>
       <style>3</style>
       <transparent>true</transparent>
@@ -369,7 +350,7 @@
             </macros>
           </instance>
         </instances>
-        <width>1265</width>
+        <width>1160</width>
         <height>120</height>
         <gap>0</gap>
       </widget>
@@ -379,7 +360,7 @@
           <INPGRP>D</INPGRP>
         </macros>
         <y>360</y>
-        <width>1265</width>
+        <width>1160</width>
         <height>240</height>
         <style>3</style>
         <transparent>true</transparent>
@@ -412,7 +393,7 @@
               </macros>
             </instance>
           </instances>
-          <width>1265</width>
+          <width>1160</width>
           <height>240</height>
           <gap>0</gap>
         </widget>
@@ -423,7 +404,7 @@
           <INPGRP>C</INPGRP>
         </macros>
         <y>120</y>
-        <width>1265</width>
+        <width>1160</width>
         <height>240</height>
         <style>3</style>
         <transparent>true</transparent>
@@ -456,7 +437,7 @@
               </macros>
             </instance>
           </instances>
-          <width>1265</width>
+          <width>1160</width>
           <height>240</height>
           <gap>0</gap>
         </widget>
@@ -467,7 +448,7 @@
           <INPGRP>E</INPGRP>
         </macros>
         <y>600</y>
-        <width>1265</width>
+        <width>1160</width>
         <height>240</height>
         <style>3</style>
         <transparent>true</transparent>
@@ -500,7 +481,7 @@
               </macros>
             </instance>
           </instances>
-          <width>1265</width>
+          <width>1160</width>
           <height>240</height>
           <gap>0</gap>
         </widget>
@@ -511,7 +492,7 @@
           <INPGRP>F</INPGRP>
         </macros>
         <y>840</y>
-        <width>1265</width>
+        <width>1160</width>
         <height>240</height>
         <style>3</style>
         <transparent>true</transparent>
@@ -544,7 +525,7 @@
               </macros>
             </instance>
           </instances>
-          <width>1265</width>
+          <width>1160</width>
           <height>240</height>
           <gap>0</gap>
         </widget>
@@ -555,7 +536,7 @@
           <INPGRP>G</INPGRP>
         </macros>
         <y>1080</y>
-        <width>1265</width>
+        <width>1160</width>
         <height>240</height>
         <style>3</style>
         <transparent>true</transparent>
@@ -588,7 +569,7 @@
               </macros>
             </instance>
           </instances>
-          <width>1265</width>
+          <width>1160</width>
           <height>240</height>
           <gap>0</gap>
         </widget>
@@ -599,7 +580,7 @@
           <INPGRP>H</INPGRP>
         </macros>
         <y>1320</y>
-        <width>1265</width>
+        <width>1160</width>
         <height>240</height>
         <style>3</style>
         <transparent>true</transparent>
@@ -632,7 +613,7 @@
               </macros>
             </instance>
           </instances>
-          <width>1265</width>
+          <width>1160</width>
           <height>240</height>
           <gap>0</gap>
         </widget>
