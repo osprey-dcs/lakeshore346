@@ -89,7 +89,8 @@ record(calcout, "$(P)$(R)INP$(INPUT):SRDG_") {
 
 # Read the raw voltage on input $(INPUT)
 record(ai, "$(P)$(R)INP$(INPUT):SRDG_RBV") {
-    field(SCAN, "$(TEMPSCAN) second")
+    field(SCAN, "Event")
+    field(EVNT, "tempscan")
     field(PREC, "3")
     field(EGU,  "V")
     field(ADEL, "$(ADEL=1)")
@@ -117,7 +118,8 @@ record(stringin, "$(P)$(R)INP$(INPUT):INNAME_RBV") {
 record(mbbiDirect, "$(P)$(R)INP$(INPUT):RDGOPR_RBV") {
     field(DTYP, "stream")
     field(INP,  "@ls346.proto getRDGOPR($(INPUT)) $(PORT) $(ADDR)")
-    field(SCAN, "$(SCAN) second")
+    field(SCAN, "Event")
+    field(EVNT, "scan")
     field(FLNK, "$(P)$(R)INP$(INPUT):ALARM_HIGH_RBV PP")
 }
 
@@ -252,7 +254,8 @@ record(mbbi, "$(P)$(R)INP$(INPUT):RDGST_RBV") {
     field(THVL, "32")  field(THST, "Temp Over")   field(THSV, "MAJOR")
     field(FRVL, "64")  field(FRST, "Sensor Zero") field(FRSV, "MAJOR")
     field(FVVL, "128") field(FVST, "Sensor Over") field(FVSV, "MAJOR")
-    field(SCAN, "$(SCAN) second")
+    field(SCAN, "Event")
+    field(EVNT, "scan")
     field(INP, "@ls346.proto getRDGST($(INPUT)) $(PORT) $(ADDR)")
     info(archive, "Monitor, 00:00:01, VAL")
 }
@@ -401,7 +404,8 @@ record(ai, "$(P)$(R)INP$(INPUT):MDATMIN_RBV") {
     field(INP,  "@ls346.proto getMDAT($(INPUT),$(P)$(R)INP$(INPUT)) $(PORT) $(ADDR)")
     field(PREC, "3")
     field(EGU,  "K")
-    field(SCAN, "$(SCAN) second")
+    field(SCAN, "Event")
+    field(EVNT, "scan")
     field(PINI, "YES")
     info(archive, "Monitor, 00:00:01, VAL")
 }

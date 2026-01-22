@@ -13,6 +13,22 @@
 # Bruno Martins, January 2026, heavily based on the template for Lakeshore 336 by
 # Matt Pearson, June 2013
 
+record(event, "$(P)$(R)TEMPSCAN_EVT") {
+    field(DESC, "How often to scan temps")
+    field(SCAN, "$(TEMPSCAN) second")
+    field(EVNT, "tempscan")
+    field(VAL,  "tempscan")
+    info(autosaveFields, "SCAN")
+}
+
+record(event, "$(P)$(R)SCAN_EVT") {
+    field(DESC, "How often to scan other recs")
+    field(SCAN, "$(SCAN) second")
+    field(EVNT, "scan")
+    field(VAL,  "scan")
+    info(autosaveFields, "SCAN")
+}
+
 record(stringin, "$(P)$(R)MODEL_RBV") {
     field(DTYP, "stream")
     field(INP,  "@ls346.proto getIDN($(P)$(R)) $(PORT) $(ADDR)")
@@ -29,14 +45,16 @@ record(stringin, "$(P)$(R)FIRMWARE_RBV") {
 #record(stringin, "$(P)$(R)TUNEST") {
 #    field(DTYP, "stream")
 #    field(INP,  "@ls346.proto getTUNEST $(PORT) $(ADDR)")
-#    field(SCAN, "$(SCAN) second")
+#    field(SCAN, "Event")
+#    field(EVNT, "scan")
 #}
 #
 ## Read the tuning status success parameter
 #record(bi, "$(P)$(R)TUNESTSUCCESS") {
 #    field(DTYP, "stream")
 #    field(INP, "@ls346.proto getTUNESTSUCCESS $(PORT) $(ADDR)")
-#    field(SCAN, "$(SCAN) second")
+#    field(SCAN, "Event")
+#    field(EVNT, "scan")
 #    field(ZNAM, "No Error")
 #    field(ONAM, "Error (see manual)")
 #}
@@ -118,7 +136,8 @@ record(mbbiDirect, "$(P)$(R)STATUS:ESR_RBV") {
     field(INP,  "@ls346.proto getESR() $(PORT) $(ADDR)")
     field(MASK, "189")
     field(PINI, "YES")
-    field(SCAN, "$(SCAN) second")
+    field(SCAN, "Event")
+    field(EVNT, "scan")
 }
 
 record(bi, "$(P)$(R)STATUS:ESE:PON_RBV") { field(DESC, "Power On")              field(INP, "$(P)$(R)STATUS:ESE_RBV.B7 CP") }
@@ -170,7 +189,8 @@ record(mbbiDirect, "$(P)$(R)STATUS:STB_RBV") {
     field(INP,  "@ls346.proto getSTB() $(PORT) $(ADDR)")
     field(MASK, "189")
     field(PINI, "YES")
-    field(SCAN, "$(SCAN) second")
+    field(SCAN, "Event")
+    field(EVNT, "scan")
 }
 
 record(bi, "$(P)$(R)STATUS:SRE:OSB_RBV") { field(DESC, "Operation Summary")         field(INP, "$(P)$(R)STATUS:SRE_RBV.B7 CP") }

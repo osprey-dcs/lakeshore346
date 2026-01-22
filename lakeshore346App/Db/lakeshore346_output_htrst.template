@@ -2,7 +2,8 @@
 record(longin, "$(P)$(R)OUT$(OUTNUM):HTRST_RBV") {
     field(DTYP, "stream")
     field(INP,  "@ls346.proto getHTRST($(OUTNUM)) $(PORT) $(ADDR)")
-    field(SCAN, "$(SCAN) second")
+    field(SCAN, "Event")
+    field(EVNT, "scan")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):HTRST_CALC")
     info(archive, "Monitor, 00:00:01, VAL")
 }

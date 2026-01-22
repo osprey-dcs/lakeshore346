@@ -1671,8 +1671,89 @@
     <resize>4</resize>
   </widget>
   <widget type="group" version="3.0.0">
-    <name>Warmup</name>
+    <name>Scanning Period</name>
     <x>615</x>
+    <y>85</y>
+    <width>215</width>
+    <height>180</height>
+    <style>1</style>
+    <font>
+      <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Header_ForeGround" red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <line_color>
+      <color name="Header_Background" red="77" green="77" blue="77">
+      </color>
+    </line_color>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>Label_8</name>
+      <text>Temperature Scanning</text>
+      <x>5</x>
+      <y>5</y>
+      <width>200</width>
+      <height>30</height>
+      <font>
+        <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+        </font>
+      </font>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <actions>
+      </actions>
+      <border_color>
+        <color red="0" green="128" blue="255">
+        </color>
+      </border_color>
+    </widget>
+    <widget type="combo" version="2.0.0">
+      <name>Combo Box</name>
+      <pv_name>$(P)$(R)TEMPSCAN_EVT.SCAN</pv_name>
+      <x>5</x>
+      <y>35</y>
+      <width>200</width>
+    </widget>
+    <widget type="group" version="3.0.0">
+      <name>Group</name>
+      <x>5</x>
+      <y>70</y>
+      <width>200</width>
+      <height>60</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="label" version="2.0.0">
+        <name>Label_9</name>
+        <text>Regular Scanning</text>
+        <width>200</width>
+        <height>30</height>
+        <font>
+          <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+          </font>
+        </font>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+        <actions>
+        </actions>
+        <border_color>
+          <color red="0" green="128" blue="255">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="combo" version="2.0.0">
+        <name>Combo Box_1</name>
+        <pv_name>$(P)$(R)SCAN_EVT.SCAN</pv_name>
+        <y>30</y>
+        <width>200</width>
+      </widget>
+    </widget>
+  </widget>
+  <widget type="group" version="3.0.0">
+    <name>Warmup</name>
+    <x>835</x>
     <y>85</y>
     <width>215</width>
     <height>180</height>
@@ -1975,9 +2056,9 @@ org.phoebus.pv.ca/dbe_property_supported=true</tooltip>
   </widget>
   <widget type="group" version="3.0.0">
     <name>Status Registers</name>
-    <x>835</x>
+    <x>1055</x>
     <y>85</y>
-    <width>475</width>
+    <width>405</width>
     <height>180</height>
     <style>1</style>
     <font>

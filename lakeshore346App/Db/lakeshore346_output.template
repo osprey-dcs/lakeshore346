@@ -23,7 +23,8 @@ record(ao, "$(P)$(R)OUT$(OUTNUM):SETP") {
 record(ai, "$(P)$(R)OUT$(OUTNUM):SETP_RBV") {
     field(DTYP, "stream")
     field(INP,  "@ls346.proto getSETP($(OUTNUM)) $(PORT) $(ADDR)")
-    field(SCAN, "$(TEMPSCAN) second")
+    field(SCAN, "Event")
+    field(EVNT, "tempscan")
     field(PREC, "3")
     field(EGU,  "K")
     info(archive, "Monitor, 00:00:01, VAL")
@@ -50,7 +51,8 @@ record(bo, "$(P)$(R)OUT$(OUTNUM):RAMPST") {
 record(ai, "$(P)$(R)OUT$(OUTNUM):RAMP_RBV") {
     field(DTYP, "stream")
     field(INP,  "@ls346.proto getRAMP($(OUTNUM),$(P)$(R)OUT$(OUTNUM)) $(PORT) $(ADDR)")
-    field(SCAN, "$(SCAN) second")
+    field(SCAN, "Event")
+    field(EVNT, "scan")
     field(PREC, "3")
     field(EGU,  "K/min")
     info(autosaveFields, "EGU")
@@ -237,7 +239,8 @@ record(mbbi, "$(P)$(R)OUT$(OUTNUM):OMW_RBV") {
 record(ai, "$(P)$(R)OUT$(OUTNUM):HTR_RBV") {
     field(DTYP, "stream")
     field(INP,  "@ls346.proto getHTR($(OUTNUM)) $(PORT) $(ADDR)")
-    field(SCAN, "$(SCAN) second")
+    field(SCAN, "Event")
+    field(EVNT, "scan")
     field(PREC, "1")
     field(EGU,  "%")
     info(archive, "Monitor, 00:00:01, VAL")
@@ -286,7 +289,8 @@ record(ai, "$(P)$(R)OUT$(OUTNUM):HTROUT_VAL_RBV") {
     field(DTYP, "stream")
     field(INP,  "@ls346.proto getHTROUT($(OUTNUM),$(P)$(R)OUT$(OUTNUM):HTROUT) $(PORT) $(ADDR)")
     field(EGU,  "$(HTROUT_VAL_EGU)")
-    field(SCAN, "$(SCAN) second")
+    field(SCAN, "Event")
+    field(EVNT, "scan")
     field(PINI, "YES")
     field(PREC, "3")
 }

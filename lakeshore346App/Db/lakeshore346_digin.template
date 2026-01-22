@@ -4,7 +4,8 @@ record(waveform, "$(P)$(R)DIGINALL:STATE_RBV") {
     field(NELM, "2")
     field(FTVL, "UCHAR")
     field(PINI, "YES")
-    field(SCAN, "$(SCAN) second")
+    field(SCAN, "Event")
+    field(EVNT, "scan")
 }
 
 record(bi, "$(P)$(R)DIGIN1:STATE_RBV") {
