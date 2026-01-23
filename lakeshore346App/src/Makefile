@@ -10,7 +10,6 @@ PROD_IOC = lakeshore346
 DBD += $(PROD_IOC).dbd
 
 $(PROD_IOC)_DBD += base.dbd
-$(PROD_IOC)_DBD += PVAServerRegister.dbd qsrv.dbd
 $(PROD_IOC)_DBD += asyn.dbd
 $(PROD_IOC)_DBD += drvAsynIPPort.dbd
 $(PROD_IOC)_DBD += calc.dbd
@@ -26,7 +25,6 @@ $(PROD_IOC)_SRCS += $(PROD_IOC)_util.cpp
 $(PROD_IOC)_SRCS += $(PROD_IOC)_asub_sup.cpp
 $(PROD_IOC)_SRCS += $(PROD_IOC)_autoload_db.cpp
 
-$(PROD_IOC)_LIBS += qsrv
 $(PROD_IOC)_LIBS += asyn
 $(PROD_IOC)_LIBS += calc
 $(PROD_IOC)_LIBS += stream

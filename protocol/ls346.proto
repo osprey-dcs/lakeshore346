@@ -272,12 +272,22 @@ getDIGIN {
 
 # Curve
 getCRVHDR {
-    out "CRVHDR? %(\$1:NUM.VAL)d;*OPC?";
+    out "CRVHDR? %(\$1:READ_NUM.VAL)d;*OPC?";
     in "\"%(\$1:NAME_RBV)[^\"]\",\"%(\$1:SERIAL_RBV)[^\"]\",%(\$1:FORMAT_RBV.RVAL)d,%(\$1:LIMIT_RBV)f,%(\$1:COEFF_RBV.RVAL)d;1";
 }
 
+setCRVHDR {
+    out "CRVHDR %(\$1:NUM_LOADED_RBV)d,\"%(\$1:NAME)s\",\"%(\$1:SERIAL)s\",%(\$1:FORMAT.RVAL)d,%(\$1:LIMIT)f,%(\$1:COEFF.RVAL)d;*OPC?";
+    in "1";
+}
+
+cmdCRVDEL {
+    out "CRVDEL %(\$1:DELETE_NUM)d;*OPC?";
+    in "1";
+}
+
 getCRVNUMPTS {
-    out "CRVNUMPTS? %(\$1:NUM.VAL)d;*OPC?";
+    out "CRVNUMPTS? %(\$1:READ_NUM.VAL)d;*OPC?";
     in "%d;1";
 }
 

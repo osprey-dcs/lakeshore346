@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Lake Shore 346 Curve $(P)$(R)</name>
+  <width>1475</width>
+  <height>760</height>
+  <actions>
+  </actions>
+  <grid_step_x>5</grid_step_x>
+  <grid_step_y>5</grid_step_y>
+  <widget type="array" version="2.0.0">
+    <name>Array_6</name>
+    <pv_name>$(P)$(R)CURVE:UNITS_RBV</pv_name>
+    <height>4020</height>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Entry_12</name>
+      <width>80</width>
+    </widget>
+  </widget>
+  <widget type="array" version="2.0.0">
+    <name>Array_8</name>
+    <pv_name>$(P)$(R)CURVE:TEMPS_RBV</pv_name>
+    <x>100</x>
+    <height>4020</height>
+    <widget type="textentry" version="3.0.0">
+      <name>Text Entry_13</name>
+      <width>80</width>
+    </widget>
+  </widget>
+</display>
