@@ -273,7 +273,57 @@ record(longin, "$(P)$(R)INP$(INPUT):INCRV_RBV") {
     field(INP, "@ls346.proto getINCRV($(INPUT)) $(PORT) $(ADDR)")
 }
 
-# Read the input type information.
+# Input Type
+record(mbbo, "$(P)$(R)INP$(INPUT):INTYPE_S") {
+    field(DESC, "Sensor Type")
+    field(ZRVL, "0") field(ZRST, "Disabled")
+    field(ONVL, "1") field(ONST, "Diode")
+    field(TWVL, "2") field(TWST, "Platinum RTD")
+    field(THVL, "3") field(THST, "NTC RTD")
+    field(FRVL, "4") field(FRST, "Thermocouple")
+    field(FVVL, "5") field(FVST, "Capacitance")
+}
+
+record(bo, "$(P)$(R)INP$(INPUT):INTYPE_AR") {
+    field(DESC, "Auto Range")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+}
+
+record(mbbo, "$(P)$(R)INP$(INPUT):INTYPE_R") {
+    field(DESC, "Range")
+    field(ZRVL, "0") field(ZRST, "10 Ohm / 2.5V / 50mV")
+    field(ONVL, "1") field(ONST, "30 Ohm / 10V")
+    field(TWVL, "2") field(TWST, "100 Ohm")
+    field(THVL, "3") field(THST, "300 Ohm")
+    field(FRVL, "4") field(FRST, "1 KOhm")
+    field(FVVL, "5") field(FVST, "3 KOhm")
+    field(SXVL, "6") field(SXST, "10 KOhm")
+    field(SVVL, "7") field(SVST, "30 KOhm")
+    field(EIVL, "8") field(EIST, "100 KOhm")
+}
+
+record(bo, "$(P)$(R)INP$(INPUT):INTYPE_C") {
+    field(DESC, "Compensation")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+}
+
+record(mbbo, "$(P)$(R)INP$(INPUT):INTYPE_U") {
+    field(DESC, "Units")
+    field(ZRVL, "0") field(ZRST, "None")
+    field(ONVL, "1") field(ONST, "Kelvin")
+    field(TWVL, "2") field(TWST, "Celsius")
+    field(THVL, "3") field(THST, "Sensor")
+}
+
+record(bo, "$(P)$(R)INP$(INPUT):INTYPE") {
+    field(DESC, "Write Input Type Params")
+    field(DTYP, "stream")
+    field(OUT,  "@ls346.proto setINTYPE($(INPUT),$(P)$(R)INP$(INPUT):INTYPE) $(PORT) $(ADDR)")
+    field(FLNK, "$(P)$(R)INP$(INPUT):INTYPE_RBV PP")
+}
+
 record(bi, "$(P)$(R)INP$(INPUT):INTYPE_RBV") {
     field(DESC, "Read Input Type Params")
     field(DTYP, "stream")
@@ -281,16 +331,14 @@ record(bi, "$(P)$(R)INP$(INPUT):INTYPE_RBV") {
     field(PINI, "YES")
 }
 
-# Read the rest of the input type params.
 record(mbbi, "$(P)$(R)INP$(INPUT):INTYPE_S_RBV") {
     field(DESC, "Sensor Type")
-    field(ZRST, "Disabled")
-    field(ZRVL, "0") field(ONST, "Diode")
-    field(ONVL, "1") field(TWST, "Platinum RTD")
-    field(TWVL, "2") field(THST, "NTC RTD")
-    field(THVL, "3") field(FRST, "Thermocouple")
-    field(FRVL, "4") field(FVST, "Capacitance")
-    field(FVVL, "5")
+    field(ZRVL, "0") field(ZRST, "Disabled")
+    field(ONVL, "1") field(ONST, "Diode")
+    field(TWVL, "2") field(TWST, "Platinum RTD")
+    field(THVL, "3") field(THST, "NTC RTD")
+    field(FRVL, "4") field(FRST, "Thermocouple")
+    field(FVVL, "5") field(FVST, "Capacitance")
 }
 
 record(bi, "$(P)$(R)INP$(INPUT):INTYPE_AR_RBV") {
@@ -325,7 +373,6 @@ record(mbbi, "$(P)$(R)INP$(INPUT):INTYPE_U_RBV") {
     field(TWVL, "2") field(TWST, "Celsius")
     field(THVL, "3") field(THST, "Sensor")
 }
-
 record(ao, "$(P)$(R)INP$(INPUT):TLIMIT") {
     field(DESC, "Temp Limit")
     field(DTYP, "stream")
@@ -347,42 +394,44 @@ record(ai, "$(P)$(R)INP$(INPUT):TLIMIT_RBV") {
 # Temperature Filter
 record(bo, "$(P)$(R)INP$(INPUT):FILTER_EN") {
     field(DESC, "Filter Enabled")
-    field(DTYP, "stream")
-    field(OUT,  "@ls346.proto setFILTER_EN($(INPUT),$(P)$(R)INP$(INPUT):FILTER) $(PORT) $(ADDR)")
     field(ZNAM, "Disabled")
     field(ONAM, "Enabled")
-    field(FLNK, "$(P)$(R)INP$(INPUT):FILTER_EN_RBV PP")
     info(archive, "Monitor, 00:00:01, VAL")
 }
 
 record(longout, "$(P)$(R)INP$(INPUT):FILTER_NPTS") {
     field(DESC, "Filter Num Points")
-    field(DTYP, "stream")
-    field(OUT,  "@ls346.proto setFILTER_NPTS($(INPUT),$(P)$(R)INP$(INPUT):FILTER) $(PORT) $(ADDR)")
     field(DRVL, "2")
     field(DRVL, "64")
-    field(FLNK, "$(P)$(R)INP$(INPUT):FILTER_EN_RBV PP")
     info(archive, "Monitor, 00:00:01, VAL")
 }
 
 record(longout, "$(P)$(R)INP$(INPUT):FILTER_WND") {
     field(DESC, "Filter Window")
-    field(DTYP, "stream")
-    field(OUT,  "@ls346.proto setFILTER_WND($(INPUT),$(P)$(R)INP$(INPUT):FILTER) $(PORT) $(ADDR)")
     field(EGU,  "%")
     field(DRVL, "1")
-    field(DRVL, "10")
-    field(FLNK, "$(P)$(R)INP$(INPUT):FILTER_EN_RBV PP")
+    field(DRVH, "10")
     info(archive, "Monitor, 00:00:01, VAL")
+}
+
+record(bo, "$(P)$(R)INP$(INPUT):FILTER") {
+    field(DESC, "Write Filter Params")
+    field(DTYP, "stream")
+    field(OUT,  "@ls346.proto setFILTER($(INPUT),$(P)$(R)INP$(INPUT):FILTER) $(PORT) $(ADDR)")
+    field(FLNK, "$(P)$(R)INP$(INPUT):FILTER_RBV PP")
+}
+
+record(bi, "$(P)$(R)INP$(INPUT):FILTER_RBV") {
+    field(DESC, "Read Filter Params")
+    field(DTYP, "stream")
+    field(INP,  "@ls346.proto getFILTER($(INPUT),$(P)$(R)INP$(INPUT):FILTER) $(PORT) $(ADDR)")
+    field(PINI, "YES")
 }
 
 record(bi, "$(P)$(R)INP$(INPUT):FILTER_EN_RBV") {
     field(DESC, "Filter Enabled")
-    field(DTYP, "stream")
-    field(INP,  "@ls346.proto getFILTER($(INPUT),$(P)$(R)INP$(INPUT):FILTER) $(PORT) $(ADDR)")
     field(ZNAM, "Disabled")
     field(ONAM, "Enabled")
-    field(PINI, "YES")
     info(archive, "Monitor, 00:00:01, VAL")
 }
 

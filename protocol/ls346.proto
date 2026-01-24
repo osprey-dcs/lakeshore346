@@ -187,11 +187,19 @@ setINCRV {
     @init { getINCRV; }
 }
 
-# Read the input type params
+# Input type params
 getINTYPE {
     out "INTYPE? \$1;*OPC?";
-    in "%(\$2_S_RBV)d,%(\$2_AR_RBV)d,%(\$2_R_RBV)d,%(\$2_C_RBV)d,%(\$2_U_RBV)d;1";
-    @mismatch { in "1"; }
+    in "%(\$2_S_RBV)d,%(\$2_AR_RBV)d,%(\$2_R_RBV.RVAL)d,%(\$2_C_RBV)d,%(\$2_U_RBV.RVAL)d;1";
+    @init {
+        out "INTYPE? \$1;*OPC?";
+        in "%(\$2_S)d,%(\$2_AR)d,%(\$2_R.RVAL)d,%(\$2_C)d,%(\$2_U.RVAL)d;1";
+    }
+}
+
+setINTYPE {
+    out "INTTYPE \$1,%(\$2_S.RVAL)d,%(\$2_AR)d,%(\$2_R.RVAL)d,%(\$2_C)d,%(\$2_U.RVAL)d;*OPC?";
+    in "1";
 }
 
 # Start the auto tune process.
@@ -214,16 +222,17 @@ setTLIMIT {
 
 getFILTER {
     out "FILTER? \$1;*OPC?";
-    in "%d,%(\$2_NPTS_RBV)d,%(\$2_WND_RBV)d;1";
+    in "%(\$2_EN_RBV)d,%(\$2_NPTS_RBV)d,%(\$2_WND_RBV)d;1";
     @init {
         out "FILTER? \$1;*OPC?";
         in "%(\$2_EN)d,%(\$2_NPTS)d,%(\$2_WND)d;1";
     }
 }
 
-setFILTER_EN   { out "FILTER \$1,%d,%(\$2_NPTS_RBV)d,%(\$2_WND_RBV)d;*OPC?"; in "1"; }
-setFILTER_NPTS { out "FILTER \$1,%(\$2_EN_RBV)d,%d,%(\$2_WND_RBV)d;*OPC?";   in "1"; }
-setFILTER_WND  { out "FILTER \$1,%(\$2_EN_RBV)d,%(\$2_NPTS_RBV)d,%d;*OPC?";  in "1"; }
+setFILTER {
+    out "FILTER \$1,%(\$2_EN)d,%(\$2_NPTS)d,%(\$2_WND)d;*OPC?";
+    in "1";
+}
 
 # Reset all alarms
 cmdALMRST {

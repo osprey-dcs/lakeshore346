@@ -115,6 +115,9 @@ record(ai, "$(P)$(R)OUT$(OUTNUM):MOUT_RBV") {
 record(ao, "$(P)$(R)OUT$(OUTNUM):P") {
     field(DTYP, "stream")
     field(OUT,  "@ls346.proto setP($(OUTNUM),$(P)$(R)OUT$(OUTNUM)) $(PORT) $(ADDR)")
+    field(PREC, "1")
+    field(DRVL, "0.1")
+    field(DRVH, "100000")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):P_RBV PP")
     info(archive, "Monitor, 00:00:01, VAL")
 }
@@ -122,6 +125,9 @@ record(ao, "$(P)$(R)OUT$(OUTNUM):P") {
 record(ao, "$(P)$(R)OUT$(OUTNUM):I") {
     field(DTYP, "stream")
     field(OUT,  "@ls346.proto setI($(OUTNUM),$(P)$(R)OUT$(OUTNUM)) $(PORT) $(ADDR)")
+    field(PREC, "1")
+    field(DRVL, "0.1")
+    field(DRVH, "100000")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):P_RBV PP")
     info(archive, "Monitor, 00:00:01, VAL")
 }
@@ -129,6 +135,9 @@ record(ao, "$(P)$(R)OUT$(OUTNUM):I") {
 record(ao, "$(P)$(R)OUT$(OUTNUM):D") {
     field(DTYP, "stream")
     field(OUT,  "@ls346.proto setD($(OUTNUM),$(P)$(R)OUT$(OUTNUM)) $(PORT) $(ADDR)")
+    field(PREC, "1")
+    field(DRVL, "0")
+    field(DRVH, "100000")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):P_RBV PP")
     info(archive, "Monitor, 00:00:01, VAL")
 }
@@ -136,15 +145,18 @@ record(ao, "$(P)$(R)OUT$(OUTNUM):D") {
 record(ai, "$(P)$(R)OUT$(OUTNUM):P_RBV") {
     field(DTYP, "stream")
     field(INP,  "@ls346.proto getPID($(OUTNUM),$(P)$(R)OUT$(OUTNUM)) $(PORT) $(ADDR)")
+    field(PREC, "1")
     field(PINI, "YES")
     info(archive, "Monitor, 00:00:01, VAL")
 }
 
 record(ai, "$(P)$(R)OUT$(OUTNUM):I_RBV") {
+    field(PREC, "1")
     info(archive, "Monitor, 00:00:01, VAL")
 }
 
 record(ai, "$(P)$(R)OUT$(OUTNUM):D_RBV") {
+    field(PREC, "1")
     info(archive, "Monitor, 00:00:01, VAL")
 }
 
