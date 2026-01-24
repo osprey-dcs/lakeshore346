@@ -119,7 +119,7 @@ record(ao, "$(P)$(R)OUT$(OUTNUM):P") {
     field(DRVL, "0.1")
     field(DRVH, "100000")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):P_RBV PP")
-    info(archive, "Monitor, 00:00:01, VAL")
+    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)OUT$(OUTNUM):I") {
@@ -129,7 +129,7 @@ record(ao, "$(P)$(R)OUT$(OUTNUM):I") {
     field(DRVL, "0.1")
     field(DRVH, "100000")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):P_RBV PP")
-    info(archive, "Monitor, 00:00:01, VAL")
+    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)OUT$(OUTNUM):D") {
@@ -139,7 +139,7 @@ record(ao, "$(P)$(R)OUT$(OUTNUM):D") {
     field(DRVL, "0")
     field(DRVH, "100000")
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):P_RBV PP")
-    info(archive, "Monitor, 00:00:01, VAL")
+    info(autosaveFields, "VAL")
 }
 
 record(ai, "$(P)$(R)OUT$(OUTNUM):P_RBV") {

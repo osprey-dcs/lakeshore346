@@ -180,6 +180,12 @@
         <pv_name>$(P)$(R)CARD$(INPGRP):TYPE_RBV</pv_name>
         <pv_name>$(P)$(R)CARD$(INPGRP):NUMINP_RBV</pv_name>
       </rule>
+      <rule name="Units" prop_id="pv_name" out_exp="false">
+        <exp bool_exp="pvStr0==&quot;C&quot;">
+          <value>$(P)$(R)INP$(INP):CRDG_RBV</value>
+        </exp>
+        <pv_name>loc://$(P)$(R):UNITS</pv_name>
+      </rule>
     </rules>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -257,6 +263,12 @@
         <pv_name>$(P)$(R)CARD$(INPGRP):TYPE_RBV</pv_name>
         <pv_name>$(P)$(R)CARD$(INPGRP):NUMINP_RBV</pv_name>
       </rule>
+      <rule name="Units" prop_id="pv_name" out_exp="false">
+        <exp bool_exp="pvStr0==&quot;C&quot;">
+          <value>$(P)$(R)INP$(INP):MDATMINC_RBV</value>
+        </exp>
+        <pv_name>loc://$(P)$(R):UNITS</pv_name>
+      </rule>
     </rules>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -293,6 +305,12 @@
         </exp>
         <pv_name>$(P)$(R)CARD$(INPGRP):TYPE_RBV</pv_name>
         <pv_name>$(P)$(R)CARD$(INPGRP):NUMINP_RBV</pv_name>
+      </rule>
+      <rule name="Units" prop_id="pv_name" out_exp="false">
+        <exp bool_exp="pvStr0==&quot;C&quot;">
+          <value>$(P)$(R)INP$(INP):MDATMAXC_RBV</value>
+        </exp>
+        <pv_name>loc://$(P)$(R):UNITS</pv_name>
       </rule>
     </rules>
     <border_color>

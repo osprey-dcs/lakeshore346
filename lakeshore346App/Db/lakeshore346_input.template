@@ -57,6 +57,15 @@ record(ai, "$(P)$(R)INP$(INPUT):KRDG_RBV") {
     info(archive, "Monitor, 00:00:01, VAL")
 }
 
+# Read the temperature on input $(INPUT) in Celsius.
+record(calc, "$(P)$(R)INP$(INPUT):CRDG_RBV") {
+    field(DESC, "Input $(INPUT) Temperature")
+    field(PREC, "3")
+    field(EGU,  "C")
+    field(INPA, "$(P)$(R)INP$(INPUT):KRDG_RBV CP")
+    field(CALC, "A-273.15")
+}
+
 # Read the extracted voltage input and determine if it is valid
 record(calcout, "$(P)$(R)INP$(INPUT):SRDG_") {
     # Whether the input is valid
@@ -464,6 +473,20 @@ record(ai, "$(P)$(R)INP$(INPUT):MDATMAX_RBV") {
     field(PREC, "3")
     field(EGU,  "K")
     info(archive, "Monitor, 00:00:01, VAL")
+}
+
+record(calc, "$(P)$(R)INP$(INPUT):MDATMINC_RBV") {
+    field(PREC, "3")
+    field(EGU,  "C")
+    field(INPA, "$(P)$(R)INP$(INPUT):MDATMIN_RBV CP")
+    field(CALC, "A-273.15")
+}
+
+record(calc, "$(P)$(R)INP$(INPUT):MDATMAXC_RBV") {
+    field(PREC, "3")
+    field(EGU,  "C")
+    field(INPA, "$(P)$(R)INP$(INPUT):MDATMAX_RBV CP")
+    field(CALC, "A-273.15")
 }
 
 record(bo, "$(P)$(R)INP$(INPUT):MNMXRST") {
