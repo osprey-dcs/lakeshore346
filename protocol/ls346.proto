@@ -187,7 +187,7 @@ getINTYPE {
 }
 
 setINTYPE {
-    out "INTTYPE \$1,%(\$2_S.RVAL)d,%(\$2_AR)d,%(\$2_R.RVAL)d,%(\$2_C)d,%(\$2_U.RVAL)d;*OPC?";
+    out "INTYPE \$1,%(\$2_S.RVAL)d,%(\$2_AR)d,%(\$2_R.RVAL)d,%(\$2_C)d,%(\$2_U.RVAL)d;*OPC?";
     in "1";
 }
 

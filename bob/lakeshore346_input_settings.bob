@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2026-01-26 12:14:07 by omitto-->
 <display version="2.0.0">
   <name>Lake Shore 346 Input Settings $(P)$(R)</name>
   <width>1475</width>
@@ -123,7 +124,7 @@
       <widget type="label" version="2.0.0">
         <name>Label_73</name>
         <text>Curve</text>
-        <x>180</x>
+        <x>174</x>
         <y>30</y>
         <width>50</width>
         <height>25</height>
@@ -371,6 +372,22 @@
           <color red="0" green="128" blue="255">
           </color>
         </border_color>
+      </widget>
+      <widget type="action_button" version="3.0.0">
+        <name>Action Button</name>
+        <actions>
+          <action type="open_display">
+            <description>Lake Shore Standard Curves</description>
+            <file>lakeshore346_standard_curves.bob</file>
+            <target>window</target>
+          </action>
+        </actions>
+        <text>*</text>
+        <x>220</x>
+        <y>33</y>
+        <width>20</width>
+        <height>20</height>
+        <tooltip>$(actions)</tooltip>
       </widget>
     </widget>
     <widget type="group" version="3.0.0">
