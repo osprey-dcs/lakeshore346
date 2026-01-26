@@ -295,6 +295,16 @@
     <width>50</width>
     <height>25</height>
     <rules>
+      <rule name="SP_not_equal_RBV" prop_id="background_color" out_exp="false">
+        <exp bool_exp="pvInt0 != pvInt1">
+          <value>
+            <color red="153" green="153" blue="0">
+            </color>
+          </value>
+        </exp>
+        <pv_name>$(pv_name)</pv_name>
+        <pv_name>$(pv_name)_RBV</pv_name>
+      </rule>
       <rule name="No Input-No Card (Visible)" prop_id="visible" out_exp="false">
         <exp bool_exp="pvInt0==0">
           <value>false</value>

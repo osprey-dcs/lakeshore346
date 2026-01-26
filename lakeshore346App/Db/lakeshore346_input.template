@@ -320,10 +320,10 @@ record(bo, "$(P)$(R)INP$(INPUT):INTYPE_C") {
 
 record(mbbo, "$(P)$(R)INP$(INPUT):INTYPE_U") {
     field(DESC, "Units")
-    field(ZRVL, "0") field(ZRST, "None")
-    field(ONVL, "1") field(ONST, "Kelvin")
-    field(TWVL, "2") field(TWST, "Celsius")
-    field(THVL, "3") field(THST, "Sensor")
+    field(ZRVL, "0") 
+    field(ZRST, "Kelvin")
+    field(ONVL, "1") 
+    field(ONST, "Celsius")
 }
 
 record(bo, "$(P)$(R)INP$(INPUT):INTYPE") {
@@ -338,6 +338,7 @@ record(bi, "$(P)$(R)INP$(INPUT):INTYPE_RBV") {
     field(DTYP, "stream")
     field(INP,  "@ls346.proto getINTYPE($(INPUT),$(P)$(R)INP$(INPUT):INTYPE) $(PORT) $(ADDR)")
     field(PINI, "YES")
+    field(FLNK, "$(P)$(R)INP$(INPUT):INCRV_RBV PP")
 }
 
 record(mbbi, "$(P)$(R)INP$(INPUT):INTYPE_S_RBV") {
@@ -377,10 +378,8 @@ record(bi, "$(P)$(R)INP$(INPUT):INTYPE_C_RBV") {
 
 record(mbbi, "$(P)$(R)INP$(INPUT):INTYPE_U_RBV") {
     field(DESC, "Units")
-    field(ZRVL, "0") field(ZRST, "None")
-    field(ONVL, "1") field(ONST, "Kelvin")
-    field(TWVL, "2") field(TWST, "Celsius")
-    field(THVL, "3") field(THST, "Sensor")
+    field(ZRVL, "0") field(ZRST, "Kelvin")
+    field(ONVL, "1") field(ONST, "Celsius")
 }
 record(ao, "$(P)$(R)INP$(INPUT):TLIMIT") {
     field(DESC, "Temp Limit")
