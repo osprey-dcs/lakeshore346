@@ -23,6 +23,7 @@ record(stringin, "$(P)$(R)CURVE:SERIAL_RBV") {
 }
 
 record(mbbi, "$(P)$(R)CURVE:FORMAT_RBV") {
+    field(DTYP, "Raw Soft Channel")
     field(ZRVL, "1") field(ZRST, "mV/K")
     field(ONVL, "2") field(ONST, "V/K")
     field(TWVL, "3") field(TWST, "ohm/K")
@@ -33,6 +34,7 @@ record(ai, "$(P)$(R)CURVE:LIMIT_RBV") {
 }
 
 record(mbbi, "$(P)$(R)CURVE:COEFF_RBV") {
+    field(DTYP, "Raw Soft Channel")
     field(ZRVL, "1") field(ZRST, "negative")
     field(ONVL, "2") field(ONST, "positive")
 }
@@ -212,15 +214,19 @@ record(longout, "$(P)$(R)CURVE:COEFF_UPD") {
     field(EVNT, "curveloaded")
 }
 
-record(mbbi, "$(P)$(R)CURVE:COEFF") {
+record(mbbo, "$(P)$(R)CURVE:COEFF") {
     field(ZRVL, "1") field(ZRST, "negative")
     field(ONVL, "2") field(ONST, "positive")
+    field(SDIS, "$(P)$(R)CURVE:MOD_RBV")
+    field(DISV, "0")
 }
 
 record(bo, "$(P)$(R)CURVE:WRITE_HDR_CMD") {
     field(DESC, "Write Curve Header")
     field(DTYP, "stream")
     field(OUT,  "@ls346.proto setCRVHDR($(P)$(R)CURVE) $(PORT) $(ADDR)")
+    field(VAL, "0")
+    field(PINI, "YES")
     field(SDIS, "$(P)$(R)CURVE:MOD_RBV")
     field(DISV, "0")
 }

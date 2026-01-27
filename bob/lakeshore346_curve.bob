@@ -93,7 +93,7 @@
       <show_toolbar>true</show_toolbar>
       <show_legend>false</show_legend>
       <x_axis>
-        <title>Sensor Units</title>
+        <title>Temperatures (K)</title>
         <autoscale>true</autoscale>
         <log_scale>false</log_scale>
         <minimum>0.0</minimum>
@@ -111,7 +111,7 @@
       </x_axis>
       <y_axes>
         <y_axis>
-          <title>Temperatures (K)</title>
+          <title>Sensor Units</title>
           <autoscale>true</autoscale>
           <log_scale>false</log_scale>
           <minimum>0.0</minimum>
@@ -135,9 +135,9 @@
       </y_axes>
       <traces>
         <trace>
-          <name>$(traces[0].y_pv)</name>
-          <x_pv>$(P)$(R)CURVE:UNITS_RBV</x_pv>
-          <y_pv>$(P)$(R)CURVE:TEMPS_RBV</y_pv>
+          <name></name>
+          <x_pv>$(P)$(R)CURVE:TEMPS_RBV</x_pv>
+          <y_pv>$(P)$(R)CURVE:UNITS_RBV</y_pv>
           <err_pv></err_pv>
           <axis>0</axis>
           <trace_type>1</trace_type>
@@ -504,6 +504,22 @@
       <x>130</x>
       <y>5</y>
       <width>25</width>
+      <height>25</height>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button_3</name>
+      <actions>
+        <action type="write_pv">
+          <description>Update Header</description>
+          <pv_name>$(pv_name)</pv_name>
+          <value>1</value>
+        </action>
+      </actions>
+      <pv_name>$(P)$(R)CURVE:WRITE_HDR_CMD</pv_name>
+      <x>140</x>
+      <y>343</y>
+      <width>275</width>
       <height>25</height>
       <tooltip>$(actions)</tooltip>
     </widget>
