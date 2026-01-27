@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2026-01-26 12:06:25 by omitto-->
 <display version="2.0.0">
   <name>Lake Shore 346 Curve $(P)$(R)</name>
   <width>1475</width>
@@ -569,13 +568,5 @@
       <width>150</width>
       <height>25</height>
     </widget>
-  </widget>
-  <widget type="picture" version="2.0.0">
-    <name>Picture</name>
-    <file>Standard_Curves.png</file>
-    <x>446</x>
-    <y>622</y>
-    <width>355</width>
-    <height>270</height>
   </widget>
 </display>
