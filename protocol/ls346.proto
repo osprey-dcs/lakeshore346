@@ -179,7 +179,7 @@ setINCRV {
 # Input type params
 getINTYPE {
     out "INTYPE? \$1;*OPC?";
-    in "%(\$2_S_RBV)d,%(\$2_AR_RBV)d,%(\$2_R_RBV.RVAL)d,%(\$2_C_RBV)d,%(\$2_U_RBV.VAL)d;1";
+    in "%(\$2_S_RBV)d,%(\$2_AR_RBV)d,%(\$2_R_RBV.VAL)d,%(\$2_C_RBV)d,%(\$2_U_RBV.VAL)d;1";
     @init {
         out "INTYPE? \$1;*OPC?";
         in "%(\$2_S)d,%(\$2_AR)d,%(\$2_R.RVAL)d,%(\$2_C)d,%(\$2_U.VAL)d;1";

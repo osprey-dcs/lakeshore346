@@ -290,7 +290,6 @@ record(mbbo, "$(P)$(R)INP$(INPUT):INTYPE_S") {
     field(TWVL, "2") field(TWST, "Platinum RTD")
     field(THVL, "3") field(THST, "NTC RTD")
     field(FRVL, "4") field(FRST, "Thermocouple")
-    field(FVVL, "5") field(FVST, "Capacitance")
 }
 
 record(bo, "$(P)$(R)INP$(INPUT):INTYPE_AR") {
@@ -299,17 +298,95 @@ record(bo, "$(P)$(R)INP$(INPUT):INTYPE_AR") {
     field(ONAM, "On")
 }
 
+# Range UI for DIODE (INTYPE_S=1)
+record(mbbo, "$(P)$(R)INP$(INPUT):INTYPE_R_UI_DIODE") {
+    field(DESC, "Range (Diode)")
+    field(ZRVL, "0") field(ZRST, "2.5 V")
+    field(FLNK, "$(P)$(R)INP$(INPUT):INTYPE_R_MUX PP")
+    field(VAL, 0)
+    field(PINI, "YES")
+}
+
+# Range UI for Platinum RTD (INTYPE_S=2)
+record(mbbo, "$(P)$(R)INP$(INPUT):INTYPE_R_UI_PRTD") {
+    field(DESC, "Range (Platinum RTD)")
+    field(ZRVL, "0") field(ZRST, "10 Ohm")
+    field(ONVL, "1") field(ONST, "100 Ohm")
+    field(TWVL, "2") field(TWST, "1 kOhm")
+    field(FLNK, "$(P)$(R)INP$(INPUT):INTYPE_R_MUX PP")
+    field(VAL, 0)
+    field(PINI, "YES")
+}
+
+# Range UI for NTC RTD (INTYPE_S=3)
+record(mbbo, "$(P)$(R)INP$(INPUT):INTYPE_R_UI_NTCRTD") {
+    field(DESC, "Range (NTC RTD)")
+    field(ZRVL, "0") field(ZRST, "100 Ohm")
+    field(ONVL, "1") field(ONST, "300 Ohm")
+    field(TWVL, "2") field(TWST, "1 kOhm")
+    field(THVL, "3") field(THST, "3 kOhm")
+    field(FRVL, "4") field(FRST, "10 kOhm")
+    field(FVVL, "5") field(FVST, "30 kOhm")
+    field(SXVL, "6") field(SXST, "100 kOhm")
+    field(FLNK, "$(P)$(R)INP$(INPUT):INTYPE_R_MUX PP")
+    field(VAL, 0)
+    field(PINI, "YES")
+}
+
+# Range UI for THERMOCOUPLE (INTYPE_S=4)
+record(mbbo, "$(P)$(R)INP$(INPUT):INTYPE_R_UI_TC") {
+    field(DESC, "Range (Thermocouple)")
+    field(ZRVL, "0") field(ZRST, "50 mV")
+    field(FLNK, "$(P)$(R)INP$(INPUT):INTYPE_R_MUX PP")
+    field(VAL, 0)
+    field(PINI, "YES")
+}
+
+record(calcout, "$(P)$(R)INP$(INPUT):INTYPE_R_MUX") {
+    field(DESC, "Select Range -> INTYPE_R")
+    field(INPA, "$(P)$(R)INP$(INPUT):INTYPE_S.RVAL CP") # sensor type
+
+    field(INPB, "$(P)$(R)INP$(INPUT):INTYPE_R_UI_DIODE.RVAL CP")
+    field(INPC, "$(P)$(R)INP$(INPUT):INTYPE_R_UI_PRTD.RVAL CP")
+    field(INPD, "$(P)$(R)INP$(INPUT):INTYPE_R_UI_NTCRTD.RVAL CP")
+    field(INPE, "$(P)$(R)INP$(INPUT):INTYPE_R_UI_TC.RVAL CP")
+
+    field(INPF, "$(P)$(R)INP$(INPUT):INTYPE_R.RVAL") # current HW range
+    
+    # 1=diode, 2=platinum rtd, 3=ntc rtd, 4=thermocouple; else keep existing
+    field(CALC, "(A=1)?B:((A=2)?C:((A=3)?D:((A=4)?E:F)))")
+
+    field(OUT,  "$(P)$(R)INP$(INPUT):INTYPE_R PP")
+}
+
+#Sync inputs to outputs once during boot
+record(seq, "$(P)$(R)INP$(INPUT):INTYPE_R_INIT_SYNC") {
+    field(DESC, "Init UI range from HW")
+
+    field(PINI, "YES")
+
+    field(SELM, "Specified")
+    field(SELL, "$(P)$(R)INP$(INPUT):INTYPE_S_RBV CP")
+
+    # Diode
+    field(DOL1, "$(P)$(R)INP$(INPUT):INTYPE_R_RBV")
+    field(LNK1, "$(P)$(R)INP$(INPUT):INTYPE_R_UI_DIODE PP")
+
+    # Platinum RTD
+    field(DOL2, "$(P)$(R)INP$(INPUT):INTYPE_R_RBV")
+    field(LNK2, "$(P)$(R)INP$(INPUT):INTYPE_R_UI_PRTD PP")
+
+    # NTC RTD
+    field(DOL3, "$(P)$(R)INP$(INPUT):INTYPE_R_RBV")
+    field(LNK3, "$(P)$(R)INP$(INPUT):INTYPE_R_UI_NTCRTD PP")
+
+    # Thermocouple
+    field(DOL4, "$(P)$(R)INP$(INPUT):INTYPE_R_RBV")
+    field(LNK4, "$(P)$(R)INP$(INPUT):INTYPE_R_UI_TC PP")
+}
+
 record(mbbo, "$(P)$(R)INP$(INPUT):INTYPE_R") {
-    field(DESC, "Range")
-    field(ZRVL, "0") field(ZRST, "10 Ohm / 2.5V / 50mV")
-    field(ONVL, "1") field(ONST, "30 Ohm / 10V")
-    field(TWVL, "2") field(TWST, "100 Ohm")
-    field(THVL, "3") field(THST, "300 Ohm")
-    field(FRVL, "4") field(FRST, "1 KOhm")
-    field(FVVL, "5") field(FVST, "3 KOhm")
-    field(SXVL, "6") field(SXST, "10 KOhm")
-    field(SVVL, "7") field(SVST, "30 KOhm")
-    field(EIVL, "8") field(EIST, "100 KOhm")
+    field(DESC, "Range sent to HW")
 }
 
 record(bo, "$(P)$(R)INP$(INPUT):INTYPE_C") {
@@ -348,7 +425,6 @@ record(mbbi, "$(P)$(R)INP$(INPUT):INTYPE_S_RBV") {
     field(TWVL, "2") field(TWST, "Platinum RTD")
     field(THVL, "3") field(THST, "NTC RTD")
     field(FRVL, "4") field(FRST, "Thermocouple")
-    field(FVVL, "5") field(FVST, "Capacitance")
 }
 
 record(bi, "$(P)$(R)INP$(INPUT):INTYPE_AR_RBV") {
@@ -357,17 +433,70 @@ record(bi, "$(P)$(R)INP$(INPUT):INTYPE_AR_RBV") {
     field(ONAM, "On")
 }
 
-record(mbbi, "$(P)$(R)INP$(INPUT):INTYPE_R_RBV") {
-    field(DESC, "Range")
-    field(ZRVL, "0") field(ZRST, "10 Ohm / 2.5V / 50mV")
-    field(ONVL, "1") field(ONST, "30 Ohm / 10V")
-    field(TWVL, "2") field(TWST, "100 Ohm")
-    field(THVL, "3") field(THST, "300 Ohm")
-    field(FRVL, "4") field(FRST, "1 KOhm")
-    field(FVVL, "5") field(FVST, "3 KOhm")
-    field(SXVL, "6") field(SXST, "10 KOhm")
-    field(SVVL, "7") field(SVST, "30 KOhm")
-    field(EIVL, "8") field(EIST, "100 KOhm")
+record(mbbiDirect, "$(P)$(R)INP$(INPUT):INTYPE_R_RBV") {
+    field(DESC, "Range from hw")
+    field(FLNK, "$(P)$(R)INP$(INPUT):INTYPE_R_RBV_SYNC")
+}
+
+# Range UI RBV for DIODE (INTYPE_S_RBV = 1)
+record(mbbi, "$(P)$(R)INP$(INPUT):INTYPE_R_UI_DIODE_RBV") {
+    field(DESC, "Range RBV (Diode)")
+    field(ZRVL, "0") field(ZRST, "2.5 V")   
+}
+
+# Range UI RBV for Platinum RTD (INTYPE_S_RBV = 2)
+record(mbbi, "$(P)$(R)INP$(INPUT):INTYPE_R_UI_PRTD_RBV") {
+    field(DESC, "Range RBV (Platinum RTD)")
+    field(ZRVL, "0") field(ZRST, "10 Ohm")
+    field(ONVL, "1") field(ONST, "100 Ohm")
+    field(TWVL, "2") field(TWST, "1 kOhm")
+}
+
+# Range UI RBV for NTC RTD (INTYPE_S_RBV = 3)
+record(mbbi, "$(P)$(R)INP$(INPUT):INTYPE_R_UI_NTCRTD_RBV") {
+    field(DESC, "Range RBV (NTC RTD)")
+    field(ZRVL, "0") field(ZRST, "100 Ohm")
+    field(ONVL, "1") field(ONST, "300 Ohm")
+    field(TWVL, "2") field(TWST, "1 kOhm")
+    field(THVL, "3") field(THST, "3 kOhm")
+    field(FRVL, "4") field(FRST, "10 kOhm")
+    field(FVVL, "5") field(FVST, "30 kOhm")
+    field(SXVL, "6") field(SXST, "100 kOhm")
+}
+
+# Range UI RBV for Thermocouple (INTYPE_S_RBV = 4)
+record(mbbi, "$(P)$(R)INP$(INPUT):INTYPE_R_UI_TC_RBV") {
+    field(DESC, "Range RBV (Thermocouple)")
+    field(ZRVL, "0") field(ZRST, "50 mV")
+}
+
+record(seq, "$(P)$(R)INP$(INPUT):INTYPE_R_RBV_SYNC") {
+    field(DESC, "Sync INTYPE_R_RBV -> correct UI RBV")
+
+    # Which step to execute = sensor type RBV
+    field(SELM, "Specified")
+    field(SELL, "$(P)$(R)INP$(INPUT):INTYPE_S_RBV.VAL")
+
+    # ---- Step 1 : Disabled (INTYPE_S_RBV = 0) ----
+    # Explicit no-op (important: prevents undefined behavior)
+    field(DOL0, "$(P)$(R)INP$(INPUT):INTYPE_R_RBV.VAL")
+    field(LNK0, "")   # no destination
+
+    # ---- Step 2 : Diode (INTYPE_S_RBV = 1) ----
+    field(DOL1, "$(P)$(R)INP$(INPUT):INTYPE_R_RBV.VAL")
+    field(LNK1, "$(P)$(R)INP$(INPUT):INTYPE_R_UI_DIODE_RBV PP")
+
+    # ---- Step 3 : Platinum RTD (INTYPE_S_RBV = 2) ----
+    field(DOL2, "$(P)$(R)INP$(INPUT):INTYPE_R_RBV.VAL")
+    field(LNK2, "$(P)$(R)INP$(INPUT):INTYPE_R_UI_PRTD_RBV PP")
+
+    # ---- Step 4 : NTC RTD (INTYPE_S_RBV = 3) ----
+    field(DOL3, "$(P)$(R)INP$(INPUT):INTYPE_R_RBV.VAL")
+    field(LNK3, "$(P)$(R)INP$(INPUT):INTYPE_R_UI_NTCRTD_RBV PP")
+
+    # ---- Step 5 : Thermocouple (INTYPE_S_RBV = 4) ----
+    field(DOL4, "$(P)$(R)INP$(INPUT):INTYPE_R_RBV.VAL")
+    field(LNK4, "$(P)$(R)INP$(INPUT):INTYPE_R_UI_TC_RBV PP")
 }
 
 record(bi, "$(P)$(R)INP$(INPUT):INTYPE_C_RBV") {

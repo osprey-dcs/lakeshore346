@@ -252,7 +252,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_255</name>
-    <pv_name>$(P)$(R)INP$(INP):INTYPE_R_RBV</pv_name>
+    <pv_name>sim://const("N/A")</pv_name>
     <x>465</x>
     <width>190</width>
     <height>25</height>
@@ -261,6 +261,29 @@
     <actions>
     </actions>
     <rules>
+      <rule name="pv_name" prop_id="pv_name" out_exp="false">
+        <exp bool_exp="pvInt2==1">
+          <value>sim://const("Auto range ON")</value>
+        </exp>
+        <exp bool_exp="pvInt0==1">
+          <value>$(P)$(R)INP$(INP):INTYPE_R_UI_DIODE_RBV</value>
+        </exp>
+        <exp bool_exp="pvInt0==2">
+          <value>$(P)$(R)INP$(INP):INTYPE_R_UI_PRTD_RBV</value>
+        </exp>
+        <exp bool_exp="pvInt0==3">
+          <value>$(P)$(R)INP$(INP):INTYPE_R_UI_NTCRTD_RBV</value>
+        </exp>
+        <exp bool_exp="pvInt0==4">
+          <value>$(P)$(R)INP$(INP):INTYPE_R_UI_TC_RBV</value>
+        </exp>
+        <exp bool_exp="pvInt0==0">
+          <value>sim://const("N/A")</value>
+        </exp>
+        <pv_name>$(P)$(R)INP$(INP):INTYPE_S_RBV</pv_name>
+        <pv_name>sim://flipflop(1)</pv_name>
+        <pv_name>$(P)$(R)INP$(INP):INTYPE_AR_RBV</pv_name>
+      </rule>
       <rule name="No Input-No Card (Visible)" prop_id="visible" out_exp="false">
         <exp bool_exp="pvInt0==0">
           <value>false</value>
@@ -409,21 +432,46 @@
   </widget>
   <widget type="combo" version="2.0.0">
     <name>Combo Box_3</name>
-    <pv_name>$(P)$(R)INP$(INP):INTYPE_R</pv_name>
     <x>465</x>
     <y>30</y>
     <width>190</width>
     <height>25</height>
     <rules>
+      <rule name="pv_name" prop_id="pv_name" out_exp="false">
+        <exp bool_exp="pvInt0==1">
+          <value>$(P)$(R)INP$(INP):INTYPE_R_UI_DIODE</value>
+        </exp>
+        <exp bool_exp="pvInt0==2">
+          <value>$(P)$(R)INP$(INP):INTYPE_R_UI_PRTD</value>
+        </exp>
+        <exp bool_exp="pvInt0==3">
+          <value>$(P)$(R)INP$(INP):INTYPE_R_UI_NTCRTD</value>
+        </exp>
+        <exp bool_exp="pvInt0==4">
+          <value>$(P)$(R)INP$(INP):INTYPE_R_UI_TC</value>
+        </exp>
+        <exp bool_exp="pvInt0==0">
+          <value>sim://const("N/A")</value>
+        </exp>
+        <pv_name>$(P)$(R)INP$(INP):INTYPE_S</pv_name>
+        <pv_name>sim://flipflop(1)</pv_name>
+      </rule>
       <rule name="SP_not_equal_RBV" prop_id="background_color" out_exp="false">
+        <exp bool_exp="pvInt2 == 1">
+          <value>
+            <color name="Button_Background" red="210" green="210" blue="210">
+            </color>
+          </value>
+        </exp>
         <exp bool_exp="pvInt0 != pvInt1">
           <value>
             <color red="153" green="153" blue="0">
             </color>
           </value>
         </exp>
-        <pv_name>$(pv_name)</pv_name>
-        <pv_name>$(pv_name)_RBV</pv_name>
+        <pv_name>$(P)$(R)INP$(INP):INTYPE_R</pv_name>
+        <pv_name>$(P)$(R)INP$(INP):INTYPE_R_RBV</pv_name>
+        <pv_name>$(P)$(R)INP$(INP):INTYPE_AR</pv_name>
       </rule>
       <rule name="No Input-No Card (Visible)" prop_id="visible" out_exp="false">
         <exp bool_exp="pvInt0==0">
@@ -444,6 +492,12 @@
         </exp>
         <pv_name>$(P)$(R)CARD$(INPGRP):TYPE_RBV</pv_name>
         <pv_name>$(P)$(R)CARD$(INPGRP):NUMINP_RBV</pv_name>
+      </rule>
+      <rule name="Disable_when_autorangeon" prop_id="enabled" out_exp="false">
+        <exp bool_exp="pvInt0==1">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(R)INP$(INP):INTYPE_AR</pv_name>
       </rule>
     </rules>
   </widget>
