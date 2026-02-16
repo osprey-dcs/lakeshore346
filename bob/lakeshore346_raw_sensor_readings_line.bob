@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <display version="2.0.0">
   <name>Raw Voltages Line</name>
-  <width>225</width>
+  <width>315</width>
   <height>30</height>
   <actions>
   </actions>
@@ -10,7 +10,7 @@
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <text></text>
-    <x>35</x>
+    <x>61</x>
     <width>185</width>
     <height>25</height>
     <font>
@@ -75,7 +75,7 @@
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_1</name>
     <pv_name>$(P)$(R)INP$(INP):KRDG_RBV</pv_name>
-    <x>35</x>
+    <x>133</x>
     <width>90</width>
     <height>25</height>
     <vertical_alignment>1</vertical_alignment>
@@ -112,7 +112,44 @@
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_2</name>
     <pv_name>$(P)$(R)INP$(INP):SRDG_RBV</pv_name>
-    <x>130</x>
+    <x>226</x>
+    <width>90</width>
+    <height>25</height>
+    <vertical_alignment>1</vertical_alignment>
+    <wrap_words>false</wrap_words>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="No Input-No Card (Visible)" prop_id="visible" out_exp="false">
+        <exp bool_exp="pvInt0==0">
+          <value>false</value>
+        </exp>
+        <exp bool_exp="pvInt1&lt;$(INPNUM)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(R)CARD$(INPGRP):TYPE_RBV</pv_name>
+        <pv_name>$(P)$(R)CARD$(INPGRP):NUMINP_RBV</pv_name>
+      </rule>
+      <rule name="No Input-No Card (PVName)" prop_id="pv_name" out_exp="false">
+        <exp bool_exp="pvInt0==0">
+          <value></value>
+        </exp>
+        <exp bool_exp="pvInt1&lt;$(INPNUM)">
+          <value></value>
+        </exp>
+        <pv_name>$(P)$(R)CARD$(INPGRP):TYPE_RBV</pv_name>
+        <pv_name>$(P)$(R)CARD$(INPGRP):NUMINP_RBV</pv_name>
+      </rule>
+    </rules>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_3</name>
+    <pv_name>$(P)$(R)INP$(INP):INTYPE_S_RBV</pv_name>
+    <x>39</x>
     <width>90</width>
     <height>25</height>
     <vertical_alignment>1</vertical_alignment>

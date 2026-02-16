@@ -117,8 +117,8 @@
       <name>Button_20</name>
       <actions>
         <action type="open_display">
-          <description>Raw Voltages</description>
-          <file>lakeshore346_raw_voltages.bob</file>
+          <description>Raw Sn Readings</description>
+          <file>lakeshore346_raw_sensor_readings.bob</file>
           <target>replace</target>
         </action>
       </actions>

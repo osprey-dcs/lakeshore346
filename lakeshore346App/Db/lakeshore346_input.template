@@ -96,12 +96,11 @@ record(calcout, "$(P)$(R)INP$(INPUT):SRDG_") {
     field(OUT, "$(P)$(R)INP$(INPUT):SRDG_RBV PP MS")
 }
 
-# Read the raw voltage on input $(INPUT)
+# Read the raw sensor units on input $(INPUT)
 record(ai, "$(P)$(R)INP$(INPUT):SRDG_RBV") {
     field(SCAN, "Event")
     field(EVNT, "tempscan")
     field(PREC, "3")
-    field(EGU,  "V")
     field(ADEL, "$(ADEL=1)")
     field(MDEL, "$(MDEL=0)")
 }
