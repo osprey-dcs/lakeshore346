@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <display version="2.0.0">
   <name>Zone Line</name>
-  <width>940</width>
+  <width>980</width>
   <height>60</height>
   <actions>
   </actions>
@@ -38,17 +38,6 @@
       <color red="0" green="128" blue="255">
       </color>
     </border_color>
-  </widget>
-  <widget type="combo" version="2.0.0">
-    <name>Menu Button_5</name>
-    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):RANGE</pv_name>
-    <x>560</x>
-    <height>25</height>
-    <background_color>
-      <color red="240" green="240" blue="240">
-      </color>
-    </background_color>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_8</name>
@@ -174,51 +163,6 @@
       </color>
     </border_color>
   </widget>
-  <widget type="textupdate" version="2.0.0">
-    <name>Text Update_27</name>
-    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):RANGE_RBV</pv_name>
-    <x>560</x>
-    <y>30</y>
-    <height>25</height>
-    <vertical_alignment>1</vertical_alignment>
-    <wrap_words>false</wrap_words>
-    <actions>
-    </actions>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="textupdate" version="2.0.0">
-    <name>Text Update_28</name>
-    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):INPUT_RBV</pv_name>
-    <x>665</x>
-    <y>30</y>
-    <height>25</height>
-    <vertical_alignment>1</vertical_alignment>
-    <wrap_words>false</wrap_words>
-    <actions>
-    </actions>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="textupdate" version="2.0.0">
-    <name>Text Update_29</name>
-    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):RATE_RBV</pv_name>
-    <x>770</x>
-    <y>30</y>
-    <height>25</height>
-    <vertical_alignment>1</vertical_alignment>
-    <wrap_words>false</wrap_words>
-    <actions>
-    </actions>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
   <widget type="label" version="2.0.0">
     <name>Label_27</name>
     <text>$(ZONE)</text>
@@ -238,9 +182,65 @@
     </border_color>
   </widget>
   <widget type="combo" version="2.0.0">
+    <name>Menu Button_5</name>
+    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):RANGE</pv_name>
+    <x>665</x>
+    <height>25</height>
+    <background_color>
+      <color red="240" green="240" blue="240">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_27</name>
+    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):RANGE_RBV</pv_name>
+    <x>665</x>
+    <y>30</y>
+    <height>25</height>
+    <vertical_alignment>1</vertical_alignment>
+    <wrap_words>false</wrap_words>
+    <actions>
+    </actions>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_28</name>
+    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):INPUT_RBV</pv_name>
+    <x>770</x>
+    <y>30</y>
+    <height>25</height>
+    <vertical_alignment>1</vertical_alignment>
+    <wrap_words>false</wrap_words>
+    <actions>
+    </actions>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_29</name>
+    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):RATE_RBV</pv_name>
+    <x>875</x>
+    <y>30</y>
+    <height>25</height>
+    <vertical_alignment>1</vertical_alignment>
+    <wrap_words>false</wrap_words>
+    <actions>
+    </actions>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="combo" version="2.0.0">
     <name>Menu Button_1</name>
     <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):INPUT</pv_name>
-    <x>665</x>
+    <x>770</x>
     <height>25</height>
     <background_color>
       <color red="240" green="240" blue="240">
@@ -279,12 +279,43 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_12</name>
     <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):RATE</pv_name>
-    <x>770</x>
+    <x>875</x>
     <height>25</height>
     <background_color>
       <color name="WritePV_Background" red="128" green="255" blue="255">
       </color>
     </background_color>
+    <actions>
+    </actions>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_13</name>
+    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):OUTLIM</pv_name>
+    <x>560</x>
+    <height>25</height>
+    <background_color>
+      <color name="WritePV_Background" red="128" green="255" blue="255">
+      </color>
+    </background_color>
+    <actions>
+    </actions>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_30</name>
+    <pv_name>$(P)$(R)OUT$(OUTNUM):Z$(ZONE):OUTLIM_RBV</pv_name>
+    <x>560</x>
+    <y>30</y>
+    <height>25</height>
+    <vertical_alignment>1</vertical_alignment>
+    <wrap_words>false</wrap_words>
     <actions>
     </actions>
     <border_color>

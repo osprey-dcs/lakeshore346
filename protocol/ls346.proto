@@ -322,6 +322,18 @@ setHTRLIM_EN   { out "HTRLIM \$1,%d,%(\$2_SHRT_RBV)f,%(\$2_OPN_RBV)f;*OPC?"; in 
 setHTRLIM_SHRT { out "HTRLIM \$1,%(\$2_EN_RBV)d,%f,%(\$2_OPN_RBV)f;*OPC?";   in "1"; }
 setHTRLIM_OPN  { out "HTRLIM \$1,%(\$2_EN_RBV)d,%(\$2_SHRT_RBV)f,%f;*OPC?";  in "1"; }
 
+# Output Operation Status Query
+getOUTOPR {
+    out "OUTOPR? \$1;*OPC?";
+    in "%d;1";
+}
+
+# Output Questionable Status Query
+getOUTST {
+    out "OUTST? \$1;*OPC?";
+    in "%d;1";
+}
+
 # Heater Autorange
 getHTRAUTO {
     out "HTRAUTO? \$1;*OPC?";
@@ -356,19 +368,18 @@ setANALOG_LOW  { out "ANALOG \$1,%(\$2_HIGH_RBV)f,%f;*OPC?"; in "1"; }
 # Output Stability
 getOUTSTABLE {
     out "OUTSTABLE? \$1;*OPC?";
-    in "%d,%(\$2_SETPERR_RBV)f,%(\$2_STLTIM_RBV)d,%(\$2_LATCH_RBV)d,%(\$2_AUD_RBV)d,%(\$2_VIS_RBV)d;1";
+    in "%d,%(\$2_SETPERR_RBV)f,%(\$2_STLTIM_RBV)d,%(\$2_AUD_RBV)d,%(\$2_VIS_RBV)d;1";
     @init {
         out "OUTSTABLE? \$1;*OPC?";
-        in "%(\$2_EN)d,%(\$2_SETPERR)f,%(\$2_STLTIM)d,%(\$2_LATCH)d,%(\$2_AUD)d,%(\$2_VIS)d;1";
+        in "%(\$2_EN)d,%(\$2_SETPERR)f,%(\$2_STLTIM)d,%(\$2_AUD)d,%(\$2_VIS)d;1";
     }
 }
 
-setOUTSTABLE_EN      { out "OUTSTABLE \$1,%d,%(\$2_SETPERR_RBV)f,%(\$2_STLTIM_RBV)d,%(\$2_LATCH_RBV)d,%(\$2_AUD_RBV)d,%(\$2_VIS_RBV)d;*OPC?"; in "1"; }
-setOUTSTABLE_SETPERR { out "OUTSTABLE \$1,%(\$2_EN_RBV)d,%f,%(\$2_STLTIM_RBV)d,%(\$2_LATCH_RBV)d,%(\$2_AUD_RBV)d,%(\$2_VIS_RBV)d;*OPC?";      in "1"; }
-setOUTSTABLE_STLTIM  { out "OUTSTABLE \$1,%(\$2_EN_RBV)d,%(\$2_SETPERR_RBV)f,%d,%(\$2_LATCH_RBV)d,%(\$2_AUD_RBV)d,%(\$2_VIS_RBV)d;*OPC?";     in "1"; }
-setOUTSTABLE_LATCH   { out "OUTSTABLE \$1,%(\$2_EN_RBV)d,%(\$2_SETPERR_RBV)f,%(\$2_STLTIM_RBV)d,%d,%(\$2_AUD_RBV)d,%(\$2_VIS_RBV)d;*OPC?";    in "1"; }
-setOUTSTABLE_AUD     { out "OUTSTABLE \$1,%(\$2_EN_RBV)d,%(\$2_SETPERR_RBV)f,%(\$2_STLTIM_RBV)d,%(\$2_LATCH_RBV)d,%d,%(\$2_VIS_RBV)d;*OPC?";  in "1"; }
-setOUTSTABLE_VIS     { out "OUTSTABLE \$1,%(\$2_EN_RBV)d,%(\$2_SETPERR_RBV)f,%(\$2_STLTIM_RBV)d,%(\$2_LATCH_RBV)d,%(\$2_AUD_RBV)d,%d;*OPC?";  in "1"; }
+setOUTSTABLE_EN      { out "OUTSTABLE \$1,%d,%(\$2_SETPERR_RBV)f,%(\$2_STLTIM_RBV)d,%(\$2_AUD_RBV)d,%(\$2_VIS_RBV)d;*OPC?"; in "1"; }
+setOUTSTABLE_SETPERR { out "OUTSTABLE \$1,%(\$2_EN_RBV)d,%f,%(\$2_STLTIM_RBV)d,%(\$2_AUD_RBV)d,%(\$2_VIS_RBV)d;*OPC?";      in "1"; }
+setOUTSTABLE_STLTIM  { out "OUTSTABLE \$1,%(\$2_EN_RBV)d,%(\$2_SETPERR_RBV)f,%d,%(\$2_AUD_RBV)d,%(\$2_VIS_RBV)d;*OPC?";     in "1"; }
+setOUTSTABLE_AUD     { out "OUTSTABLE \$1,%(\$2_EN_RBV)d,%(\$2_SETPERR_RBV)f,%(\$2_STLTIM_RBV)d,%d,%(\$2_VIS_RBV)d;*OPC?";  in "1"; }
+setOUTSTABLE_VIS     { out "OUTSTABLE \$1,%(\$2_EN_RBV)d,%(\$2_SETPERR_RBV)f,%(\$2_STLTIM_RBV)d,%(\$2_AUD_RBV)d,%d;*OPC?";  in "1"; }
 
 # Warmup
 cmdWARM {
@@ -390,18 +401,19 @@ cmdCLS { out "*CLS;*OPC?";    in "1";    }
 # Zone
 getZONE {
     out "ZONE? \$1,\$2;*OPC?";
-    in "%f,%(\$3:P_RBV)f,%(\$3:I_RBV)f,%(\$3:D_RBV)f,%(\$3:MOUT_RBV)f,%(\$3:RANGE_RBV)d,%(\$3:INPUT_RBV)[^,],%(\$3:RATE_RBV)f;1";
+    in "%f,%(\$3:P_RBV)f,%(\$3:I_RBV)f,%(\$3:D_RBV)f,%(\$3:MOUT_RBV)f,%(\$3:OUTLIM_RBV)f,%(\$3:RANGE_RBV)d,%(\$3:INPUT_RBV)[^,],%(\$3:RATE_RBV)f;1";
     @init {
         out "ZONE? \$1,\$2;*OPC?";
-        in "%(\$3:UB)f,%(\$3:P)f,%(\$3:I)f,%(\$3:D)f,%(\$3:MOUT)f,%(\$3:RANGE)d,%(\$3:INPUT)[^,],%(\$3:RATE)f;1";
+        in "%(\$3:UB)f,%(\$3:P)f,%(\$3:I)f,%(\$3:D)f,%(\$3:MOUT)f,%(\$3:OUTLIM)f,%(\$3:RANGE)d,%(\$3:INPUT)[^,],%(\$3:RATE)f;1";
     }
 }
 
-setZONEUB    { out "%f,%(\$3:P_RBV)f,%(\$3:I_RBV)f,%(\$3:D_RBV)f,%(\$3:MOUT_RBV)f,%(\$3:RANGE_RBV.RVAL)d,%(\$3:INPUT_RBV)s,%(\$3:RATE_RBV)f;*OPC?"; in "1"; }
-setZONEP     { out "%(\$3:UB_RBV)f,%f,%(\$3:I_RBV)f,%(\$3:D_RBV)f,%(\$3:MOUT_RBV)f,%(\$3:RANGE_RBV.RVAL)d,%(\$3:INPUT_RBV)s,%(\$3:RATE_RBV)f;*OPC?"; in "1"; }
-setZONEI     { out "%(\$3:UB_RBV)f,%(\$3:P_RBV)f,%f,%(\$3:D_RBV)f,%(\$3:MOUT_RBV)f,%(\$3:RANGE_RBV.RVAL)d,%(\$3:INPUT_RBV)s,%(\$3:RATE_RBV)f;*OPC?"; in "1"; }
-setZONED     { out "%(\$3:UB_RBV)f,%(\$3:P_RBV)f,%(\$3:I_RBV)f,%f,%(\$3:MOUT_RBV)f,%(\$3:RANGE_RBV.RVAL)d,%(\$3:INPUT_RBV)s,%(\$3:RATE_RBV)f;*OPC?"; in "1"; }
-setZONEMOUT  { out "%(\$3:UB_RBV)f,%(\$3:P_RBV)f,%(\$3:I_RBV)f,%(\$3:D_RBV)f,%f,%(\$3:RANGE_RBV.RVAL)d,%(\$3:INPUT_RBV)s,%(\$3:RATE_RBV)f;*OPC?"; in "1"; }
-setZONERANGE { out "%(\$3:UB_RBV)f,%(\$3:P_RBV)f,%(\$3:I_RBV)f,%(\$3:D_RBV)f,%(\$3:MOUT_RBV)f,%d,%(\$3:INPUT_RBV)s,%(\$3:RATE_RBV)f;*OPC?"; in "1"; }
-setZONEINPUT { out "%(\$3:UB_RBV)f,%(\$3:P_RBV)f,%(\$3:I_RBV)f,%(\$3:D_RBV)f,%(\$3:MOUT_RBV)f,%(\$3:RANGE_RBV.RVAL)d,%s,%(\$3:RATE_RBV)f;*OPC?"; in "1"; }
-setZONERATE  { out "%(\$3:UB_RBV)f,%(\$3:P_RBV)f,%(\$3:I_RBV)f,%(\$3:D_RBV)f,%(\$3:MOUT_RBV)f,%(\$3:RANGE_RBV.RVAL)d,%(\$3:INPUT_RBV)s,%f;*OPC?"; in "1"; }
+setZONEUB     { out "%f,%(\$3:P_RBV)f,%(\$3:I_RBV)f,%(\$3:D_RBV)f,%(\$3:MOUT_RBV)f,%(\$3:OUTLIM_RBV)f,%(\$3:RANGE_RBV.RVAL)d,%(\$3:INPUT_RBV)s,%(\$3:RATE_RBV)f;*OPC?"; in "1"; }
+setZONEP      { out "%(\$3:UB_RBV)f,%f,%(\$3:I_RBV)f,%(\$3:D_RBV)f,%(\$3:MOUT_RBV)f,%(\$3:OUTLIM_RBV)f,%(\$3:RANGE_RBV.RVAL)d,%(\$3:INPUT_RBV)s,%(\$3:RATE_RBV)f;*OPC?"; in "1"; }
+setZONEI      { out "%(\$3:UB_RBV)f,%(\$3:P_RBV)f,%f,%(\$3:D_RBV)f,%(\$3:MOUT_RBV)f,%(\$3:OUTLIM_RBV)f,%(\$3:RANGE_RBV.RVAL)d,%(\$3:INPUT_RBV)s,%(\$3:RATE_RBV)f;*OPC?"; in "1"; }
+setZONED      { out "%(\$3:UB_RBV)f,%(\$3:P_RBV)f,%(\$3:I_RBV)f,%f,%(\$3:MOUT_RBV)f,%(\$3:OUTLIM_RBV)f,%(\$3:RANGE_RBV.RVAL)d,%(\$3:INPUT_RBV)s,%(\$3:RATE_RBV)f;*OPC?"; in "1"; }
+setZONEMOUT   { out "%(\$3:UB_RBV)f,%(\$3:P_RBV)f,%(\$3:I_RBV)f,%(\$3:D_RBV)f,%f,%(\$3:OUTLIM_RBV)f,%(\$3:RANGE_RBV.RVAL)d,%(\$3:INPUT_RBV)s,%(\$3:RATE_RBV)f;*OPC?"; in "1"; }
+setZONEOUTLIM { out "%(\$3:UB_RBV)f,%(\$3:P_RBV)f,%(\$3:I_RBV)f,%(\$3:D_RBV)f,%(\$3:MOUT_RBV)f,%f,%(\$3:RANGE_RBV.RVAL)d,%(\$3:INPUT_RBV)s,%(\$3:RATE_RBV)f;*OPC?"; in "1"; }
+setZONERANGE  { out "%(\$3:UB_RBV)f,%(\$3:P_RBV)f,%(\$3:I_RBV)f,%(\$3:D_RBV)f,%(\$3:MOUT_RBV)f,%(\$3:OUTLIM_RBV)f,%d,%(\$3:INPUT_RBV)s,%(\$3:RATE_RBV)f;*OPC?"; in "1"; }
+setZONEINPUT  { out "%(\$3:UB_RBV)f,%(\$3:P_RBV)f,%(\$3:I_RBV)f,%(\$3:D_RBV)f,%(\$3:MOUT_RBV)f,%(\$3:OUTLIM_RBV)f,%(\$3:RANGE_RBV.RVAL)d,%s,%(\$3:RATE_RBV)f;*OPC?"; in "1"; }
+setZONERATE   { out "%(\$3:UB_RBV)f,%(\$3:P_RBV)f,%(\$3:I_RBV)f,%(\$3:D_RBV)f,%(\$3:MOUT_RBV)f,%(\$3:OUTLIM_RBV)f,%(\$3:RANGE_RBV.RVAL)d,%(\$3:INPUT_RBV)s,%f;*OPC?"; in "1"; }

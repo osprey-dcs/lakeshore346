@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <display version="2.0.0">
   <name>Lake Shore 346 Zone Output $(OUTNUM) $(P)$(R)</name>
-  <width>950</width>
+  <width>990</width>
   <height>850</height>
   <actions>
   </actions>
@@ -45,7 +45,7 @@
   </widget>
   <widget type="group" version="3.0.0">
     <name>Header</name>
-    <width>950</width>
+    <width>990</width>
     <height>45</height>
     <style>3</style>
     <foreground_color>
@@ -84,7 +84,7 @@
     <name>Group</name>
     <x>5</x>
     <y>90</y>
-    <width>940</width>
+    <width>980</width>
     <height>745</height>
     <style>3</style>
     <transparent>true</transparent>
@@ -144,73 +144,16 @@
         </instance>
       </instances>
       <y>55</y>
-      <width>940</width>
+      <width>980</width>
       <height>690</height>
       <transparent>true</transparent>
     </widget>
     <widget type="group" version="3.0.0">
       <name>Labels</name>
-      <width>870</width>
+      <width>980</width>
       <height>50</height>
       <style>3</style>
       <transparent>true</transparent>
-      <widget type="label" version="2.0.0">
-        <name>Label_25</name>
-        <text>RATE</text>
-        <x>770</x>
-        <y>25</y>
-        <height>25</height>
-        <font>
-          <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
-          </font>
-        </font>
-        <horizontal_alignment>1</horizontal_alignment>
-        <vertical_alignment>2</vertical_alignment>
-        <actions>
-        </actions>
-        <border_color>
-          <color red="0" green="128" blue="255">
-          </color>
-        </border_color>
-      </widget>
-      <widget type="label" version="2.0.0">
-        <name>Label_24</name>
-        <text>INPUT</text>
-        <x>665</x>
-        <y>25</y>
-        <height>25</height>
-        <font>
-          <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
-          </font>
-        </font>
-        <horizontal_alignment>1</horizontal_alignment>
-        <vertical_alignment>2</vertical_alignment>
-        <actions>
-        </actions>
-        <border_color>
-          <color red="0" green="128" blue="255">
-          </color>
-        </border_color>
-      </widget>
-      <widget type="label" version="2.0.0">
-        <name>Label_23</name>
-        <text>RANGE</text>
-        <x>560</x>
-        <y>25</y>
-        <height>25</height>
-        <font>
-          <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
-          </font>
-        </font>
-        <horizontal_alignment>1</horizontal_alignment>
-        <vertical_alignment>2</vertical_alignment>
-        <actions>
-        </actions>
-        <border_color>
-          <color red="0" green="128" blue="255">
-          </color>
-        </border_color>
-      </widget>
       <widget type="label" version="2.0.0">
         <name>Label_13</name>
         <text>MOUT</text>
@@ -310,6 +253,82 @@
         <text>Zone</text>
         <y>25</y>
         <width>35</width>
+        <height>25</height>
+        <font>
+          <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+          </font>
+        </font>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>2</vertical_alignment>
+        <actions>
+        </actions>
+        <border_color>
+          <color red="0" green="128" blue="255">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_23</name>
+        <text>RANGE</text>
+        <x>665</x>
+        <y>25</y>
+        <height>25</height>
+        <font>
+          <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+          </font>
+        </font>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>2</vertical_alignment>
+        <actions>
+        </actions>
+        <border_color>
+          <color red="0" green="128" blue="255">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_24</name>
+        <text>INPUT</text>
+        <x>770</x>
+        <y>25</y>
+        <height>25</height>
+        <font>
+          <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+          </font>
+        </font>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>2</vertical_alignment>
+        <actions>
+        </actions>
+        <border_color>
+          <color red="0" green="128" blue="255">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_25</name>
+        <text>RATE</text>
+        <x>875</x>
+        <y>25</y>
+        <height>25</height>
+        <font>
+          <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+          </font>
+        </font>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>2</vertical_alignment>
+        <actions>
+        </actions>
+        <border_color>
+          <color red="0" green="128" blue="255">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_17</name>
+        <text>OUT LIM</text>
+        <x>560</x>
+        <y>25</y>
         <height>25</height>
         <font>
           <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">

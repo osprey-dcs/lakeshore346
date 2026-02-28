@@ -39,3 +39,45 @@ record(bo, "$(P)$(R)OUT$(OUTNUM):HTRST_RESET") {
     field(VAL, "0")
     field(OUT, "$(P)$(R)OUT$(OUTNUM):HTRST_CACHE_RBV.RVAL PP")
 }
+
+record(bi, "$(P)$(R)OUT$(OUTNUM):OUTOPR:WARMUP_RBV") {
+    field(DESC, "Output In Warmup")
+    field(INP,  "$(P)$(R)OUT$(OUTNUM):OUTOPR_RBV.B6 CP")
+    field(ZNAM, "No")
+    field(ONAM, "Yes")
+}
+
+record(bi, "$(P)$(R)OUT$(OUTNUM):OUTOPR:WARM_RBV") {
+    field(DESC, "Output Warm")
+    field(INP,  "$(P)$(R)OUT$(OUTNUM):OUTOPR_RBV.B7 CP")
+    field(ZNAM, "No")
+    field(ONAM, "Yes")
+}
+
+# OUTST bits
+# 0: HTRST? is non-zero
+# 1: Output is percentage limited
+
+# Output Questionable Status Query (OUTST?)
+record(mbbiDirect, "$(P)$(R)OUT$(OUTNUM):OUTST_RBV") {
+    field(DESC, "Output Questionable Status")
+    field(DTYP, "stream")
+    field(INP,  "@ls346.proto getOUTST($(OUTNUM)) $(PORT) $(ADDR)")
+    field(SCAN, "Event")
+    field(EVNT, "scan")
+}
+
+record(bi, "$(P)$(R)OUT$(OUTNUM):OUTST:HTRST_RBV") {
+    field(DESC, "HTRST Non-Zero")
+    field(INP,  "$(P)$(R)OUT$(OUTNUM):OUTST_RBV.B0 CP")
+    field(ZNAM, "No")
+    field(ONAM, "Yes")
+}
+
+record(bi, "$(P)$(R)OUT$(OUTNUM):OUTST:PCTLIM_RBV") {
+    field(DESC, "Output Pct Limited")
+    field(INP,  "$(P)$(R)OUT$(OUTNUM):OUTST_RBV.B1 CP")
+    field(ZNAM, "No")
+    field(ONAM, "Yes")
+    field(OSV,  "MINOR")
+}

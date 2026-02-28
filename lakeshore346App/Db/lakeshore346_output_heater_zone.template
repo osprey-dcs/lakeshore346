@@ -50,6 +50,17 @@ record(ao, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):MOUT") {
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):UB_RBV PP")
 }
 
+record(ao, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):OUTLIM") {
+    field(DESC, "Output Limit")
+    field(DTYP, "stream")
+    field(OUT,  "@ls346.proto setZONEOUTLIM($(OUTNUM),$(ZONE),$(P)$(R)OUT$(OUTNUM):Z$(ZONE)) $(PORT) $(ADDR)")
+    field(EGU,  "%")
+    field(DRVL, "0")
+    field(DRVH, "100")
+    field(PREC, "1")
+    field(FLNK, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):UB_RBV PP")
+}
+
 record(mbbo, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):RANGE") {
     field(DESC, "Range")
     field(DTYP, "stream")
@@ -107,6 +118,12 @@ record(ai, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):D_RBV") {
 record(ai, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):MOUT_RBV") {
     field(DESC, "Manual Output")
     field(PREC, "1")
+}
+
+record(ai, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):OUTLIM_RBV") {
+    field(DESC, "Output Limit")
+    field(PREC, "1")
+    field(EGU,  "%")
 }
 
 record(mbbi, "$(P)$(R)OUT$(OUTNUM):Z$(ZONE):RANGE_RBV") {

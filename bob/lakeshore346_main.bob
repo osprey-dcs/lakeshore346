@@ -6,7 +6,7 @@
     <R></R>
   </macros>
   <width>1920</width>
-  <height>1350</height>
+  <height>1500</height>
   <actions>
   </actions>
   <grid_step_x>5</grid_step_x>
@@ -16,7 +16,7 @@
     <x>5</x>
     <y>270</y>
     <width>605</width>
-    <height>1080</height>
+    <height>1225</height>
     <style>1</style>
     <font>
       <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
@@ -935,8 +935,12 @@
     <x>615</x>
     <y>270</y>
     <width>1295</width>
-    <height>1080</height>
+    <height>1228</height>
     <style>1</style>
+    <font>
+      <font name="Header 3" family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
     <foreground_color>
       <color name="Header_ForeGround" red="255" green="255" blue="255">
       </color>
@@ -951,7 +955,7 @@
       <x>5</x>
       <y>5</y>
       <width>155</width>
-      <height>1050</height>
+      <height>1195</height>
       <style>3</style>
       <transparent>true</transparent>
       <widget type="label" version="2.0.0">
@@ -1298,24 +1302,9 @@
         </border_color>
       </widget>
       <widget type="label" version="2.0.0">
-        <name>Label_78</name>
-        <text>Out Stab Latch</text>
-        <y>660</y>
-        <width>150</width>
-        <height>25</height>
-        <horizontal_alignment>2</horizontal_alignment>
-        <vertical_alignment>1</vertical_alignment>
-        <actions>
-        </actions>
-        <border_color>
-          <color red="0" green="128" blue="255">
-          </color>
-        </border_color>
-      </widget>
-      <widget type="label" version="2.0.0">
         <name>Label_79</name>
         <text>Out Stab Audible</text>
-        <y>690</y>
+        <y>660</y>
         <width>150</width>
         <height>25</height>
         <horizontal_alignment>2</horizontal_alignment>
@@ -1330,7 +1319,7 @@
       <widget type="label" version="2.0.0">
         <name>Label_80</name>
         <text>Out Stab Visible</text>
-        <y>720</y>
+        <y>690</y>
         <width>150</width>
         <height>25</height>
         <horizontal_alignment>2</horizontal_alignment>
@@ -1345,7 +1334,7 @@
       <widget type="label" version="2.0.0">
         <name>Label_82</name>
         <text>Monitor Out Low</text>
-        <y>810</y>
+        <y>780</y>
         <width>150</width>
         <height>25</height>
         <horizontal_alignment>2</horizontal_alignment>
@@ -1360,7 +1349,7 @@
       <widget type="label" version="2.0.0">
         <name>Label_81</name>
         <text>Monitor Out High</text>
-        <y>780</y>
+        <y>750</y>
         <width>150</width>
         <height>25</height>
         <horizontal_alignment>2</horizontal_alignment>
@@ -1374,7 +1363,7 @@
       </widget>
       <widget type="group" version="3.0.0">
         <name>Group</name>
-        <y>750</y>
+        <y>720</y>
         <width>155</width>
         <height>25</height>
         <style>3</style>
@@ -1399,7 +1388,7 @@
       </widget>
       <widget type="group" version="3.0.0">
         <name>Group</name>
-        <y>840</y>
+        <y>810</y>
         <width>155</width>
         <height>85</height>
         <style>3</style>
@@ -1455,7 +1444,7 @@
       <widget type="label" version="2.0.0">
         <name>Label_86</name>
         <text>Heater Protection</text>
-        <y>930</y>
+        <y>900</y>
         <width>150</width>
         <height>25</height>
         <horizontal_alignment>2</horizontal_alignment>
@@ -1470,7 +1459,7 @@
       <widget type="label" version="2.0.0">
         <name>Label_87</name>
         <text>Heater Short Resist</text>
-        <y>960</y>
+        <y>930</y>
         <width>150</width>
         <height>25</height>
         <horizontal_alignment>2</horizontal_alignment>
@@ -1485,7 +1474,7 @@
       <widget type="label" version="2.0.0">
         <name>Label_88</name>
         <text>Heater Open Resist</text>
-        <y>990</y>
+        <y>960</y>
         <width>150</width>
         <height>25</height>
         <horizontal_alignment>2</horizontal_alignment>
@@ -1499,7 +1488,7 @@
       </widget>
       <widget type="group" version="3.0.0">
         <name>Group</name>
-        <y>1020</y>
+        <y>990</y>
         <width>155</width>
         <height>25</height>
         <style>3</style>
@@ -1522,13 +1511,55 @@
           </border_color>
         </widget>
       </widget>
+      <widget type="label" version="2.0.0">
+        <name>Label_92</name>
+        <text>Operation Query
+(OUTOPR?)</text>
+        <y>1020</y>
+        <width>150</width>
+        <height>125</height>
+        <horizontal_alignment>2</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+        <actions>
+        </actions>
+        <border_color>
+          <color red="0" green="128" blue="255">
+          </color>
+        </border_color>
+      </widget>
+      <widget type="group" version="3.0.0">
+        <name>Group_19</name>
+        <y>1145</y>
+        <width>155</width>
+        <height>45</height>
+        <style>3</style>
+        <background_color>
+          <color red="230" green="230" blue="230">
+          </color>
+        </background_color>
+        <widget type="label" version="2.0.0">
+          <name>Label_93</name>
+          <text>Output Status
+(OUTST?)</text>
+          <width>150</width>
+          <height>45</height>
+          <horizontal_alignment>2</horizontal_alignment>
+          <vertical_alignment>1</vertical_alignment>
+          <actions>
+          </actions>
+          <border_color>
+            <color red="0" green="128" blue="255">
+            </color>
+          </border_color>
+        </widget>
+      </widget>
     </widget>
     <widget type="group" version="3.0.0">
       <name>Group</name>
       <x>160</x>
       <y>5</y>
       <width>1000</width>
-      <height>1050</height>
+      <height>1195</height>
       <style>3</style>
       <transparent>true</transparent>
       <widget type="embedded" version="2.0.0">
@@ -1538,7 +1569,7 @@
         </macros>
         <file>lakeshore346_main_out_col.bob</file>
         <width>100</width>
-        <height>1050</height>
+        <height>1195</height>
         <resize>4</resize>
         <transparent>true</transparent>
       </widget>
@@ -1550,7 +1581,7 @@
         <file>lakeshore346_main_out_col.bob</file>
         <x>100</x>
         <width>100</width>
-        <height>1050</height>
+        <height>1195</height>
         <resize>4</resize>
         <transparent>true</transparent>
       </widget>
@@ -1562,7 +1593,7 @@
         <file>lakeshore346_main_out_col.bob</file>
         <x>200</x>
         <width>100</width>
-        <height>1050</height>
+        <height>1195</height>
         <resize>4</resize>
         <transparent>true</transparent>
       </widget>
@@ -1574,7 +1605,7 @@
         <file>lakeshore346_main_out_col.bob</file>
         <x>300</x>
         <width>100</width>
-        <height>1050</height>
+        <height>1195</height>
         <resize>4</resize>
         <transparent>true</transparent>
       </widget>
@@ -1586,7 +1617,7 @@
         <file>lakeshore346_main_out_col.bob</file>
         <x>400</x>
         <width>100</width>
-        <height>1050</height>
+        <height>1195</height>
         <resize>4</resize>
         <transparent>true</transparent>
       </widget>
@@ -1598,7 +1629,7 @@
         <file>lakeshore346_main_out_col.bob</file>
         <x>500</x>
         <width>100</width>
-        <height>1050</height>
+        <height>1195</height>
         <resize>4</resize>
         <transparent>true</transparent>
       </widget>
@@ -1610,7 +1641,7 @@
         <file>lakeshore346_main_out_col.bob</file>
         <x>600</x>
         <width>100</width>
-        <height>1050</height>
+        <height>1195</height>
         <resize>4</resize>
         <transparent>true</transparent>
       </widget>
@@ -1622,7 +1653,7 @@
         <file>lakeshore346_main_out_col.bob</file>
         <x>700</x>
         <width>100</width>
-        <height>1050</height>
+        <height>1195</height>
         <resize>4</resize>
         <transparent>true</transparent>
       </widget>
@@ -1634,7 +1665,7 @@
         <file>lakeshore346_main_out_col.bob</file>
         <x>800</x>
         <width>100</width>
-        <height>1050</height>
+        <height>1195</height>
         <resize>4</resize>
         <transparent>true</transparent>
       </widget>
@@ -1646,7 +1677,7 @@
         <file>lakeshore346_main_out_col.bob</file>
         <x>900</x>
         <width>100</width>
-        <height>1050</height>
+        <height>1195</height>
         <resize>4</resize>
         <transparent>true</transparent>
       </widget>

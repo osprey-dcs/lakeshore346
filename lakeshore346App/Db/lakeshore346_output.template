@@ -258,24 +258,6 @@ record(ai, "$(P)$(R)OUT$(OUTNUM):HTR_RBV") {
     info(archive, "Monitor, 00:00:01, VAL")
 }
 
-record(bo, "$(P)$(R)OUT$(OUTNUM):HTRAUTO") {
-    field(DESC, "Autorange")
-    field(DTYP, "stream")
-    field(OUT,  "@ls346.proto setHTRAUTO($(OUTNUM)) $(PORT) $(ADDR)")
-    field(ZNAM, "Disabled")
-    field(ONAM, "Enabled")
-    field(FLNK, "$(P)$(R)OUT$(OUTNUM):HTRAUTO_RBV PP")
-}
-
-record(bi, "$(P)$(R)OUT$(OUTNUM):HTRAUTO_RBV") {
-    field(DESC, "Autorange")
-    field(DTYP, "stream")
-    field(INP,  "@ls346.proto getHTRAUTO($(OUTNUM)) $(PORT) $(ADDR)")
-    field(ZNAM, "Disabled")
-    field(ONAM, "Enabled")
-    field(PINI, "YES")
-}
-
 record(ai, "$(P)$(R)OUT$(OUTNUM):HTROUT_VAL_RBV") {
     field(DESC, "Output Value")
     field(DTYP, "stream")
@@ -320,15 +302,6 @@ record(longout, "$(P)$(R)OUT$(OUTNUM):OUTSTABLE_STLTIM") {
     field(FLNK, "$(P)$(R)OUT$(OUTNUM):OUTSTABLE_EN_RBV PP")
 }
 
-record(bo, "$(P)$(R)OUT$(OUTNUM):OUTSTABLE_LATCH") {
-    field(DESC, "Out Stability Latch")
-    field(DTYP, "stream")
-    field(OUT,  "@ls346.proto setOUTSTABLE_LATCH($(OUTNUM),$(P)$(R)OUT$(OUTNUM):OUTSTABLE) $(PORT) $(ADDR)")
-    field(ZNAM, "Off")
-    field(ONAM, "On")
-    field(FLNK, "$(P)$(R)OUT$(OUTNUM):OUTSTABLE_EN_RBV PP")
-}
-
 record(bo, "$(P)$(R)OUT$(OUTNUM):OUTSTABLE_AUD") {
     field(DESC, "Out Stability Audible")
     field(DTYP, "stream")
@@ -367,12 +340,6 @@ record(longin, "$(P)$(R)OUT$(OUTNUM):OUTSTABLE_STLTIM_RBV") {
     field(EGU,  "s")
 }
 
-record(bi, "$(P)$(R)OUT$(OUTNUM):OUTSTABLE_LATCH_RBV") {
-    field(DESC, "Out Stability Latch")
-    field(ZNAM, "Off")
-    field(ONAM, "On")
-}
-
 record(bi, "$(P)$(R)OUT$(OUTNUM):OUTSTABLE_AUD_RBV") {
     field(DESC, "Out Stability Audible")
     field(ZNAM, "Off")
@@ -383,4 +350,44 @@ record(bi, "$(P)$(R)OUT$(OUTNUM):OUTSTABLE_VIS_RBV") {
     field(DESC, "Out Stability Visible")
     field(ZNAM, "Off")
     field(ONAM, "On")
+}
+
+# OUTOPR bits
+# 0: N/A
+# 1: RAMPTST? is non-zero
+# 2: N/A
+# 3: N/A
+# 4: Output is stabilizing
+# 5: Output is stable
+# 6: Output is in warmup mode (heaters only)
+# 7: Output is warm (heaters only)
+
+# Output Operation Status Query (OUTOPR?)
+record(mbbiDirect, "$(P)$(R)OUT$(OUTNUM):OUTOPR_RBV") {
+    field(DESC, "Output Operation Status")
+    field(DTYP, "stream")
+    field(INP,  "@ls346.proto getOUTOPR($(OUTNUM)) $(PORT) $(ADDR)")
+    field(SCAN, "Event")
+    field(EVNT, "scan")
+}
+
+record(bi, "$(P)$(R)OUT$(OUTNUM):OUTOPR:RAMPST_RBV") {
+    field(DESC, "Output RAMPST is non-zero")
+    field(INP,  "$(P)$(R)OUT$(OUTNUM):OUTOPR_RBV.B1 CP")
+    field(ZNAM, "No")
+    field(ONAM, "Yes")
+}
+
+record(bi, "$(P)$(R)OUT$(OUTNUM):OUTOPR:STBLZING_RBV") {
+    field(DESC, "Output Stabilizing")
+    field(INP,  "$(P)$(R)OUT$(OUTNUM):OUTOPR_RBV.B4 CP")
+    field(ZNAM, "No")
+    field(ONAM, "Yes")
+}
+
+record(bi, "$(P)$(R)OUT$(OUTNUM):OUTOPR:STABLE_RBV") {
+    field(DESC, "Output Stable")
+    field(INP,  "$(P)$(R)OUT$(OUTNUM):OUTOPR_RBV.B5 CP")
+    field(ZNAM, "No")
+    field(ONAM, "Yes")
 }

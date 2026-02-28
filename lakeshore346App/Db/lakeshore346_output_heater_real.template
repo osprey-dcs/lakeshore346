@@ -112,3 +112,21 @@ record(ai, "$(P)$(R)OUT$(OUTNUM):HTRLIM_OPN_RBV") {
     field(DESC, "Open Resistance")
     field(EGU,  "ohm")
 }
+
+record(bo, "$(P)$(R)OUT$(OUTNUM):HTRAUTO") {
+    field(DESC, "Autorange")
+    field(DTYP, "stream")
+    field(OUT,  "@ls346.proto setHTRAUTO($(OUTNUM)) $(PORT) $(ADDR)")
+    field(ZNAM, "Disabled")
+    field(ONAM, "Enabled")
+    field(FLNK, "$(P)$(R)OUT$(OUTNUM):HTRAUTO_RBV PP")
+}
+
+record(bi, "$(P)$(R)OUT$(OUTNUM):HTRAUTO_RBV") {
+    field(DESC, "Autorange")
+    field(DTYP, "stream")
+    field(INP,  "@ls346.proto getHTRAUTO($(OUTNUM)) $(PORT) $(ADDR)")
+    field(ZNAM, "Disabled")
+    field(ONAM, "Enabled")
+    field(PINI, "YES")
+}
