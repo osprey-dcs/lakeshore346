@@ -110,7 +110,7 @@ record(stringout, "$(P)$(R)INP$(INPUT):INNAME") {
     field(DESC, "Input $(INPUT) Name")
     field(DTYP, "stream")
     field(OUT,  "@ls346.proto setINNAME($(INPUT)) $(PORT) $(ADDR)")
-    field(FLNK, "$(P)$(R)INP$(INPUT):INNAME PP")
+    field(FLNK, "$(P)$(R)INP$(INPUT):INNAME_RBV PP")
 }
 
 # Read input sensor $(INPUT) name
