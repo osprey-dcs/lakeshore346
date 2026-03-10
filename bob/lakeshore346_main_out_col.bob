@@ -578,14 +578,8 @@
         <exp bool_exp="pvInt0 &gt; 8">
           <value>false</value>
         </exp>
-        <pv_name>$(P)$(R)OUT$(OUTNUM):OUTPUT_RBV</pv_name>
-      </rule>
-      <rule name="PVName" prop_id="pv_name" out_exp="true">
-        <exp bool_exp="pvInt0 &lt; 5">
-          <expression></expression>
-        </exp>
-        <exp bool_exp="pvInt &gt; 8">
-          <expression></expression>
+        <exp bool_exp="true">
+          <value>true</value>
         </exp>
         <pv_name>$(P)$(R)OUT$(OUTNUM):OUTPUT_RBV</pv_name>
       </rule>
@@ -613,14 +607,8 @@
         <exp bool_exp="pvInt0 &gt; 8">
           <value>false</value>
         </exp>
-        <pv_name>$(P)$(R)OUT$(OUTNUM):OUTPUT_RBV</pv_name>
-      </rule>
-      <rule name="PVName" prop_id="pv_name" out_exp="true">
-        <exp bool_exp="pvInt0 &lt; 5">
-          <expression></expression>
-        </exp>
-        <exp bool_exp="pvInt &gt; 8">
-          <expression></expression>
+        <exp bool_exp="true">
+          <value>true</value>
         </exp>
         <pv_name>$(P)$(R)OUT$(OUTNUM):OUTPUT_RBV</pv_name>
       </rule>
@@ -751,11 +739,8 @@
           <exp bool_exp="pvInt0&gt;4">
             <value>false</value>
           </exp>
-          <pv_name>$(P)$(R)OUT$(OUTNUM):OUTPUT_RBV</pv_name>
-        </rule>
-        <rule name="PVName" prop_id="pv_name" out_exp="true">
-          <exp bool_exp="pvInt0&gt;4">
-            <expression></expression>
+          <exp bool_exp="true">
+            <value>true</value>
           </exp>
           <pv_name>$(P)$(R)OUT$(OUTNUM):OUTPUT_RBV</pv_name>
         </rule>
