@@ -3,8 +3,8 @@
 #
 # Based on the protocol for Lakeshore 336
 
-ReplyTimeout = 4000;
-LockTimeout = 40000;
+ReplyTimeout = 500;
+LockTimeout = 5000;
 
 # Device ID
 getIDN {
