@@ -1,0 +1,29 @@
+# Reboots the IOC using iocStats when asyn changes state from disconnected to connected
+# INPB = HEARTBEAT: 1 Hz counter from iocStats, resets to 0 on each IOC start
+# This is used to force streamDevice to update all records (including passive ones) after reconnection
+record(calcout, "$(P)$(R)CNCT_DETECT") {
+    field(DESC, "Reconnect detector")
+    field(INPA, "$(P)$(R)ASYN.CNCT CP")
+    field(INPB, "$(IOC):HEARTBEAT")
+    field(CALC, "A && (B>30)")
+    field(OOPT, "Transition To Non-zero")
+    field(OUT,  "$(IOC):REBOOT_IOC PP")
+}
+
+record(bo, "$(IOC):REBOOT_IOC") {
+    field(DESC, "Reboot IOC")
+    field(PINI, "YES")
+    field(VAL, "0")
+    field(ZNAM, "Idle")
+    field(ONAM, "Reboot")
+    field(FLNK, "$(IOC):REBOOT_IOC_GATE")
+}
+
+record(calcout, "$(IOC):REBOOT_IOC_GATE") {
+    field(INPA, "$(IOC):REBOOT_IOC")
+    field(CALC, "A")
+    field(OOPT, "When Non-zero")
+    field(DOPT, "Use OCAL")
+    field(OCAL, "1")
+    field(OUT,  "$(IOC):SYSRESET PP")
+}

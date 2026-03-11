@@ -929,6 +929,25 @@
       <horizontal_alignment>1</horizontal_alignment>
       <vertical_alignment>1</vertical_alignment>
     </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button</name>
+      <actions>
+        <action type="write_pv">
+          <description>Reboot IOC</description>
+          <pv_name>$(pv_name)</pv_name>
+          <value>1</value>
+        </action>
+      </actions>
+      <pv_name>$(P)REBOOT_IOC</pv_name>
+      <text>Reboot IOC</text>
+      <x>320</x>
+      <y>5</y>
+      <width>80</width>
+      <height>20</height>
+      <tooltip>$(actions)</tooltip>
+      <show_confirm_dialog>true</show_confirm_dialog>
+      <confirm_message>Are your sure? It will take up to 1 min to reconnect.</confirm_message>
+    </widget>
   </widget>
   <widget type="group" version="3.0.0">
     <name>Outputs</name>
